@@ -1,7 +1,9 @@
 # Owner walkthrough
 
-The current revision is local while publication approval and public checks remain
-pending. Start from this source checkout; use the pinned release once verified.
+Use the [v0.1.0 release](https://github.com/nazeeh111/QueueCraft/releases/tag/v0.1.0)
+and its checksums. The README clones the pinned tag before installation. Read the
+[delivery evidence](https://github.com/nazeeh111/QueueCraft/releases/download/v0.1.0/delivery-evidence.json)
+for the exact public tag, CI, clean-clone and asset-download observations.
 
 1. Follow the README install and quickstart. Keep the supplied recording metadata
    with the input. Open the fresh report and inspect each order's observation,

@@ -1,0 +1,299 @@
+{
+  "schema_version": 1,
+  "status": "public source, CI and anonymous clone verified",
+  "repository": "https://github.com/nazeeh111/QueueCraft",
+  "visibility": "public",
+  "code_commit": "d4fa85c16a86501bfab77c04bf6618b53d1d21a8",
+  "original_ancestor": "cbbcb3cb5b9da2083b1a79b71dcd43ac30c52f2b",
+  "history_preserved": true,
+  "approved_source_tree_identity_sha256": "901fc54d781bf75dc56da2763bcfce58f31f396fc83ebf730784bc3425377f41",
+  "ci_run": {
+    "run_id": 40971056059,
+    "run_url": "https://github.com/nazeeh111/QueueCraft/actions/runs/40971056059",
+    "jobs": [
+      {
+        "id": 123787599140,
+        "name": "python (3.11)",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40971056059,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run python -m pip install '.[study]'",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run make test",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Test the installed package",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Independent differential against installed engine",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Run queuecraft simulate examples/recorded.csv --size 25 --policy twap --recording-metadata examples/recorded-provenance.json --out /tmp/order",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Run queuecraft verify /tmp/order",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9
+          },
+          {
+            "name": "Installed consumer outside checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10
+          },
+          {
+            "name": "Post Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 19
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 20
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 21
+          }
+        ]
+      },
+      {
+        "id": 123787599570,
+        "name": "python (3.14)",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40971056059,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run python -m pip install '.[study]'",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run make test",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Test the installed package",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Independent differential against installed engine",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Run queuecraft simulate examples/recorded.csv --size 25 --policy twap --recording-metadata examples/recorded-provenance.json --out /tmp/order",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Run queuecraft verify /tmp/order",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9
+          },
+          {
+            "name": "Installed consumer outside checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10
+          },
+          {
+            "name": "Post Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 19
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 20
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 21
+          }
+        ]
+      },
+      {
+        "id": 123787599582,
+        "name": "sanitizer",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40971056059,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run make sanitize",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          }
+        ]
+      }
+    ]
+  },
+  "anonymous_clone": {
+    "status": "pass",
+    "repository": "https://github.com/nazeeh111/QueueCraft",
+    "commit": "d4fa85c16a86501bfab77c04bf6618b53d1d21a8",
+    "original_history_preserved": true,
+    "source_files_identical_to_approved_manifest": 127,
+    "anonymous_clone": true,
+    "credential_helpers_and_global_git_config_disabled": true,
+    "fresh_environment": "/private/tmp/queuecraft-public-clone-v3-6q_g3tcf/venv",
+    "clone": "/private/tmp/queuecraft-public-clone-v3-6q_g3tcf/source",
+    "consumer": "/private/tmp/queuecraft-public-clone-v3-6q_g3tcf/consumer",
+    "imports": {
+      "version": "0.1.0",
+      "package": "/private/tmp/queuecraft-public-clone-v3-6q_g3tcf/venv/lib/python3.14/site-packages/queuecraft/__init__.py",
+      "native": "/private/tmp/queuecraft-public-clone-v3-6q_g3tcf/venv/lib/python3.14/site-packages/queuecraft/_native.cpython-314-darwin.so",
+      "prefix": "/private/tmp/queuecraft-public-clone-v3-6q_g3tcf/venv"
+    },
+    "no_source_imports": true,
+    "pip_cache_used": false,
+    "private_files_required": false,
+    "dependencies": "Pinned build/study dependencies downloaded directly from public PyPI using isolated pip with no cache",
+    "changed_order_traces_and_cash_distinct": true,
+    "orders": [
+      {
+        "quantity": 25,
+        "filled": 25,
+        "cash": -12980
+      },
+      {
+        "quantity": 50,
+        "filled": 50,
+        "cash": -26000
+      }
+    ]
+  },
+  "topics": [
+    "cpp",
+    "order-book",
+    "market-microstructure",
+    "backtesting",
+    "quantitative-finance",
+    "data-engineering",
+    "sql"
+  ],
+  "runtime_source_sha256": {
+    "__init__.py": "c40c24659ae723f459c991a6f225b1802d7d30eaf2d17d9121abbec073f30fcd",
+    "__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "capture.py": "9a3551ca1ac782a594492386c7cafa0e070744cfae632ed0ffd3f74b808c5663",
+    "cli.py": "a54292584e2c55bcd4e77dec6ddf4f4a20d600e55d1d70c011d5c8b3196ba6bb",
+    "data.py": "36d4dd397b80897cf42142ffb791ac22c2bf682fd024efd8b5ab2e20c4edcf63",
+    "native-source.json": "51ff20d4e3e6b1a700e83775e792c03a8f0b9c5952f289a80350f13d31ba40d4",
+    "policies.py": "4569a4dc137dd8937884ce309231b6c2c195581925dce88ea60fa7d268d50a8e",
+    "prospective.py": "3d685052be7d8974bd9b9583d40b97dcd158ba3045bc650cb77be0d20a4fbe8f",
+    "reconcile.py": "f99b31b6bc1243ac2469af11e124bb7467aee73ad8eb95b980b9d0040e4f39ec",
+    "reconcile.sql": "e92949b3c22c302464cf45ae0ed0d17e8cd3aca3a429fa123a93616526c9f493",
+    "reference.py": "e88099e77a1d3b2c66b1eeba67e1a03859a1caa563c934257ab2ba17611cc79a",
+    "report.py": "2340730cb891e4d6aa7277597acb20926a80357a47a1ad722fc6f4ddd97a51e9",
+    "sdk.py": "c42b51c54167d565758b7c1308b524119fea9cc931b3563d24d8c7ca74f1ad50",
+    "study.py": "2691b408dccbd1e82870463a58b4d4c295f9526980dcbd1ec54db481da249240"
+  },
+  "native_source_sha256": {
+    "include/queuecraft/engine.hpp": "12668f1d5407376ea94d3d85b216769a2a581a5ddfe40adb1120f9b2a5d6c4cb",
+    "src/engine.cpp": "dc9240ada4e7a58259974d215e1076ff1812ed7b55a00dd6526e631b202be78f",
+    "native/module.cpp": "095dc3f80cd34666112c6da6105d81ad3c103ce45fec23f1f1f3fe427bc8f703"
+  },
+  "final_release_verification": "https://github.com/nazeeh111/QueueCraft/releases/download/v0.1.0/delivery-evidence.json",
+  "provenance_scope": "This record verifies the published code revision. Subsequent verification-documentation commits keep all registered runtime/native hashes fixed. Final tag, release, asset hashes and public downloads are recorded in the release delivery-evidence artifact to avoid self-referential source hashes."
+}

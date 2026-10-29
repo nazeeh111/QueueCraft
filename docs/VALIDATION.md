@@ -57,8 +57,12 @@ and genuine scripted demo in `evidence/completion-demo-v3.json`. Initial wheel
 platform-label and licensing-file drift attempts were retained before the fresh
 final wheel passed. Current performance evidence is indexed in
 `evidence/completion-v3-benchmark-summary.json`. Current reports were visually
-inspected and study filters exercised. Public CI, public clone, downloads and
-release checks remain pending. No public repository or release is verified.
+inspected and study filters exercised. Public CI for the published code revision passed on Python 3.11, Python 3.14
+and the sanitizer job. An anonymous public clone rebuilt with uncached public
+PyPI dependencies, then executed 25/50-lot changed orders and exact SQL replay
+outside the checkout. [Source and CI evidence](../evidence/public-source-verification.json).
+The exact final tag, release/download checksums and live-link observations are
+recorded in the versioned [delivery evidence](https://github.com/nazeeh111/QueueCraft/releases/download/v0.1.0/delivery-evidence.json).
 
 Raw-capture restore validates and replays exact journal bytes. Exported-order
 restore replays the complete input/configuration/policy. No durable partial native

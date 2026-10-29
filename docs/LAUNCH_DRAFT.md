@@ -18,8 +18,9 @@ lower penalized cost but much more unfinished inventory, so it does not establis
 execution superiority. The useful output is an inspectable stability map plus
 replayable traces.
 
-Intended source and release destination: `nazeeh111/QueueCraft`. Publication
-and remote verification remain pending; do not present this draft as launched.
+[Source](https://github.com/nazeeh111/QueueCraft) ·
+[Versioned release](https://github.com/nazeeh111/QueueCraft/releases/tag/v0.1.0) ·
+[Executed public verification](https://github.com/nazeeh111/QueueCraft/releases/download/v0.1.0/delivery-evidence.json).
 
 Relevant audiences: C++ systems/replay engineering and market-microstructure
 research discussions that permit project demonstrations. No outreach sent,

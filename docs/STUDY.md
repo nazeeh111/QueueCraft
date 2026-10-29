@@ -109,7 +109,8 @@ not a calibrated distribution of live exchange latency. [Systems evidence](PERFO
 [window manifest](prospective-window-manifest.json), [calibration](COMPUTE_CALIBRATION.json),
 [aggregate results](study-summary.json) and
 [independent audit](../evidence/completion-study-review.json) are retained.
-The complete study asset contains `study/report.html`, `results.json`, every
+The [complete study asset](https://github.com/nazeeh111/QueueCraft/releases/download/v0.1.0/queuecraft-study-v0.1.0.tar.gz)
+contains `study/report.html`, `results.json`, every
 executed trace and the exact prepared sessions. Open the HTML locally and filter
 confirmation, policy pair, side or quote group. Complete outcome and tail-cost
 summaries remain available, not only selected comparisons.

@@ -4,7 +4,10 @@
 
 Exact tick/lot accounting, deterministic books, a typed Python strategy SDK,
 independent book/ledger checks and registered policy comparisons. Research
-software, prepared version 0.1.0. No brokerage route or live orders.
+software, version 0.1.0. No brokerage route or live orders.
+
+[Versioned release and checksums](https://github.com/nazeeh111/QueueCraft/releases/tag/v0.1.0) ·
+[Public verification evidence](https://github.com/nazeeh111/QueueCraft/releases/download/v0.1.0/delivery-evidence.json)
 
 ![Execution architecture](docs/architecture.svg)
 
@@ -14,6 +17,8 @@ Requires Python 3.11+ and Clang/GCC with C++20 on macOS/Linux. The study extra
 installs pinned DuckDB 1.4.3 for independent SQL reconciliation.
 
 ```sh
+git clone --branch v0.1.0 --depth 1 https://github.com/nazeeh111/QueueCraft.git
+cd QueueCraft
 python3 -m venv .venv
 . .venv/bin/activate
 python -m pip install '.[study]'
@@ -122,7 +127,8 @@ retained exclusions**. Independent review recomputed all 209 SQL batches and
 stratified cells, with no supported reversal. The horizon policy's lower
 penalized cost comes with poor completion: measured mode fills 19,862 of 66,000
 requested lots. This does not establish execution superiority.
-[Results and interpretation](docs/STUDY.md) · [Aggregate results](docs/study-summary.json).
+[Results and interpretation](docs/STUDY.md) · [Aggregate results](docs/study-summary.json) ·
+[Complete study archive](https://github.com/nazeeh111/QueueCraft/releases/download/v0.1.0/queuecraft-study-v0.1.0.tar.gz).
 
 Saved calibration reproduces the registered compute durations without new
 measurements. Omitting `--calibration` runs a separate desktop timing sensitivity.
