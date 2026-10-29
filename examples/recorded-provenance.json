@@ -1,0 +1,9 @@
+{
+  "source_session": "btc-updown-5m-1787475900",
+  "raw_sha256": "1dde1a3be9f1159aec12d7c5b7fddbc912d2e88d65af093adce0c2802f05452f",
+  "normalization_manifest_sha256": "1c235995e24de13a6f17b18edff3eb9cbeebdb70ccd76834128f44ad9c8e7658",
+  "selection": "first chronological included BTC window, first31seconds; not selected by policy result",
+  "price_scale": 1000,
+  "quantity_scale": 100,
+  "license": "CC BY4.0, PolyOrderbooks2026"
+}

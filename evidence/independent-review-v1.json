@@ -1,0 +1,25 @@
+{
+  "status": "no_remaining_concrete_findings_within_implemented_trace_contract",
+  "method": "fresh independent reviewer; source inspection and adversarial runtime witnesses",
+  "resolved": [
+    "fills after recorded coverage",
+    "missing/orphan ledger accepted",
+    "policy computation duration omitted from deadline schedule",
+    "forged canceled-order exemption",
+    "SQL NULL omissions",
+    "batch run-id isolation"
+  ],
+  "limits": [
+    "completed study and public release still separate gates",
+    "planning heuristic uses approximate fees and hypothetical depth family",
+    "snapshot agreement cannot prove exchange event continuity"
+  ],
+  "sha256": {
+    "queuecraft/sdk.py": "6a1e7773b68133fba1e073027510a20868239ff51f4cab3b92353409711b18ad",
+    "queuecraft/policies.py": "6ece861b14251a37492262aab84eeaf588a2ccc96d95177efa6b7d2e9b8ae7bf",
+    "queuecraft/study.py": "2f40096b9072c546e196933c14348bc732f631193a5e2b6af51f0a25d1e107ac",
+    "queuecraft/reconcile.py": "3b2ee6c6c5d28b3e799658af480286041bcb0b335b2f63b3015f85f10636cb5f",
+    "queuecraft/reconcile.sql": "1227b1a53b432d18e7e90da24fcfaaa050afbaf94a4d5f83bbfd3bde9fccb744",
+    "tests/test_sdk.py": "3191e213990fe8209a90951ee92e25c6927ff9b52eaf3c71e48bd6faba460202"
+  }
+}

@@ -1,0 +1,13 @@
+flowchart LR
+  R["Licensed raw archive\ndata/raw + SHA256"] --> N["Label-free normalization\nqueuecraft/data.py"]
+  N --> B["Recorded book + consumption\nC++ Engine"]
+  B --> O["Delayed immutable observation\nPython SDK"]
+  O --> P["Strategy callback\nImmediate / TWAP / liquidity / horizon"]
+  P --> A["Arrival + acknowledgement\nPython event scheduler"]
+  A --> B
+  B --> L["Exact fills + ledger\nC++ Engine"]
+  N --> V["Independent Python reference\nFull trace comparison"]
+  B --> V
+  L --> S["DuckDB joins + windows\nPer-transition reconciliation"]
+  V --> E["Replayable study\nStability map + retained attempts"]
+  S --> E

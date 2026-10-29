@@ -1,0 +1,31 @@
+{
+  "status": "pass",
+  "source_sha256": "c02cc174470b77a7ca93464048469e63e44741d6141b25a9de49dce54421fe25",
+  "cli_source_sha256": "d894ef1850710ae3a32f3c57ca52ffc319dc3e9e9e34c5e39c6f8a379f2f5af8",
+  "executable_sha256": "f9129bade5eec1561a82705721d84d175094d92b00233d60e42043de3cb3f754",
+  "book_trace_sha256": "95bd86280344bc199f515c2d8420917c9ab118e1c16d7ce8512a47e09a321c3a",
+  "all_book_levels_equal_independent_python": true,
+  "fills_and_all_ledger_fields_equal": true,
+  "existing_output_preserved": true,
+  "truncation_rejected_before_output": true,
+  "oversized_file_rejected_before_output": true,
+  "order": {
+    "fills": [
+      {
+        "price": 500,
+        "quantity": 3,
+        "notional": 1500,
+        "fee": 2
+      }
+    ],
+    "filled": 3,
+    "remaining": 0,
+    "cash": -1502,
+    "inventory": 3,
+    "fees": 2,
+    "event": 0,
+    "exchange_ns": -1,
+    "receive_ns": 1787475903000000000
+  },
+  "stdout": "/books.csv"
+}

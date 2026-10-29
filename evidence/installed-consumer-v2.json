@@ -1,0 +1,91 @@
+{
+  "status": "pass",
+  "method": "installed wheel, cwd outside source, no source import path or private inputs",
+  "input_sha256": "c02cc174470b77a7ca93464048469e63e44741d6141b25a9de49dce54421fe25",
+  "wheel_sha256": "1124de1e7db812d53aee84c8d3dad88b444ab3b340a02ea2abe580c2a02cbcb0",
+  "commands": [
+    {
+      "argv": [
+        "/private/tmp/queuecraft-installed-v1/bin/python",
+        "-c",
+        "import queuecraft; print(queuecraft.__file__)"
+      ],
+      "returncode": 0,
+      "stdout": "/private/tmp/queuecraft-installed-v1/lib/python3.14/site-packages/queuecraft/__init__.py\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/private/tmp/queuecraft-installed-v1/bin/queuecraft",
+        "validate",
+        "recorded.csv"
+      ],
+      "returncode": 0,
+      "stdout": "{\"events\": 3, \"sha256\": \"c02cc174470b77a7ca93464048469e63e44741d6141b25a9de49dce54421fe25\"}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/private/tmp/queuecraft-installed-v1/bin/queuecraft",
+        "simulate",
+        "recorded.csv",
+        "--size",
+        "25",
+        "--policy",
+        "twap",
+        "--out",
+        "order25"
+      ],
+      "returncode": 0,
+      "stdout": "{\"filled\": 25, \"unfilled\": 0, \"shortfall2\": 1210, \"out\": \"order25\"}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/private/tmp/queuecraft-installed-v1/bin/queuecraft",
+        "verify",
+        "order25"
+      ],
+      "returncode": 0,
+      "stdout": "{\"replay\": \"exact\", \"sql\": {\"engine\": \"DuckDB\", \"version\": \"1.4.3\", \"transitions\": 4, \"fills\": 4, \"violations\": []}}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/private/tmp/queuecraft-installed-v1/bin/queuecraft",
+        "simulate",
+        "recorded.csv",
+        "--size",
+        "50",
+        "--policy",
+        "twap",
+        "--out",
+        "order50"
+      ],
+      "returncode": 0,
+      "stdout": "{\"filled\": 50, \"unfilled\": 0, \"shortfall2\": 2500, \"out\": \"order50\"}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/private/tmp/queuecraft-installed-v1/bin/queuecraft",
+        "verify",
+        "order50"
+      ],
+      "returncode": 0,
+      "stdout": "{\"replay\": \"exact\", \"sql\": {\"engine\": \"DuckDB\", \"version\": \"1.4.3\", \"transitions\": 4, \"fills\": 4, \"violations\": []}}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/private/tmp/queuecraft-installed-v1/bin/python",
+        "strategy.py",
+        "recorded.csv",
+        "25"
+      ],
+      "returncode": 0,
+      "stdout": "{\n  \"requested\": 25,\n  \"filled\": 25,\n  \"cash\": -13380,\n  \"shortfall2\": 2010,\n  \"trace\": [\n    {\n      \"price\": 500,\n      \"quantity\": 1,\n      \"notional\": 500,\n      \"fee\": 0,\n      \"fill_id\": 1,\n      \"order_id\": 1,\n      \"event\": 0,\n      \"exchange_ns\": -1,\n      \"arrival_ns\": 1787475903000000000,\n      \"recorded_receive_ns\": 1787475903000000000,\n      \"side\": \"buy\"\n    },\n    {\n      \"price\": 500,\n      \"quantity\": 1,\n      \"notional\": 500,\n      \"fee\": 0,\n      \"fill_id\": 2,\n      \"order_id\": 2,\n      \"event\": 0,\n      \"exchange_ns\": -1,\n      \"arrival_ns\": 1787475904000000000,\n      \"recorded_receive_ns\": 1787475903000000000,\n      \"side\": \"buy\"\n    },\n    {\n      \"price\": 500,\n      \"quantity\": 1,\n      \"notional\": 500,\n      \"fee\": 0,\n      \"fill_id\": 3,\n      \"order_id\": 3,\n      \"event\": 0,\n      \"exchange_ns\": -1,\n      \"arrival_ns\": 1787475905000000000,\n      \"recorded_receive_ns\": 1787475903000000000,\n      \"side\": \"buy\"\n    },\n    {\n      \"price\": 540,\n      \"quantity\": 22,\n      \"notional\": 11880,\n      \"fee\": 0,\n      \"fill_id\": 4,\n      \"order_id\": 4,\n      \"event\": 1,\n      \"exchange_ns\": -1,\n      \"arrival_ns\": 1787475908000000000,\n      \"recorded_receive_ns\": 1787475908000000000,\n      \"side\": \"buy\"\n    }\n  ]\n}\n",
+      "stderr": ""
+    }
+  ]
+}

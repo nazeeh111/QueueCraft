@@ -1,0 +1,25 @@
+{
+  "status": "verified_with_material_data_limits",
+  "runs": 5632,
+  "fills": 32914,
+  "ledger_transitions": 33939,
+  "sql_reexecution": "all44windowbatches exactly match saved reports, zero violations",
+  "uncertainty_reexecution": "all paired means,1000resample intervals and96statuses exactly match",
+  "confirmation": {
+    "unresolved": 48,
+    "mean_sign_reversals_but_unresolved": 26
+  },
+  "development": {
+    "stable": 15,
+    "unresolved": 33,
+    "mean_sign_reversals": 17
+  },
+  "ordinary_windows": 0,
+  "wide_spread_windows": 44,
+  "initial_spread_threshold_ticks": 10,
+  "artifact_sha256": {
+    "results.json": "fc72fd9a77d78c28c4d3411d6af5fc1bb1fc25da30b90e0bc190cd7b20d30edd",
+    "traces.jsonl": "739706dd218b004c722a0d1c7c59336e643b88a60400a38ad828d2386dd435d0",
+    "registration.json": "512776cea289e5c9c137cd9f68d017465fddd8e2eb9fac232ebff573b7b71302"
+  }
+}

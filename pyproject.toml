@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools==80.9.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "queuecraft"
+version = "0.1.0"
+description = "Exact C++ market-execution research with explicit assumption sensitivity"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{name = "nazeeh111"}]
+dependencies = []
+
+[project.optional-dependencies]
+study = ["duckdb==1.4.3"]
+dev = ["pytest==8.4.2", "duckdb==1.4.3"]
+
+[project.scripts]
+queuecraft = "queuecraft.cli:main"
+
+[project.urls]
+Repository = "https://github.com/nazeeh111/QueueCraft"
+
+[tool.setuptools]
+packages = ["queuecraft"]
+
+[tool.setuptools.package-data]
+queuecraft = ["py.typed", "*.sql"]

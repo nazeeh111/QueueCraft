@@ -1,0 +1,15 @@
+include README.md LICENSE NOTICE.md Makefile
+recursive-include include *.hpp
+recursive-include native *.cpp
+recursive-include src *.cpp
+recursive-include queuecraft *.py *.typed *.sql
+recursive-include tests *.py *.cpp *.csv
+recursive-include examples *.py *.cpp *.csv *.json *.md *.html
+recursive-include docs *.md *.svg *.mmd *.json *.cast
+recursive-include sql *.sql
+recursive-include tools *.py *.sh *.cpp
+recursive-include evidence *.json *.md
+global-exclude __pycache__ *.py[cod] *.so *.dylib
+
+include data/README.md
+recursive-include data/raw *.parquet *.json *.md

@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "input_sha256": "c02cc174470b77a7ca93464048469e63e44741d6141b25a9de49dce54421fe25",
+  "intent": {
+    "side": "buy",
+    "quantity": 25,
+    "start_ns": 1787475903000000000,
+    "deadline_ns": 1787475908000000000,
+    "interval_ns": 1000000000,
+    "penalty_ticks": 10,
+    "max_quantity": 10000,
+    "participation_ppm": 10000
+  },
+  "scenario": {
+    "latency_ns": 0,
+    "observation_delay_ns": 0,
+    "ack_delay_ns": 0,
+    "liquidity_ppm": 1000000,
+    "fee_ppm": 0,
+    "max_staleness_ns": 2000000000,
+    "tie": "recorded_first",
+    "missed_decision_every": 0,
+    "cancel_latency_ns": null,
+    "policy_duration_ns": 0,
+    "decision_budget_ns": 1000000000
+  },
+  "policy": "twap"
+}

@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "status": "pass_with_capability_limits",
+  "compiler": "Apple clang21.0.0",
+  "source_sha256": {
+    "include/queuecraft/engine.hpp": "3c36a089879b59c0a7eefc1ef8d35af3d030ee8a96d4d8fb2cb177120629248b",
+    "src/engine.cpp": "c0842c7a2ad55242d69e77e9ce420ed6641288e7d72a5e167b0bc0db359be599",
+    "src/main.cpp": "d894ef1850710ae3a32f3c57ca52ffc319dc3e9e9e34c5e39c6f8a379f2f5af8",
+    "native/module.cpp": "c8c37ef0f053cbb31e058dd27caf8c64452ec526e8708d0b64a1d5e00cb08be3",
+    "tests/cpp/test_engine.cpp": "25595c2ece46d8a73b4a0507a7f27338493716471662e8681b116c7c2a19f651",
+    "tests/cpp/consumer.cpp": "b47003c2c5670042e863116c8c88991bb5dabe99d52a6af17b1f82b0f26a06d6",
+    "Makefile": "2b8329bcf43c7f364f9d13ea2d201a85dfb7884cfcfcbe2832f735159fbaacb4",
+    "setup.py": "e6f86f1327ee3dcaf4f36dcd887a722c035166da14386d9b3ed177cf2fb64349",
+    "pyproject.toml": "d2ac86339722abb23b7f8519c7a297fef4387aff91109cea79901bea04857eba"
+  },
+  "native_sha256": "07a6b8b530fa44d3adb75c4529f6b97c235180a5ec7b22dbf1e24dadfb7647a1",
+  "unit": {
+    "status": "pass",
+    "assertions": 238,
+    "seeded_parser_mutations": 12000,
+    "log": "cpp-unit.log"
+  },
+  "address_undefined_sanitizers": {
+    "status": "pass",
+    "assertions": 238,
+    "seeded_parser_mutations": 12000,
+    "leak_sanitizer": "unavailable on installed Apple runtime; disabled, no leak result",
+    "log": "cpp-asan-ubsan.log"
+  },
+  "thread_sanitizer": {
+    "status": "pass",
+    "assertions": 238,
+    "seeded_parser_mutations": 12000,
+    "scope": "owner-thread rejection plus full tests; not a multithreaded book implementation",
+    "log": "cpp-tsan.log"
+  },
+  "installed_cpp_consumer": {
+    "status": "pass",
+    "source": "tests/cpp/consumer.cpp",
+    "log": "cpp-consumer.log",
+    "installed_prefix": "/private/tmp/queuecraft-cpp-installed",
+    "only_installed_header_and_static_library": true
+  },
+  "coverage_guided_libfuzzer": {
+    "status": "unavailable",
+    "reason": "installed Xcode lacks libclang_rt.fuzzer_osx.a",
+    "log": "cpp-libfuzzer.log"
+  },
+  "failure_record": "cpp-sanitizer-initial-failure.md"
+}

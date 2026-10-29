@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "status": "registered before first policy evaluation; no parameter search",
+  "source": "pinned BTC archive; data/sessions-v2/manifest.json freezes entire chronological windows before validity rules",
+  "policies": ["immediate", "twap", "liquidity", "horizon"],
+  "sides": ["buy", "sell"],
+  "quantities_lots": [25, 100],
+  "lot_shares": "0.01",
+  "tick_usd_per_share": "0.001",
+  "money_usd": "0.00001",
+  "deadlines_seconds": [5, 30],
+  "decision_interval_seconds": 1,
+  "unfilled_penalty_ticks": 10,
+  "parent_cap": "max100 shares AND <=1% initial observed min(bid,ask) top-ten depth; tested sizes0.25 and1share",
+  "benchmark": "initial captured midpoint; exact twice-money signed shortfall includes fees and fixed unfilled penalty",
+  "scenarios": [
+    {"name":"base", "latency_ns":0,"observation_delay_ns":0,"ack_delay_ns":0,"liquidity_ppm":1000000,"fee_ppm":0,"tie":"recorded_first"},
+    {"name":"delayed_half", "latency_ns":1000000000,"observation_delay_ns":1000000000,"ack_delay_ns":1000000000,"liquidity_ppm":500000,"fee_ppm":2000,"tie":"recorded_first"},
+    {"name":"scarce", "latency_ns":3000000000,"observation_delay_ns":1000000000,"ack_delay_ns":1000000000,"liquidity_ppm":100000,"fee_ppm":2000,"tie":"recorded_first"},
+    {"name":"tie_alternative", "latency_ns":1000000000,"observation_delay_ns":1000000000,"ack_delay_ns":1000000000,"liquidity_ppm":500000,"fee_ppm":2000,"tie":"arrival_first"}
+  ],
+  "fees": "hypothetical constant research scenarios; not actual Polymarket dynamic fee schedule",
+  "eligibility": "start at first valid S; require source coverage through start+deadline+1s; no valid initial book or cap failure is retained exclusion; all policies share eligibility",
+  "ordinary_stress": "initial spread >= development75thpercentile is descriptively wide-spread; threshold fixed from development prefixes, not outcome costs",
+  "uncertainty": "paired session-window differences, deterministic percentile bootstrap1000 resamples of whole windows; windows correlated on one day; not independent day-level or selection-corrected inference",
+  "stability": "for each policy pair/side/size/deadline, compare session-mean differences by scenario; stable if sign consistent, reversal if sign switches, unresolved if any bootstrap interval spanszero",
+  "prohibited_claims": ["profitability", "exchange-level continuity", "observed queue position", "calibrated sensitivity guarantees", "independent multi-day generalization", "matched HftBacktest performance superiority"],
+  "attempt_registry": "retain every policy/scenario/order combination or exact exclusion; no tuning after confirmation is observed"
+}

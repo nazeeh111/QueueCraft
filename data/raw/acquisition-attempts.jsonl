@@ -1,0 +1,2 @@
+{"status": "failed", "method": "sandbox curl", "error": "DNS resolution unavailable", "url": "https://huggingface.co/datasets/polyorderbooks/polymarket-crypto-5min-l2/resolve/2e74c05ab8c0f5cc5379ca934c2abef857ef2a62/btc.parquet"}
+{"status": "verified", "method": "approved escalated curl", "sha256": "1dde1a3be9f1159aec12d7c5b7fddbc912d2e88d65af093adce0c2802f05452f", "bytes": 3394523, "url": "https://huggingface.co/datasets/polyorderbooks/polymarket-crypto-5min-l2/resolve/2e74c05ab8c0f5cc5379ca934c2abef857ef2a62/btc.parquet"}
