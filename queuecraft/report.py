@@ -25,7 +25,7 @@ def simulation_report(result, sql):
     body += '<div class=metrics>'+''.join(f'<div class=metric><span class=value>{html.escape(v)}</span><span class=label>{html.escape(k)}</span></div>' for v,k in metrics)+'</div>'
     body += f'<p><strong>{html.escape(result.policy)}</strong> · {i.side} · quantity {i.quantity} lots · modeled latency {s.latency_ns} ns · {s.tie}.</p>'
     body += '<p class=notice>Hypothetical fills consume modeled liquidity. Recorded markets never react to this order. Archive capture times are not exchange timestamps; unknown exchange time remains −1. Scenario assumptions are not calibrated guarantees.</p>'
-    body += '<h2>Replay or change the order</h2><p>This export includes <a href="input.csv">input.csv</a>, <a href="result.json">result.json</a> and <a href="config.json">config.json</a>. Run a fresh order from the CLI, using a new output directory.</p><pre>queuecraft simulate input.csv --size 25 --policy twap --out changed-order</pre>'
+    body += f'<h2>Replay or change the order</h2><p>This export includes <a href="input.csv">input.csv</a>, <a href="result.json">result.json</a> and <a href="config.json">config.json</a>. Run a fresh order from the CLI, using a new output directory.</p><pre>queuecraft simulate input.csv --size 25 --policy twap --recording-end-ns {result.recording_end_ns} --out changed-order</pre>'
     body += table(result.orders,[("order_id","Order"),("observation_ns","Observed capture ns"),("decision_ns","Decision ns"),("arrival_ns","Arrival ns"),("ack_ns","Acknowledgement ns"),("quantity","Requested lots"),("filled","Filled lots"),("status","Outcome")],"Hypothetical order lifecycle")
     body += table(result.fills,[("order_id","Order"),("event","Recorded event"),("price","Price ticks"),("quantity","Lots"),("notional","Tick × lot"),("fee","Fee"),("exchange_ns","Exchange ns"),("recorded_receive_ns","Capture ns"),("arrival_ns","Arrival ns")],"Modeled fills against recorded depth")
     body += table(result.ledger,[("step","Step"),("time_ns","Arrival ns"),("cash","Cash delta"),("inventory","Inventory lots"),("fees","Cumulative fees"),("filled","Cumulative lots")],"Exact account after every execution")
@@ -39,11 +39,11 @@ def study_report(report):
     counts = {k:sum(s["status"]==k for s in report["stability"]) for k in ("stable","reversal","unresolved")}
     body='<header><div class=eyebrow>QueueCraft / Registered study</div><h1>Where does the ranking hold?</h1><p>Execution-policy comparisons across recorded market windows and declared timing and liquidity assumptions.</p></header>'
     body+='<div class=metrics>'+''.join(f'<div class=metric><span class=value>{v}</span><span class=label>{k}</span></div>' for k,v in [("Executed trials",report["executed"]),("Stable cells",counts["stable"]),("Reversal cells",counts["reversal"]),("Unresolved cells",counts["unresolved"])])+'</div>'
-    body+='<p class=notice>One capture day, correlated short market windows, imperfect snapshots. Window bootstrap intervals do not establish independent multi-day evidence. A mean sign change may remain unresolved. No profitability or observed queue claim.</p>'
+    body+='<p class=notice>Correlated short market windows and imperfect snapshots. The registered UTC-day split and actual day counts limit inference; window bootstrap intervals do not establish independent market-day evidence. A mean sign change may remain unresolved. No profitability or observed queue claim.</p>'
     confirmation=[cell for cell in report["stability"] if cell["split"]=="confirmation"]
     if confirmation:
         unresolved=sum(cell["status"]=="unresolved" for cell in confirmation)
-        body+=f'<p><strong>Confirmation: {unresolved} of {len(confirmation)} policy-pair comparisons are unresolved.</strong> The metric cards above cover both development and confirmation.</p>'
+        body+=f'<p><strong>Confirmation: {unresolved} of {len(confirmation)} stratified comparison cells are unresolved.</strong> Cells distinguish policy pair, side, size, deadline and quote/depth group. The metric cards above cover both development and confirmation.</p>'
     if not any(row["condition"]=="ordinary" for row in report["rows"]):
         body+='<p class=notice>The registered initial-spread rule placed every window in one category. There are no ordinary-category windows, so this study cannot compare ordinary and stressed market sessions. The frozen classification is retained.</p>'
     body+='<p>Lower signed cost is better. Cost includes a shared fixed penalty for unfinished lots. Fees are hypothetical constant scenarios, not the venue’s dynamic schedule. <a href="results.json">Full results and registration</a> · <a href="traces.jsonl">Complete executed traces</a></p>'
@@ -51,9 +51,10 @@ def study_report(report):
     rows=[]
     for cell in report["stability"]:
         for scenario in cell["scenarios"]:
-            rows.append({**{k:v for k,v in cell.items() if k!="scenarios"},**scenario})
-    body+=table(rows,[("split","Region"),("a","Policy A"),("b","Policy B"),("side","Side"),("size","Lots"),("deadline_s","Deadline s"),("status","Stability"),("scenario","Scenario"),("windows","Windows"),("difference_a_minus_b","A − B cost/lot"),("window_bootstrap95","Window interval")],"Stability map: paired differences in ticks per lot")
+            rows.append({**{k:v for k,v in cell.items() if k!="scenarios"},"condition":cell.get("condition","all"),**scenario})
+    body+=table(rows,[("split","Region"),("condition","Quote/depth group"),("a","Policy A"),("b","Policy B"),("side","Side"),("size","Lots"),("deadline_s","Deadline s"),("status","Stability"),("scenario","Scenario / compute"),("windows","Windows"),("difference_a_minus_b","A − B cost/lot"),("window_bootstrap95","Window interval")],"Stability map: paired differences in ticks per lot")
     body+='<details><summary>Completion, tail costs, fees and unfinished lots</summary>'+table(report["summary"],[("split","Region"),("policy","Policy"),("scenario","Scenario"),("side","Side"),("size","Lots"),("deadline_s","Deadline s"),("condition","Condition"),("windows","Windows"),("mean_cost","Mean cost"),("p95_cost","95th percentile cost"),("mean_completion","Completion"),("fees","Fees"),("unfilled","Unfinished lots")],"Measured outcomes")+'</details>'
     body+='<details><summary>Retained exclusions</summary><pre>'+html.escape(json.dumps(report["excluded"],indent=2))+'</pre></details>'
+    body+='<details><summary>Scope, session days and inference limits</summary><pre>'+html.escape(json.dumps(report.get("limits",[]),indent=2))+'</pre></details>'
     body+='''<script>const split=document.getElementById('split'),filter=document.getElementById('filter');function update(){for(const row of document.querySelector('table').tBodies[0].rows){row.hidden=row.cells[0].textContent!==split.value||!row.textContent.toLowerCase().includes(filter.value.toLowerCase())}}split.addEventListener('change',update);filter.addEventListener('input',update);update()</script>'''
     return shell("QueueCraft stability study",body)

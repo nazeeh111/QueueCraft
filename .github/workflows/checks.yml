@@ -23,7 +23,7 @@ jobs:
         run: |
           cd /tmp
           python "$GITHUB_WORKSPACE/tools/differential.py" "$GITHUB_WORKSPACE/examples/recorded.csv" --out /tmp/differential.json
-      - run: queuecraft simulate examples/recorded.csv --size 25 --policy twap --out /tmp/order
+      - run: queuecraft simulate examples/recorded.csv --size 25 --policy twap --recording-metadata examples/recorded-provenance.json --out /tmp/order
       - run: queuecraft verify /tmp/order
       - name: Installed consumer outside checkout
         run: |

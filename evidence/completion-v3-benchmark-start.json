@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "workspace": "/var/folders/ss/tml7487n205dg94kb7__tth80000gn/T/queuecraft-bench-completion-v3-7n4oea8e",
+  "selection": "first development prefix in frozen production calibration; not chosen by outcomes",
+  "native_input_file": "data/prospective-v2/sessions-v3/xrp-updown-15m-1787271300.csv",
+  "native_input_sha256": "c81e4f1413f777dafbf69cc7f21efb24fe607a82db2182b7f774b574cd151b1e",
+  "frozen_source_hashes": {
+    "__init__.py": "c40c24659ae723f459c991a6f225b1802d7d30eaf2d17d9121abbec073f30fcd",
+    "__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "capture.py": "9a3551ca1ac782a594492386c7cafa0e070744cfae632ed0ffd3f74b808c5663",
+    "cli.py": "a54292584e2c55bcd4e77dec6ddf4f4a20d600e55d1d70c011d5c8b3196ba6bb",
+    "data.py": "36d4dd397b80897cf42142ffb791ac22c2bf682fd024efd8b5ab2e20c4edcf63",
+    "native-source.json": "51ff20d4e3e6b1a700e83775e792c03a8f0b9c5952f289a80350f13d31ba40d4",
+    "policies.py": "4569a4dc137dd8937884ce309231b6c2c195581925dce88ea60fa7d268d50a8e",
+    "prospective.py": "3d685052be7d8974bd9b9583d40b97dcd158ba3045bc650cb77be0d20a4fbe8f",
+    "reconcile.py": "f99b31b6bc1243ac2469af11e124bb7467aee73ad8eb95b980b9d0040e4f39ec",
+    "reconcile.sql": "e92949b3c22c302464cf45ae0ed0d17e8cd3aca3a429fa123a93616526c9f493",
+    "reference.py": "e88099e77a1d3b2c66b1eeba67e1a03859a1caa563c934257ab2ba17611cc79a",
+    "report.py": "2340730cb891e4d6aa7277597acb20926a80357a47a1ad722fc6f4ddd97a51e9",
+    "sdk.py": "c42b51c54167d565758b7c1308b524119fea9cc931b3563d24d8c7ca74f1ad50",
+    "study.py": "2691b408dccbd1e82870463a58b4d4c295f9526980dcbd1ec54db481da249240"
+  },
+  "native_binary_sha256": "16148d2a84e46096748dcd852bde9810ffa44686d71f171623216bad2232e8ba",
+  "calibration_sha256": "0c0c1608d66c7388971a880e940c936337d59d1f18373f86ed091f5486e2fba7",
+  "copied_tools_sha256": {
+    "Makefile": "2b8329bcf43c7f364f9d13ea2d201a85dfb7884cfcfcbe2832f735159fbaacb4",
+    "include/queuecraft/engine.hpp": "12668f1d5407376ea94d3d85b216769a2a581a5ddfe40adb1120f9b2a5d6c4cb",
+    "src/engine.cpp": "dc9240ada4e7a58259974d215e1076ff1812ed7b55a00dd6526e631b202be78f",
+    "tools/benchmark.cpp": "f923a2d49a5da653518aafed955f02c45737ef85b6f719d202372d03f0657098",
+    "tools/benchmark_cpp.py": "63356e8b5b35fda5ccf250f817293b03aeb5e8cad8f6e5bd38087d45fac7df5b",
+    "tools/benchmark_e2e.py": "d534873dd680ae2ef7ee248f53d48bec4e295327609ef5be8a7146128275c207"
+  },
+  "heavy_worker_limit": "one study worker plus one sequential benchmark/compiler worker",
+  "historical_outputs_preserved": true,
+  "cpp_output": "evidence/completion-v3-cpp-benchmark.json",
+  "e2e_output": "evidence/completion-v3-e2e-benchmark.json",
+  "policy_output": "evidence/completion-v3-policy-performance.json"
+}

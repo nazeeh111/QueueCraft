@@ -34,7 +34,7 @@ UNION ALL
 SELECT f.run_id,'fill_timing',f.fill_id FROM fills f LEFT JOIN orders o USING(run_id,order_id) JOIN runs r USING(run_id)
 WHERE o.order_id IS NULL OR f.arrival_ns!=o.arrival_ns
  OR o.observation_ns>o.decision_ns OR o.decision_ns>o.arrival_ns
- OR f.recorded_receive_ns>f.arrival_ns OR f.arrival_ns>r.deadline_ns
+ OR f.recorded_receive_ns>f.arrival_ns OR f.arrival_ns>r.deadline_ns OR f.arrival_ns>r.recording_end_ns
  OR f.side NOT IN('buy','sell') OR f.side!=r.side
 UNION ALL
 SELECT o.run_id,'order_size',o.order_id FROM orders o LEFT JOIN per_order p USING(run_id,order_id)
@@ -75,4 +75,4 @@ SELECT run_id,'missing_fills_field',coalesce(fill_id,-1) FROM fills WHERE fill_i
 UNION ALL
 SELECT run_id,'missing_ledger_field',coalesce(order_id,-1) FROM ledger WHERE step IS NULL OR order_id IS NULL OR time_ns IS NULL OR cash IS NULL OR inventory IS NULL OR fees IS NULL OR filled IS NULL
 UNION ALL
-SELECT run_id,'missing_runs_field',coalesce(run_id,-1) FROM runs WHERE fee_ppm IS NULL OR deadline_ns IS NULL OR side IS NULL OR quantity IS NULL OR filled IS NULL OR unfilled IS NULL OR cash IS NULL OR inventory IS NULL OR fees IS NULL OR benchmark2 IS NULL OR penalty_ticks IS NULL OR shortfall2 IS NULL;
+SELECT run_id,'missing_runs_field',coalesce(run_id,-1) FROM runs WHERE fee_ppm IS NULL OR deadline_ns IS NULL OR recording_end_ns IS NULL OR side IS NULL OR quantity IS NULL OR filled IS NULL OR unfilled IS NULL OR cash IS NULL OR inventory IS NULL OR fees IS NULL OR benchmark2 IS NULL OR penalty_ticks IS NULL OR shortfall2 IS NULL;

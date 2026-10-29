@@ -51,10 +51,13 @@ def read_capture(path:Path):
     with path.open("rb") as source:
         if source.read(len(MAGIC))!=MAGIC:raise ValueError("unknown raw journal format")
         last=-1
+        consumed=len(MAGIC)
         while header:=source.read(16):
             if len(header)!=16:raise ValueError("truncated raw header; invalidate and resnapshot")
             timestamp,length,crc=struct.unpack("<qII",header)
             if timestamp<last or timestamp<0 or not 0<length<=MAX_MESSAGE:raise ValueError("corrupt raw header")
+            consumed+=16+length
+            if consumed>MAX_CAPTURE:raise ValueError("capture exceeds64MiB during read")
             payload=source.read(length)
             if len(payload)!=length or zlib.crc32(payload)!=crc:raise ValueError("truncated/corrupt raw message; invalidate and resnapshot")
             last=timestamp

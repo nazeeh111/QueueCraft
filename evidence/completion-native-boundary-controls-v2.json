@@ -1,0 +1,83 @@
+{
+  "status": "pass",
+  "recording_end_ns": 2,
+  "order_results_compared": 360,
+  "fixed_boundary_prefix_equal": true,
+  "failure_cases": [
+    {
+      "case": "missing_end",
+      "error": "TypeError"
+    },
+    {
+      "case": "positional_end",
+      "error": "TypeError"
+    },
+    {
+      "case": "negative_end",
+      "error": "ValueError"
+    },
+    {
+      "case": "end_overflow",
+      "error": "OverflowError"
+    },
+    {
+      "case": "event_after_end",
+      "error": "ValueError"
+    },
+    {
+      "case": "truncated_payload",
+      "error": "ValueError"
+    },
+    {
+      "case": "negative_latency",
+      "error": "ValueError"
+    },
+    {
+      "case": "negative_fee",
+      "error": "ValueError"
+    },
+    {
+      "case": "invalid_liquidity",
+      "error": "ValueError"
+    },
+    {
+      "case": "end_type_bool_True",
+      "error": "TypeError"
+    },
+    {
+      "case": "end_type_bool_False",
+      "error": "TypeError"
+    },
+    {
+      "case": "end_type_float_2.0",
+      "error": "TypeError"
+    },
+    {
+      "case": "end_type_str_2",
+      "error": "TypeError"
+    },
+    {
+      "case": "end_type_NoneType_None",
+      "error": "TypeError"
+    },
+    {
+      "case": "end_type_IntegerSubclass_2",
+      "error": "TypeError"
+    },
+    {
+      "case": "arrival_overflow",
+      "error": "OverflowError"
+    }
+  ],
+  "complete_result_sha256": "553dee3a408b268004594482f66b3dcc3e982e701709090d2e1dd1efb7496deb",
+  "native_source_manifest": {
+    "schema_version": 1,
+    "source_sha256": {
+      "include/queuecraft/engine.hpp": "12668f1d5407376ea94d3d85b216769a2a581a5ddfe40adb1120f9b2a5d6c4cb",
+      "src/engine.cpp": "dc9240ada4e7a58259974d215e1076ff1812ed7b55a00dd6526e631b202be78f",
+      "native/module.cpp": "095dc3f80cd34666112c6da6105d81ad3c103ce45fec23f1f1f3fe427bc8f703"
+    }
+  },
+  "native_manifest_sha256": "51ff20d4e3e6b1a700e83775e792c03a8f0b9c5952f289a80350f13d31ba40d4",
+  "native_binary_sha256": "16148d2a84e46096748dcd852bde9810ffa44686d71f171623216bad2232e8ba"
+}

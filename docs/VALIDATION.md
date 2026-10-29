@@ -1,59 +1,66 @@
 # Executed validation
 
-Current local environment: arm64 Mac, Apple Clang21, Python3.14.7,
-DuckDB1.4.3. The evidence JSON files record input/native/source hashes.
+Current completion revision: arm64 Mac, Apple Clang 21, Python 3.14.7,
+DuckDB 1.4.3. Evidence records input, source and native-binary hashes. The prior
+candidate is preserved in Git and [historical validation](history/CANDIDATE_VALIDATION.md).
 
-| Check | Executed outcome |
+| Check | Executed result |
 | --- | --- |
-| Native unit/failure |238 assertions plus12000 deterministic parser mutations pass |
-| Address/undefined behavior |238 assertions plus12000 mutations pass with ASAN/UBSAN |
-| Thread sanitizer |same cases pass, including wrong-thread owner rejection |
-| Python |42 tests pass, including data-label mutation, capture corruption, delayed prefix invariance, wall-clock invariance, ties, cancellation/replacement and deadline fallback |
-| Independent reference |21 reference tests, written without inspecting C++ implementation |
-| Corrected real-data differential |52 cases,12630 complete books,6200 order attempts,5076 fills,17 failure/atomic controls, every compared field equal |
-| Installed C++ consumer |static library and header-only include path from fresh installation; separate consumer passes |
-| Genuine changed order |25-lot and50-lot TWAP executions produce distinct traces and account deltas |
-| Export replay |25-lot example exact replay; DuckDB checks4transitions/4fills with zero violations |
+| C++ unit/failure | 256 assertions and 12,000 deterministic parser mutations pass |
+| Address/undefined behavior | Same cases pass under ASAN/UBSAN |
+| Thread sanitizer | Same cases pass, including single-writer owner rejection |
+| Python | 76 tests pass before the production source freeze |
+| Full independent differential | 274 cases, 13,993 complete books, 8,290 order attempts and 6,839 fills agree; 17 failure controls pass |
+| Native order boundary | 360 complete results agree; 16 required-boundary/type/error controls pass |
+| Standalone C++ CLI | Full book/fill/ledger agreement, required recording bounds, quiet-prefix invariance, late-arrival expiry and bounded input checks pass |
+| Joint planner | Eight small-grid controls include shared-plan worst-case evaluation and latency/liquidity action changes |
+| Prospective runner | 12 small synthetic controls cover source/calibration identity, no-clock frozen replay, matched exclusions, bounded reads and artifact accounting |
+| Installed C++ consumer | Fresh current static library and public header; separate consumer compiles and runs using installed paths only |
+| Installed Python consumer | Fresh rebuilt arm64 wheel; external public example and CLI 25/50-lot executions; exact export replay and zero SQL violations |
+| Real-data replay speed | Artificial 20 ms callback delay plus forbidden wall-clock counters preserves every decision, order, fill, ledger entry and book in the fixed simulation |
+| Current scripted demo | Installed CLI, changed orders, SQL replay and separate strategy execute successfully; saved example bytes match fresh output |
 
-Full data comparison: `evidence/differential-v2.json`. Native gate details:
-`evidence/cpp-gates-v1.json`. Seeded mutation tests include truncation,
-duplicates, crossed/corrupt books, tick/integer violations, overflow rollback,
-snapshot atomicity, gap/resynchronization, ownership and shutdown.
+Evidence: `evidence/completion-cpp-boundary-gates-v1.json`,
+`completion-native-differential-v2.json`, `completion-native-boundary-controls-v2.json`
+and `completion-cpp-cli-v1.json`. The 76-test terminal log is retained task-locally
+as `evidence/completion-suite-final-before-study.log`.
 
-Independent review found coverage-end fills, absent/orphan ledger acceptance,
-policy duration omitted from last feasible decision, and forged canceled-status
-exemption. Missing SQL fields and cross-run isolation also received explicit controls. All received substantive regression controls and were fixed before
-final study evaluation. SQL joins/windows are tested by corrupting nonclosing
-ledger rows, dropping every transition, adding duplicate fills, changing units
-and moving capture timestamps after arrival.
+The old scheduler inferred recording coverage from future payloads. An executed
+baseline witness reproduced changed earlier callbacks after appending a later
+message (`evidence/endpoint-baseline-failure.json`). The repaired Python, native
+and C++ entry points require independent recorder-end metadata. Regression controls
+compare earlier callbacks, fills, ledger and acknowledgements with fixed bounds;
+changing evaluation-only benchmarks cannot reveal information to a strategy.
 
-Capability limits: Apple LeakSanitizer is unavailable, so ASAN leak detection
-was disabled after retaining the failure; this is not a leak-check pass. Xcode
-lacks the optional libFuzzer runtime; that linker failure is retained. The12000
-mutation cases executed, but no coverage-guided fuzzer claim is made.
+DuckDB checks each transition through tested joins and windows: missing/orphan or
+duplicate records, exact money/fee units, references, run isolation, causal
+arrival/capture timestamps, recorder/deadline bounds and cumulative conservation.
+Corrupting nonclosing rows or dropping all transitions must produce violations.
+Full book traces are compared with the separately implemented integer Python model.
 
-The first normalization incorrectly assumed0.01price ticks. Exact archive
-inspection found valid0.001ticks; rejectedv1 is retained task-locally andv2 was
-frozen before policy evaluation. Provisional studyv1 failed after concurrent
-review changes to its SQL schema;v2 was interrupted after another validation
-repair. Neither is presented as a completed study.
+Apple LeakSanitizer is unsupported, so ASAN leak detection was disabled after
+retaining its failure. This is not a leak-check pass. Xcode lacks the optional
+libFuzzer runtime; that linker failure remains retained. Seeded mutation cases
+executed in all three supported builds; no coverage-guided fuzzing claim is made.
 
-Raw capture restore means validating/replaying exact journal bytes; exported
-order restore means complete deterministic replay of input+configuration+policy.
-No durable partial native checkpoint or process-crash recovery is claimed.
+The original five-minute study is historical. The distinct registered 15-minute
+study completed 66,720 simulations: 84,800 attempts minus 18,080 retained
+exclusions. Independent review reexecuted all 209 SQL batches, checked 280,275
+fills and 303,351 ledger transitions, and recomputed all 480 paired/common-window
+uncertainty/status cells. Confirmation has 30 stable and 210 unresolved
+stratified cells, no supported reversals. Horizon's low cost accompanies poor
+completion; [full interpretation](STUDY.md) retains that negative result.
+Evidence: `evidence/completion-study-review.json` and its notes/script.
 
-Remote CI, final independent installation, final study and release readbacks
-are recorded in the delivery evidence once executed; this file does not turn
-unexecuted checks into passes.
+The installed consumer is recorded in `evidence/completion-installed-consumer-v3.json`
+and genuine scripted demo in `evidence/completion-demo-v3.json`. Initial wheel
+platform-label and licensing-file drift attempts were retained before the fresh
+final wheel passed. Current performance evidence is indexed in
+`evidence/completion-v3-benchmark-summary.json`. Current reports were visually
+inspected and study filters exercised. Public CI, public clone, downloads and
+release checks remain pending. No public repository or release is verified.
 
-Final study:5632/5632 combinations executed,32914fills,33939ledger transitions.
-Independent artifact review reexecuted all44SQL batches and recomputed every
-paired statistic/status. Zero SQL violations; all48confirmation comparisons
-unresolved. Ordinary-category coverage is absent, as detailed in STUDY.md.
-
-Final standalone CLI check also passes: complete book/fill/ledger agreement
-against the independent model, existing output preservation and pre-output
-truncation/64MiB rejection (`evidence/cpp-cli-final.json`). The installed wheel
-runs outside the source tree, computes25/50lot changed inputs and verifies both
-exactly (`evidence/installed-consumer-v2.json`). `docs/demo.cast` is a short
-scripted recording of actual executions, without simulated typing or outcomes.
+Raw-capture restore validates and replays exact journal bytes. Exported-order
+restore replays the complete input/configuration/policy. No durable partial native
+checkpoint or process-crash recovery is claimed. Unknown exchange times, hidden
+intersnapshot events and individual liquidity identities remain unobserved.

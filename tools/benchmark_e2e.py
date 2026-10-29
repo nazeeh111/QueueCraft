@@ -42,7 +42,7 @@ def main():
    text=events[0].csv()+''.join(e.csv().split('\n',1)[1]for e in events[1:])
    parsed=events_from_csv(text)
    first=next(e for e in parsed if e.kind=='S')
-   result=run(parsed,Intent('buy',25,first.receive_ns,first.receive_ns+5_000_000_000),TWAP())
+   result=run(parsed,Intent('buy',25,first.receive_ns,first.receive_ns+5_000_000_000),TWAP(),recording_end_ns=1787475934000000000)
    encoded=json.dumps(result.as_dict(),sort_keys=True,separators=(',',':')).encode()
    with ledger_path.open('xb')as output:output.write(encoded);output.flush();os.fsync(output.fileno())
    checks.add(hashlib.sha256(encoded).hexdigest())

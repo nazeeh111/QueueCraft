@@ -1,8 +1,9 @@
 flowchart LR
-  R["Licensed raw archive\ndata/raw + SHA256"] --> N["Label-free normalization\nqueuecraft/data.py"]
+  R["Licensed raw archive\npinned bytes + SHA256"] --> N["Label-free normalization\ndata.py / prepare_prospective.py"]
   N --> B["Recorded book + consumption\nC++ Engine"]
   B --> O["Delayed immutable observation\nPython SDK"]
-  O --> P["Strategy callback\nImmediate / TWAP / liquidity / horizon"]
+  T["Independent recorder-end metadata"] --> A
+  O --> P["Strategy callback\nImmediate / TWAP / liquidity / horizon family"]
   P --> A["Arrival + acknowledgement\nPython event scheduler"]
   A --> B
   B --> L["Exact fills + ledger\nC++ Engine"]

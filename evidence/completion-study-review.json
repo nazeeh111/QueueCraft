@@ -1,0 +1,1127 @@
+{
+  "artifact_bytes": 520745135,
+  "artifact_sha256": {
+    "calibration.json": "0c0c1608d66c7388971a880e940c936337d59d1f18373f86ed091f5486e2fba7",
+    "registration.json": "bf605366006cf3c092757c527b60aa0f04ee954af3f430e01f72932e02de2b2b",
+    "results.json": "0bf56165ba7955980860daaf41e4b3089d212e5caf25be0ba488c718275b60b5",
+    "traces.jsonl": "d293b2ebdc23a1878f7ec8cae2eab169df28cd06f6ac8af69346588fef91b21a"
+  },
+  "attempts": 84800,
+  "calibrated_durations_ns": {
+    "horizon": 6000000,
+    "immediate": 1000000,
+    "legacy_horizon": 3000000,
+    "liquidity": 1000000,
+    "twap": 1000000
+  },
+  "compute_impacts": [
+    {
+      "compute_mode": "measured_development_compute",
+      "filled": 19862,
+      "late_expired_orders": 589,
+      "missed_decisions": 0,
+      "policy": "horizon",
+      "quantity": 66000,
+      "shortfall2": 917644,
+      "split": "confirmation",
+      "trials": 1056,
+      "unfilled": 46138
+    },
+    {
+      "compute_mode": "zero_compute_baseline",
+      "filled": 20898,
+      "late_expired_orders": 177,
+      "missed_decisions": 0,
+      "policy": "horizon",
+      "quantity": 66000,
+      "shortfall2": 670806,
+      "split": "confirmation",
+      "trials": 1056,
+      "unfilled": 45102
+    },
+    {
+      "compute_mode": "measured_development_compute",
+      "filled": 63000,
+      "late_expired_orders": 0,
+      "missed_decisions": 0,
+      "policy": "immediate",
+      "quantity": 66000,
+      "shortfall2": 7101392,
+      "split": "confirmation",
+      "trials": 1056,
+      "unfilled": 3000
+    },
+    {
+      "compute_mode": "zero_compute_baseline",
+      "filled": 65000,
+      "late_expired_orders": 0,
+      "missed_decisions": 0,
+      "policy": "immediate",
+      "quantity": 66000,
+      "shortfall2": 6969708,
+      "split": "confirmation",
+      "trials": 1056,
+      "unfilled": 1000
+    },
+    {
+      "compute_mode": "measured_development_compute",
+      "filled": 58875,
+      "late_expired_orders": 4,
+      "missed_decisions": 0,
+      "policy": "legacy_horizon",
+      "quantity": 66000,
+      "shortfall2": 4554930,
+      "split": "confirmation",
+      "trials": 1056,
+      "unfilled": 7125
+    },
+    {
+      "compute_mode": "zero_compute_baseline",
+      "filled": 59125,
+      "late_expired_orders": 4,
+      "missed_decisions": 0,
+      "policy": "legacy_horizon",
+      "quantity": 66000,
+      "shortfall2": 3603324,
+      "split": "confirmation",
+      "trials": 1056,
+      "unfilled": 6875
+    },
+    {
+      "compute_mode": "measured_development_compute",
+      "filled": 59280,
+      "late_expired_orders": 10,
+      "missed_decisions": 0,
+      "policy": "liquidity",
+      "quantity": 66000,
+      "shortfall2": 6071684,
+      "split": "confirmation",
+      "trials": 1056,
+      "unfilled": 6720
+    },
+    {
+      "compute_mode": "zero_compute_baseline",
+      "filled": 59568,
+      "late_expired_orders": 8,
+      "missed_decisions": 0,
+      "policy": "liquidity",
+      "quantity": 66000,
+      "shortfall2": 5650720,
+      "split": "confirmation",
+      "trials": 1056,
+      "unfilled": 6432
+    },
+    {
+      "compute_mode": "measured_development_compute",
+      "filled": 58730,
+      "late_expired_orders": 16,
+      "missed_decisions": 0,
+      "policy": "twap",
+      "quantity": 66000,
+      "shortfall2": 5839736,
+      "split": "confirmation",
+      "trials": 1056,
+      "unfilled": 7270
+    },
+    {
+      "compute_mode": "zero_compute_baseline",
+      "filled": 59142,
+      "late_expired_orders": 8,
+      "missed_decisions": 0,
+      "policy": "twap",
+      "quantity": 66000,
+      "shortfall2": 5780296,
+      "split": "confirmation",
+      "trials": 1056,
+      "unfilled": 6858
+    },
+    {
+      "compute_mode": "measured_development_compute",
+      "filled": 94942,
+      "late_expired_orders": 3298,
+      "missed_decisions": 0,
+      "policy": "horizon",
+      "quantity": 350400,
+      "shortfall2": 4329336,
+      "split": "development",
+      "trials": 5616,
+      "unfilled": 255458
+    },
+    {
+      "compute_mode": "zero_compute_baseline",
+      "filled": 100038,
+      "late_expired_orders": 698,
+      "missed_decisions": 0,
+      "policy": "horizon",
+      "quantity": 350400,
+      "shortfall2": 3782114,
+      "split": "development",
+      "trials": 5616,
+      "unfilled": 250362
+    },
+    {
+      "compute_mode": "measured_development_compute",
+      "filled": 334100,
+      "late_expired_orders": 44,
+      "missed_decisions": 0,
+      "policy": "immediate",
+      "quantity": 350400,
+      "shortfall2": 33019046,
+      "split": "development",
+      "trials": 5616,
+      "unfilled": 16300
+    },
+    {
+      "compute_mode": "zero_compute_baseline",
+      "filled": 341400,
+      "late_expired_orders": 20,
+      "missed_decisions": 0,
+      "policy": "immediate",
+      "quantity": 350400,
+      "shortfall2": 34871436,
+      "split": "development",
+      "trials": 5616,
+      "unfilled": 9000
+    },
+    {
+      "compute_mode": "measured_development_compute",
+      "filled": 301950,
+      "late_expired_orders": 166,
+      "missed_decisions": 0,
+      "policy": "legacy_horizon",
+      "quantity": 350400,
+      "shortfall2": 26718620,
+      "split": "development",
+      "trials": 5616,
+      "unfilled": 48450
+    },
+    {
+      "compute_mode": "zero_compute_baseline",
+      "filled": 309825,
+      "late_expired_orders": 94,
+      "missed_decisions": 0,
+      "policy": "legacy_horizon",
+      "quantity": 350400,
+      "shortfall2": 29166074,
+      "split": "development",
+      "trials": 5616,
+      "unfilled": 40575
+    },
+    {
+      "compute_mode": "measured_development_compute",
+      "filled": 315294,
+      "late_expired_orders": 222,
+      "missed_decisions": 0,
+      "policy": "liquidity",
+      "quantity": 350400,
+      "shortfall2": 30184582,
+      "split": "development",
+      "trials": 5616,
+      "unfilled": 35106
+    },
+    {
+      "compute_mode": "zero_compute_baseline",
+      "filled": 319984,
+      "late_expired_orders": 132,
+      "missed_decisions": 0,
+      "policy": "liquidity",
+      "quantity": 350400,
+      "shortfall2": 31484042,
+      "split": "development",
+      "trials": 5616,
+      "unfilled": 30416
+    },
+    {
+      "compute_mode": "measured_development_compute",
+      "filled": 307712,
+      "late_expired_orders": 322,
+      "missed_decisions": 0,
+      "policy": "twap",
+      "quantity": 350400,
+      "shortfall2": 32211822,
+      "split": "development",
+      "trials": 5616,
+      "unfilled": 42688
+    },
+    {
+      "compute_mode": "zero_compute_baseline",
+      "filled": 314858,
+      "late_expired_orders": 162,
+      "missed_decisions": 0,
+      "policy": "twap",
+      "quantity": 350400,
+      "shortfall2": 33006218,
+      "split": "development",
+      "trials": 5616,
+      "unfilled": 35542
+    }
+  ],
+  "counts": {
+    "fills": 280275,
+    "ledger_transitions": 303351,
+    "trials": 66720
+  },
+  "excluded_trials": 18080,
+  "executed_condition_coverage": [
+    {
+      "coin": "bnb",
+      "condition": "stress",
+      "opening_day": "2026-08-24",
+      "split": "confirmation",
+      "windows": 1
+    },
+    {
+      "coin": "btc",
+      "condition": "ordinary",
+      "opening_day": "2026-08-24",
+      "split": "confirmation",
+      "windows": 3
+    },
+    {
+      "coin": "doge",
+      "condition": "ordinary",
+      "opening_day": "2026-08-24",
+      "split": "confirmation",
+      "windows": 2
+    },
+    {
+      "coin": "doge",
+      "condition": "stress",
+      "opening_day": "2026-08-24",
+      "split": "confirmation",
+      "windows": 4
+    },
+    {
+      "coin": "eth",
+      "condition": "ordinary",
+      "opening_day": "2026-08-24",
+      "split": "confirmation",
+      "windows": 4
+    },
+    {
+      "coin": "eth",
+      "condition": "stress",
+      "opening_day": "2026-08-24",
+      "split": "confirmation",
+      "windows": 1
+    },
+    {
+      "coin": "hype",
+      "condition": "stress",
+      "opening_day": "2026-08-24",
+      "split": "confirmation",
+      "windows": 4
+    },
+    {
+      "coin": "sol",
+      "condition": "ordinary",
+      "opening_day": "2026-08-24",
+      "split": "confirmation",
+      "windows": 3
+    },
+    {
+      "coin": "sol",
+      "condition": "stress",
+      "opening_day": "2026-08-24",
+      "split": "confirmation",
+      "windows": 3
+    },
+    {
+      "coin": "xrp",
+      "condition": "stress",
+      "opening_day": "2026-08-24",
+      "split": "confirmation",
+      "windows": 4
+    },
+    {
+      "coin": "zec",
+      "condition": "stress",
+      "opening_day": "2026-08-24",
+      "split": "confirmation",
+      "windows": 4
+    },
+    {
+      "coin": "bnb",
+      "condition": "stress",
+      "opening_day": "2026-08-21",
+      "split": "development",
+      "windows": 7
+    },
+    {
+      "coin": "btc",
+      "condition": "ordinary",
+      "opening_day": "2026-08-21",
+      "split": "development",
+      "windows": 4
+    },
+    {
+      "coin": "doge",
+      "condition": "ordinary",
+      "opening_day": "2026-08-21",
+      "split": "development",
+      "windows": 1
+    },
+    {
+      "coin": "doge",
+      "condition": "stress",
+      "opening_day": "2026-08-21",
+      "split": "development",
+      "windows": 6
+    },
+    {
+      "coin": "eth",
+      "condition": "ordinary",
+      "opening_day": "2026-08-21",
+      "split": "development",
+      "windows": 8
+    },
+    {
+      "coin": "hype",
+      "condition": "ordinary",
+      "opening_day": "2026-08-21",
+      "split": "development",
+      "windows": 2
+    },
+    {
+      "coin": "hype",
+      "condition": "stress",
+      "opening_day": "2026-08-21",
+      "split": "development",
+      "windows": 10
+    },
+    {
+      "coin": "sol",
+      "condition": "ordinary",
+      "opening_day": "2026-08-21",
+      "split": "development",
+      "windows": 4
+    },
+    {
+      "coin": "sol",
+      "condition": "stress",
+      "opening_day": "2026-08-21",
+      "split": "development",
+      "windows": 4
+    },
+    {
+      "coin": "xrp",
+      "condition": "ordinary",
+      "opening_day": "2026-08-21",
+      "split": "development",
+      "windows": 2
+    },
+    {
+      "coin": "xrp",
+      "condition": "stress",
+      "opening_day": "2026-08-21",
+      "split": "development",
+      "windows": 6
+    },
+    {
+      "coin": "zec",
+      "condition": "stress",
+      "opening_day": "2026-08-21",
+      "split": "development",
+      "windows": 5
+    },
+    {
+      "coin": "bnb",
+      "condition": "ordinary",
+      "opening_day": "2026-08-22",
+      "split": "development",
+      "windows": 1
+    },
+    {
+      "coin": "bnb",
+      "condition": "stress",
+      "opening_day": "2026-08-22",
+      "split": "development",
+      "windows": 2
+    },
+    {
+      "coin": "btc",
+      "condition": "ordinary",
+      "opening_day": "2026-08-22",
+      "split": "development",
+      "windows": 8
+    },
+    {
+      "coin": "doge",
+      "condition": "ordinary",
+      "opening_day": "2026-08-22",
+      "split": "development",
+      "windows": 7
+    },
+    {
+      "coin": "doge",
+      "condition": "stress",
+      "opening_day": "2026-08-22",
+      "split": "development",
+      "windows": 2
+    },
+    {
+      "coin": "eth",
+      "condition": "ordinary",
+      "opening_day": "2026-08-22",
+      "split": "development",
+      "windows": 4
+    },
+    {
+      "coin": "hype",
+      "condition": "stress",
+      "opening_day": "2026-08-22",
+      "split": "development",
+      "windows": 2
+    },
+    {
+      "coin": "sol",
+      "condition": "ordinary",
+      "opening_day": "2026-08-22",
+      "split": "development",
+      "windows": 5
+    },
+    {
+      "coin": "sol",
+      "condition": "stress",
+      "opening_day": "2026-08-22",
+      "split": "development",
+      "windows": 2
+    },
+    {
+      "coin": "xrp",
+      "condition": "ordinary",
+      "opening_day": "2026-08-22",
+      "split": "development",
+      "windows": 3
+    },
+    {
+      "coin": "xrp",
+      "condition": "stress",
+      "opening_day": "2026-08-22",
+      "split": "development",
+      "windows": 3
+    },
+    {
+      "coin": "zec",
+      "condition": "stress",
+      "opening_day": "2026-08-22",
+      "split": "development",
+      "windows": 7
+    },
+    {
+      "coin": "bnb",
+      "condition": "ordinary",
+      "opening_day": "2026-08-23",
+      "split": "development",
+      "windows": 3
+    },
+    {
+      "coin": "bnb",
+      "condition": "stress",
+      "opening_day": "2026-08-23",
+      "split": "development",
+      "windows": 7
+    },
+    {
+      "coin": "btc",
+      "condition": "ordinary",
+      "opening_day": "2026-08-23",
+      "split": "development",
+      "windows": 8
+    },
+    {
+      "coin": "btc",
+      "condition": "stress",
+      "opening_day": "2026-08-23",
+      "split": "development",
+      "windows": 1
+    },
+    {
+      "coin": "doge",
+      "condition": "ordinary",
+      "opening_day": "2026-08-23",
+      "split": "development",
+      "windows": 1
+    },
+    {
+      "coin": "doge",
+      "condition": "stress",
+      "opening_day": "2026-08-23",
+      "split": "development",
+      "windows": 12
+    },
+    {
+      "coin": "eth",
+      "condition": "ordinary",
+      "opening_day": "2026-08-23",
+      "split": "development",
+      "windows": 7
+    },
+    {
+      "coin": "eth",
+      "condition": "stress",
+      "opening_day": "2026-08-23",
+      "split": "development",
+      "windows": 1
+    },
+    {
+      "coin": "hype",
+      "condition": "stress",
+      "opening_day": "2026-08-23",
+      "split": "development",
+      "windows": 7
+    },
+    {
+      "coin": "sol",
+      "condition": "ordinary",
+      "opening_day": "2026-08-23",
+      "split": "development",
+      "windows": 4
+    },
+    {
+      "coin": "sol",
+      "condition": "stress",
+      "opening_day": "2026-08-23",
+      "split": "development",
+      "windows": 3
+    },
+    {
+      "coin": "xrp",
+      "condition": "stress",
+      "opening_day": "2026-08-23",
+      "split": "development",
+      "windows": 7
+    },
+    {
+      "coin": "zec",
+      "condition": "stress",
+      "opening_day": "2026-08-23",
+      "split": "development",
+      "windows": 10
+    }
+  ],
+  "executed_windows": 209,
+  "limits": [
+    "snapshot archive cannot identify exchange-message continuity, network delay or queue identity",
+    "ordinary/stress are operational quote/depth proxies",
+    "one confirmation opening day; correlated window bootstrap conditional only",
+    "development p99 is fixed desktop work sensitivity, not a calibrated runtime distribution",
+    "negative signed cost is benchmark-relative execution, not strategy profit",
+    "artifact/source checks cannot prove absence of unseen prior trials"
+  ],
+  "method": "streamed saved traces; independent integer fill/ledger/prefix/benchmark accounting; reconstructed complete attempt registry and summaries; independent paired-window means/bootstrap/statuses; optional exact per-window DuckDB reexecution; no strategies or clock measurements",
+  "paired_compute_effects": [
+    {
+      "completion_changed_trials": 17,
+      "cost_changed_trials": 45,
+      "execution_scenario": "base",
+      "matched_trials": 264,
+      "mean_measured_minus_zero_completion": -0.002803030303030303,
+      "mean_measured_minus_zero_cost_ticks_per_lot": 1.040909090909091,
+      "policy": "horizon",
+      "split": "confirmation",
+      "windows": 33
+    },
+    {
+      "completion_changed_trials": 15,
+      "cost_changed_trials": 20,
+      "execution_scenario": "delayed_half",
+      "matched_trials": 264,
+      "mean_measured_minus_zero_completion": -0.017954545454545456,
+      "mean_measured_minus_zero_cost_ticks_per_lot": 2.3120075757575758,
+      "policy": "horizon",
+      "split": "confirmation",
+      "windows": 33
+    },
+    {
+      "completion_changed_trials": 9,
+      "cost_changed_trials": 14,
+      "execution_scenario": "scarce",
+      "matched_trials": 264,
+      "mean_measured_minus_zero_completion": -0.014204545454545454,
+      "mean_measured_minus_zero_cost_ticks_per_lot": -1.0364772727272726,
+      "policy": "horizon",
+      "split": "confirmation",
+      "windows": 33
+    },
+    {
+      "completion_changed_trials": 17,
+      "cost_changed_trials": 36,
+      "execution_scenario": "tie_alternative",
+      "matched_trials": 264,
+      "mean_measured_minus_zero_completion": -0.02553030303030303,
+      "mean_measured_minus_zero_cost_ticks_per_lot": 5.050568181818181,
+      "policy": "horizon",
+      "split": "confirmation",
+      "windows": 33
+    },
+    {
+      "completion_changed_trials": 0,
+      "cost_changed_trials": 0,
+      "execution_scenario": "base",
+      "matched_trials": 264,
+      "mean_measured_minus_zero_completion": 0.0,
+      "mean_measured_minus_zero_cost_ticks_per_lot": 0.0,
+      "policy": "immediate",
+      "split": "confirmation",
+      "windows": 33
+    },
+    {
+      "completion_changed_trials": 16,
+      "cost_changed_trials": 16,
+      "execution_scenario": "delayed_half",
+      "matched_trials": 264,
+      "mean_measured_minus_zero_completion": -0.06060606060606061,
+      "mean_measured_minus_zero_cost_ticks_per_lot": -0.3496969696969697,
+      "policy": "immediate",
+      "split": "confirmation",
+      "windows": 33
+    },
+    {
+      "completion_changed_trials": 0,
+      "cost_changed_trials": 0,
+      "execution_scenario": "scarce",
+      "matched_trials": 264,
+      "mean_measured_minus_zero_completion": 0.0,
+      "mean_measured_minus_zero_cost_ticks_per_lot": 0.0,
+      "policy": "immediate",
+      "split": "confirmation",
+      "windows": 33
+    },
+    {
+      "completion_changed_trials": 16,
+      "cost_changed_trials": 112,
+      "execution_scenario": "tie_alternative",
+      "matched_trials": 264,
+      "mean_measured_minus_zero_completion": -0.06060606060606061,
+      "mean_measured_minus_zero_cost_ticks_per_lot": 4.339848484848485,
+      "policy": "immediate",
+      "split": "confirmation",
+      "windows": 33
+    },
+    {
+      "completion_changed_trials": 0,
+      "cost_changed_trials": 28,
+      "execution_scenario": "base",
+      "matched_trials": 264,
+      "mean_measured_minus_zero_completion": 0.0,
+      "mean_measured_minus_zero_cost_ticks_per_lot": 10.757575757575758,
+      "policy": "legacy_horizon",
+      "split": "confirmation",
+      "windows": 33
+    },
+    {
+      "completion_changed_trials": 2,
+      "cost_changed_trials": 44,
+      "execution_scenario": "delayed_half",
+      "matched_trials": 264,
+      "mean_measured_minus_zero_completion": -0.007575757575757576,
+      "mean_measured_minus_zero_cost_ticks_per_lot": 11.349924242424242,
+      "policy": "legacy_horizon",
+      "split": "confirmation",
+      "windows": 33
+    },
+    {
+      "completion_changed_trials": 0,
+      "cost_changed_trials": 45,
+      "execution_scenario": "scarce",
+      "matched_trials": 264,
+      "mean_measured_minus_zero_completion": 0.0,
+      "mean_measured_minus_zero_cost_ticks_per_lot": 5.172499999999999,
+      "policy": "legacy_horizon",
+      "split": "confirmation",
+      "windows": 33
+    },
+    {
+      "completion_changed_trials": 2,
+      "cost_changed_trials": 56,
+      "execution_scenario": "tie_alternative",
+      "matched_trials": 264,
+      "mean_measured_minus_zero_completion": -0.007575757575757576,
+      "mean_measured_minus_zero_cost_ticks_per_lot": 1.5911363636363636,
+      "policy": "legacy_horizon",
+      "split": "confirmation",
+      "windows": 33
+    },
+    {
+      "completion_changed_trials": 26,
+      "cost_changed_trials": 202,
+      "execution_scenario": "base",
+      "matched_trials": 264,
+      "mean_measured_minus_zero_completion": -0.0016666666666666666,
+      "mean_measured_minus_zero_cost_ticks_per_lot": -0.2280303030303032,
+      "policy": "liquidity",
+      "split": "confirmation",
+      "windows": 33
+    },
+    {
+      "completion_changed_trials": 40,
+      "cost_changed_trials": 244,
+      "execution_scenario": "delayed_half",
+      "matched_trials": 264,
+      "mean_measured_minus_zero_completion": -0.009242424242424246,
+      "mean_measured_minus_zero_cost_ticks_per_lot": 5.214128787878788,
+      "policy": "liquidity",
+      "split": "confirmation",
+      "windows": 33
+    },
+    {
+      "completion_changed_trials": 22,
+      "cost_changed_trials": 226,
+      "execution_scenario": "scarce",
+      "matched_trials": 264,
+      "mean_measured_minus_zero_completion": 0.005454545454545454,
+      "mean_measured_minus_zero_cost_ticks_per_lot": 3.732954545454546,
+      "policy": "liquidity",
+      "split": "confirmation",
+      "windows": 33
+    },
+    {
+      "completion_changed_trials": 38,
+      "cost_changed_trials": 241,
+      "execution_scenario": "tie_alternative",
+      "matched_trials": 264,
+      "mean_measured_minus_zero_completion": -0.012272727272727274,
+      "mean_measured_minus_zero_cost_ticks_per_lot": 3.232954545454545,
+      "policy": "liquidity",
+      "split": "confirmation",
+      "windows": 33
+    },
+    {
+      "completion_changed_trials": 44,
+      "cost_changed_trials": 230,
+      "execution_scenario": "base",
+      "matched_trials": 264,
+      "mean_measured_minus_zero_completion": -0.005757575757575757,
+      "mean_measured_minus_zero_cost_ticks_per_lot": 0.8026515151515158,
+      "policy": "twap",
+      "split": "confirmation",
+      "windows": 33
+    },
+    {
+      "completion_changed_trials": 40,
+      "cost_changed_trials": 245,
+      "execution_scenario": "delayed_half",
+      "matched_trials": 264,
+      "mean_measured_minus_zero_completion": -0.007500000000000001,
+      "mean_measured_minus_zero_cost_ticks_per_lot": 0.6739393939393938,
+      "policy": "twap",
+      "split": "confirmation",
+      "windows": 33
+    },
+    {
+      "completion_changed_trials": 28,
+      "cost_changed_trials": 221,
+      "execution_scenario": "scarce",
+      "matched_trials": 264,
+      "mean_measured_minus_zero_completion": -0.002954545454545455,
+      "mean_measured_minus_zero_cost_ticks_per_lot": 0.507424242424242,
+      "policy": "twap",
+      "split": "confirmation",
+      "windows": 33
+    },
+    {
+      "completion_changed_trials": 38,
+      "cost_changed_trials": 248,
+      "execution_scenario": "tie_alternative",
+      "matched_trials": 264,
+      "mean_measured_minus_zero_completion": -0.008712121212121211,
+      "mean_measured_minus_zero_cost_ticks_per_lot": -0.19996212121212148,
+      "policy": "twap",
+      "split": "confirmation",
+      "windows": 33
+    },
+    {
+      "completion_changed_trials": 82,
+      "cost_changed_trials": 187,
+      "execution_scenario": "base",
+      "matched_trials": 1404,
+      "mean_measured_minus_zero_completion": -0.008454415954415954,
+      "mean_measured_minus_zero_cost_ticks_per_lot": 0.3806980056980057,
+      "policy": "horizon",
+      "split": "development",
+      "windows": 176
+    },
+    {
+      "completion_changed_trials": 90,
+      "cost_changed_trials": 130,
+      "execution_scenario": "delayed_half",
+      "matched_trials": 1404,
+      "mean_measured_minus_zero_completion": -0.015327635327635328,
+      "mean_measured_minus_zero_cost_ticks_per_lot": 0.9949572649572649,
+      "policy": "horizon",
+      "split": "development",
+      "windows": 176
+    },
+    {
+      "completion_changed_trials": 79,
+      "cost_changed_trials": 98,
+      "execution_scenario": "scarce",
+      "matched_trials": 1404,
+      "mean_measured_minus_zero_completion": -0.013589743589743589,
+      "mean_measured_minus_zero_cost_ticks_per_lot": 0.3394301994301994,
+      "policy": "horizon",
+      "split": "development",
+      "windows": 176
+    },
+    {
+      "completion_changed_trials": 102,
+      "cost_changed_trials": 189,
+      "execution_scenario": "tie_alternative",
+      "matched_trials": 1404,
+      "mean_measured_minus_zero_completion": -0.02118945868945869,
+      "mean_measured_minus_zero_cost_ticks_per_lot": 1.361616809116809,
+      "policy": "horizon",
+      "split": "development",
+      "windows": 176
+    },
+    {
+      "completion_changed_trials": 12,
+      "cost_changed_trials": 24,
+      "execution_scenario": "base",
+      "matched_trials": 1404,
+      "mean_measured_minus_zero_completion": -0.008547008547008548,
+      "mean_measured_minus_zero_cost_ticks_per_lot": 0.042735042735042736,
+      "policy": "immediate",
+      "split": "development",
+      "windows": 176
+    },
+    {
+      "completion_changed_trials": 20,
+      "cost_changed_trials": 36,
+      "execution_scenario": "delayed_half",
+      "matched_trials": 1404,
+      "mean_measured_minus_zero_completion": -0.014245014245014245,
+      "mean_measured_minus_zero_cost_ticks_per_lot": -2.606752136752137,
+      "policy": "immediate",
+      "split": "development",
+      "windows": 176
+    },
+    {
+      "completion_changed_trials": 54,
+      "cost_changed_trials": 98,
+      "execution_scenario": "scarce",
+      "matched_trials": 1404,
+      "mean_measured_minus_zero_completion": -0.038461538461538464,
+      "mean_measured_minus_zero_cost_ticks_per_lot": -2.2298575498575497,
+      "policy": "immediate",
+      "split": "development",
+      "windows": 176
+    },
+    {
+      "completion_changed_trials": 40,
+      "cost_changed_trials": 466,
+      "execution_scenario": "tie_alternative",
+      "matched_trials": 1404,
+      "mean_measured_minus_zero_completion": -0.022792022792022793,
+      "mean_measured_minus_zero_cost_ticks_per_lot": -5.832934472934473,
+      "policy": "immediate",
+      "split": "development",
+      "windows": 176
+    },
+    {
+      "completion_changed_trials": 16,
+      "cost_changed_trials": 128,
+      "execution_scenario": "base",
+      "matched_trials": 1404,
+      "mean_measured_minus_zero_completion": -0.011396011396011397,
+      "mean_measured_minus_zero_cost_ticks_per_lot": -4.52991452991453,
+      "policy": "legacy_horizon",
+      "split": "development",
+      "windows": 176
+    },
+    {
+      "completion_changed_trials": 48,
+      "cost_changed_trials": 217,
+      "execution_scenario": "delayed_half",
+      "matched_trials": 1404,
+      "mean_measured_minus_zero_completion": -0.02849002849002849,
+      "mean_measured_minus_zero_cost_ticks_per_lot": -5.40940170940171,
+      "policy": "legacy_horizon",
+      "split": "development",
+      "windows": 176
+    },
+    {
+      "completion_changed_trials": 76,
+      "cost_changed_trials": 264,
+      "execution_scenario": "scarce",
+      "matched_trials": 1404,
+      "mean_measured_minus_zero_completion": -0.02564102564102564,
+      "mean_measured_minus_zero_cost_ticks_per_lot": -2.59190170940171,
+      "policy": "legacy_horizon",
+      "split": "development",
+      "windows": 176
+    },
+    {
+      "completion_changed_trials": 58,
+      "cost_changed_trials": 335,
+      "execution_scenario": "tie_alternative",
+      "matched_trials": 1404,
+      "mean_measured_minus_zero_completion": -0.024216524216524215,
+      "mean_measured_minus_zero_cost_ticks_per_lot": -1.4444017094017094,
+      "policy": "legacy_horizon",
+      "split": "development",
+      "windows": 176
+    },
+    {
+      "completion_changed_trials": 246,
+      "cost_changed_trials": 1069,
+      "execution_scenario": "base",
+      "matched_trials": 1404,
+      "mean_measured_minus_zero_completion": -0.021111111111111105,
+      "mean_measured_minus_zero_cost_ticks_per_lot": -0.9179487179487179,
+      "policy": "liquidity",
+      "split": "development",
+      "windows": 176
+    },
+    {
+      "completion_changed_trials": 276,
+      "cost_changed_trials": 1254,
+      "execution_scenario": "delayed_half",
+      "matched_trials": 1404,
+      "mean_measured_minus_zero_completion": -0.006695156695156699,
+      "mean_measured_minus_zero_cost_ticks_per_lot": -2.6492663817663824,
+      "policy": "liquidity",
+      "split": "development",
+      "windows": 176
+    },
+    {
+      "completion_changed_trials": 224,
+      "cost_changed_trials": 1100,
+      "execution_scenario": "scarce",
+      "matched_trials": 1404,
+      "mean_measured_minus_zero_completion": -0.015270655270655272,
+      "mean_measured_minus_zero_cost_ticks_per_lot": -1.087371794871795,
+      "policy": "liquidity",
+      "split": "development",
+      "windows": 176
+    },
+    {
+      "completion_changed_trials": 300,
+      "cost_changed_trials": 1292,
+      "execution_scenario": "tie_alternative",
+      "matched_trials": 1404,
+      "mean_measured_minus_zero_completion": -0.011054131054131059,
+      "mean_measured_minus_zero_cost_ticks_per_lot": -2.8521794871794874,
+      "policy": "liquidity",
+      "split": "development",
+      "windows": 176
+    },
+    {
+      "completion_changed_trials": 266,
+      "cost_changed_trials": 1217,
+      "execution_scenario": "base",
+      "matched_trials": 1404,
+      "mean_measured_minus_zero_completion": -0.017207977207977208,
+      "mean_measured_minus_zero_cost_ticks_per_lot": -1.0060541310541309,
+      "policy": "twap",
+      "split": "development",
+      "windows": 176
+    },
+    {
+      "completion_changed_trials": 300,
+      "cost_changed_trials": 1323,
+      "execution_scenario": "delayed_half",
+      "matched_trials": 1404,
+      "mean_measured_minus_zero_completion": -0.01858974358974359,
+      "mean_measured_minus_zero_cost_ticks_per_lot": -1.157022792022792,
+      "policy": "twap",
+      "split": "development",
+      "windows": 176
+    },
+    {
+      "completion_changed_trials": 256,
+      "cost_changed_trials": 1222,
+      "execution_scenario": "scarce",
+      "matched_trials": 1404,
+      "mean_measured_minus_zero_completion": -0.024102564102564106,
+      "mean_measured_minus_zero_cost_ticks_per_lot": -1.0449287749287752,
+      "policy": "twap",
+      "split": "development",
+      "windows": 176
+    },
+    {
+      "completion_changed_trials": 302,
+      "cost_changed_trials": 1336,
+      "execution_scenario": "tie_alternative",
+      "matched_trials": 1404,
+      "mean_measured_minus_zero_completion": -0.020954415954415957,
+      "mean_measured_minus_zero_cost_ticks_per_lot": -1.263091168091168,
+      "policy": "twap",
+      "split": "development",
+      "windows": 176
+    }
+  ],
+  "review_script_sha256": "994fb42f858c11d2fbf9929e2bbb82594a6b4425c37c8757ce42b292d7949f84",
+  "source_condition_coverage": {
+    "('confirmation', 'ordinary')": 12,
+    "('confirmation', 'stress')": 21,
+    "('development', 'ordinary')": 72,
+    "('development', 'stress')": 104
+  },
+  "sql_window_batches_reexecuted": 209,
+  "stability_cells": 480,
+  "status": "pass",
+  "statuses": [
+    {
+      "comparisons": 12,
+      "condition": "all",
+      "split": "confirmation",
+      "status": "stable"
+    },
+    {
+      "comparisons": 68,
+      "condition": "all",
+      "split": "confirmation",
+      "status": "unresolved"
+    },
+    {
+      "comparisons": 80,
+      "condition": "ordinary",
+      "split": "confirmation",
+      "status": "unresolved"
+    },
+    {
+      "comparisons": 18,
+      "condition": "stress",
+      "split": "confirmation",
+      "status": "stable"
+    },
+    {
+      "comparisons": 62,
+      "condition": "stress",
+      "split": "confirmation",
+      "status": "unresolved"
+    },
+    {
+      "comparisons": 32,
+      "condition": "all",
+      "split": "development",
+      "status": "stable"
+    },
+    {
+      "comparisons": 48,
+      "condition": "all",
+      "split": "development",
+      "status": "unresolved"
+    },
+    {
+      "comparisons": 80,
+      "condition": "ordinary",
+      "split": "development",
+      "status": "unresolved"
+    },
+    {
+      "comparisons": 32,
+      "condition": "stress",
+      "split": "development",
+      "status": "stable"
+    },
+    {
+      "comparisons": 48,
+      "condition": "stress",
+      "split": "development",
+      "status": "unresolved"
+    }
+  ]
+}

@@ -8,7 +8,18 @@
 
 int main(int argc, char** argv) {
     try {
-        if (argc < 3 || argc > 8) throw std::invalid_argument("usage: queuecraft-core INPUT.csv OUTPUT_DIRECTORY [buy|sell] [quantity] [latency_ns] [fee_ppm] [liquidity_ppm]");
+        constexpr const char* usage = "usage: queuecraft-core INPUT.csv OUTPUT_DIRECTORY [buy|sell [quantity] [latency_ns] [fee_ppm] [liquidity_ppm] --recording-end-ns END]";
+        if (argc < 3 || argc > 10) throw std::invalid_argument(usage);
+        bool order = argc >= 4;
+        int order_argc = argc;
+        queuecraft::RecordingBounds bounds{0};
+        if (order) {
+            if (argc < 6 || std::string_view(argv[argc - 2]) != "--recording-end-ns")
+                throw std::invalid_argument("orders require explicit --recording-end-ns END as the final arguments");
+            bounds.end_ns = queuecraft::parse_integer(argv[argc - 1]);
+            if (bounds.end_ns < 0) throw std::invalid_argument("recording end must be nonnegative");
+            order_argc -= 2;
+        }
         std::filesystem::path input(argv[1]), output(argv[2]);
         if (std::filesystem::file_size(input) > queuecraft::max_bytes) throw std::invalid_argument("input exceeds 64 MiB");
         std::ifstream stream(input, std::ios::binary);
@@ -25,10 +36,9 @@ int main(int argc, char** argv) {
         if (stream.bad()) throw std::runtime_error("input read failed");
         std::string trace = queuecraft::replay(text);
         queuecraft::Result result;
-        bool order = argc >= 4;
-        if (order) result = queuecraft::execute(text, argv[3], argc >= 5 ? queuecraft::parse_integer(argv[4]) : 1,
-            argc >= 6 ? queuecraft::parse_integer(argv[5]) : 0, argc >= 7 ? queuecraft::parse_integer(argv[6]) : 0,
-            argc >= 8 ? queuecraft::parse_integer(argv[7]) : 1'000'000);
+        if (order) result = queuecraft::execute(text, argv[3], order_argc >= 5 ? queuecraft::parse_integer(argv[4]) : 1, bounds,
+            order_argc >= 6 ? queuecraft::parse_integer(argv[5]) : 0, order_argc >= 7 ? queuecraft::parse_integer(argv[6]) : 0,
+            order_argc >= 8 ? queuecraft::parse_integer(argv[7]) : 1'000'000);
         if (!std::filesystem::create_directory(output)) throw std::runtime_error("output exists; choose a fresh directory");
         auto write = [&](const char* name, const std::string& contents) {
             std::ofstream file(output / name, std::ios::binary);
@@ -43,7 +53,7 @@ int main(int argc, char** argv) {
             for (const auto& fill : result.fills) fills << result.event << ',' << fill.price << ',' << fill.quantity << ',' << fill.notional << ',' << fill.fee << '\n';
             write("fills.csv", fills.str());
             std::ostringstream ledger;
-            ledger << "event,exchange_ns,receive_ns,filled,remaining,cash,inventory,fees\n" << result.event << ',' << result.exchange_ns << ',' << result.receive_ns << ','
+            ledger << "event,exchange_ns,receive_ns,recording_end_ns,filled,remaining,cash,inventory,fees\n" << result.event << ',' << result.exchange_ns << ',' << result.receive_ns << ',' << bounds.end_ns << ','
                 << result.filled << ',' << result.remaining << ',' << result.cash << ',' << result.inventory << ',' << result.fees << '\n';
             write("ledger.csv", ledger.str());
         }

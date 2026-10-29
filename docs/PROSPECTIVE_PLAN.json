@@ -1,0 +1,174 @@
+{
+  "version": "prospective-15m-v3",
+  "status": "registered before any15m policy outcome evaluation; revised compute protocol prior to calibration",
+  "source": {
+    "publisher": "PolyOrderbooks",
+    "doi": "10.5281/zenodo.22084977",
+    "version": "1.0.1",
+    "file": "updown_15m.parquet",
+    "sha256": "d86191506e416026f460338b1b238c628b3fcee37f468e646b3a2256bd0be959",
+    "md5": "61b5d660444bbadd26aa558073b38516",
+    "license": "CC-BY-4.0",
+    "maximum_bytes": 67108864
+  },
+  "known_data_disclosure": "Original 5m study outcomes and the separate 5m archive coverage inspection are already known. The inclusive >=10-tick old threshold yielded no ordinary windows. This is a distinct 15m prospective protocol with strict >10 quote stress and a depth proxy; original study labels/results remain unchanged. No 15m policy outcomes have been evaluated.",
+  "population": "All Up-token 15m windows for all eight available assets. Each binary market is one session window. Other outcome tokens are not independent observations. Preserve coin/day/window labels and every exclusion.",
+  "assets": [
+    "btc",
+    "eth",
+    "sol",
+    "xrp",
+    "bnb",
+    "doge",
+    "hype",
+    "zec"
+  ],
+  "opening_semantics": "market_end_at minus 900 seconds; require agreement with final UNIX-second component of 15m market slug",
+  "development_opening_utc_days": [
+    "2026-08-21",
+    "2026-08-22",
+    "2026-08-23"
+  ],
+  "confirmation_opening_utc_days": [
+    "2026-08-24"
+  ],
+  "split": "Freeze whole opening UTC days before eligibility/classification; no adaptation if the declared dates have poor coverage. Other dates excluded with reasons. Confirmation never tunes policy parameters or stress threshold.",
+  "prior_market_ids": "Exclude every identifier from original 44-window source and prospective 5m coverage inspection; save exact known-ID list and hash before preparation.",
+  "parent_start_offset_seconds": 60,
+  "maximum_deadline_seconds": 30,
+  "normalization_interval": "[opening, opening+90 seconds], containing prefixes and all declared parent deadlines. Preserve full raw file and full-window source bounds/counts. Prefix observations exclude winner/resolution labels.",
+  "recording_end": "opening+90 seconds, within publisher-declared complete 15m lifetime; explicit modeled recording horizon independent of last payload. It is an archive coverage assumption, not measured network connection liveness.",
+  "capture_watchdog_ns": 5000000000,
+  "watchdog": "Snapshot age <=5s allowed; invalidate at last payload+5s+1ns, including terminal silence up to explicit recording_end_ns. Every invalid snapshot becomes G; next valid full S resynchronizes. Sparse unchanged books may be invalidated conservatively, because capture gaps cannot certify liveness.",
+  "timestamp_semantics": "exchange_ns=-1 unknown; receive_ns uses capture time only as modeled observation time, not actual receive time",
+  "units": {
+    "price_scale": 1000,
+    "quantity_scale": 100,
+    "tick_usd_per_share": "0.001",
+    "lot_shares": "0.01",
+    "money_usd": "0.00001"
+  },
+  "eligibility": "Valid complete S observation at parent start after applying all prefix events and watchdogs; consistent safe metadata; no prior-ID overlap. All valid/excluded windows retain source provenance. Order-specific cap exclusions are shared across policies.",
+  "stress_proxy": {
+    "name": "operational_quote_stress",
+    "rule": "stress if prefix spread>10ticks OR min(bid_top10_lots,ask_top10_lots)<development_lower_quartile_lots; ordinary otherwise",
+    "depth_threshold": "Sort min(side top10 depth) at parent start over eligible DEVELOPMENT windows, take index floor((n-1)/4); freeze exact integer before any policy evaluation. No confirmation fields affect threshold.",
+    "interpretation": "Descriptive prefix quote/depth proxy only; neither a market-wide crisis label nor calibrated stress probability"
+  },
+  "policies": [
+    "immediate",
+    "twap",
+    "liquidity",
+    "legacy_horizon",
+    "horizon"
+  ],
+  "policy_semantics": "legacy_horizon remains the original depth/drift sensitivity policy. horizon is the new prefix-only joint latency/liquidity-family policy. Retain all attempted policy failures.",
+  "horizon_planning_family": {
+    "latencies_ns": [
+      0,
+      1000000000,
+      3000000000
+    ],
+    "liquidity_ppm": [
+      100000,
+      500000,
+      1000000
+    ],
+    "drift_spread_multipliers": [
+      -0.5,
+      0.5
+    ],
+    "stages": 4,
+    "cumulative_target_quarters": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "maximum_projected_levels": 16,
+    "maximum_price_ticks": 999,
+    "joint_plan_semantics": "One future action plan evaluated across every environment; no scenario-specific future plan chosen with hindsight"
+  },
+  "sides": [
+    "buy",
+    "sell"
+  ],
+  "quantities_lots": [
+    25,
+    100
+  ],
+  "deadlines_seconds": [
+    5,
+    30
+  ],
+  "decision_interval_seconds": 1,
+  "unfilled_penalty_ticks": 10,
+  "parent_cap": "quantity<=10000lots AND <=1% initial min(bid,ask) top10lots; identical cap and remaining penalty for every policy",
+  "benchmark": "Common recorded midpoint at parent start from <=parent_start source prefix, evaluation-only and never passed in Observation/Intent; fixed across policies, scenarios and compute modes. Preserve exact twice-money signed shortfall, fees and residual penalty.",
+  "scenarios": [
+    {
+      "name": "base",
+      "latency_ns": 0,
+      "observation_delay_ns": 0,
+      "ack_delay_ns": 0,
+      "liquidity_ppm": 1000000,
+      "fee_ppm": 0,
+      "tie": "recorded_first"
+    },
+    {
+      "name": "delayed_half",
+      "latency_ns": 1000000000,
+      "observation_delay_ns": 1000000000,
+      "ack_delay_ns": 1000000000,
+      "liquidity_ppm": 500000,
+      "fee_ppm": 2000,
+      "tie": "recorded_first"
+    },
+    {
+      "name": "scarce",
+      "latency_ns": 3000000000,
+      "observation_delay_ns": 1000000000,
+      "ack_delay_ns": 1000000000,
+      "liquidity_ppm": 100000,
+      "fee_ppm": 2000,
+      "tie": "recorded_first"
+    },
+    {
+      "name": "tie_alternative",
+      "latency_ns": 1000000000,
+      "observation_delay_ns": 1000000000,
+      "ack_delay_ns": 1000000000,
+      "liquidity_ppm": 500000,
+      "fee_ppm": 2000,
+      "tie": "arrival_first"
+    }
+  ],
+  "policy_compute_sensitivity": {
+    "modes": [
+      "zero_compute_baseline",
+      "measured_development_compute"
+    ],
+    "rule": "Before outcome evaluation, benchmark each policy5000times cycling deterministically across first32eligible development prefixes in chronological order; one cold strategy object per call, quantity100lots, buy,30s deadline, no future/policy fills. One warmup per prefix before timed samples. Freeze nearest-rank p99 duration separately for each policy, rounded up to1ms. Use that policy-specific declared duration in measured mode; zero in baseline. Fixed1s decision budget shared by all policies; never expand budget to rescue slow policy. No confirmation measurements. Retain all raw timing samples and p50/p95/p99; no p999 claim from5000samples.",
+    "fallback": "Duration>shared1sbudget invokes declared no-op, common remaining penalty. Callback never rerun with future information.",
+    "limits": "Desktop local-work calibration and fixed-duration sensitivity, not calibrated realtime/colocated latency guarantee."
+  },
+  "uncertainty": "Report paired window and UTC-day aggregates, asset/regime strata and exact day counts. Confirmation may contain one capture day only; do not bootstrap one day into independent multi-day evidence. Any window bootstrap is explicitly conditional and correlated.",
+  "stability": "Report rankings and changes across declared scenarios with unresolved intervals preserved; do not force a reversal or count unresolved outcomes as success",
+  "prohibited_claims": [
+    "profitability",
+    "observed queue position",
+    "exchange event continuity",
+    "calibrated robustness guarantee",
+    "independent market-wide generalization",
+    "matched HftBacktest superiority without matched inputs"
+  ],
+  "no_outcome_tuning": true,
+  "resource_limits": {
+    "max_ingestion_bytes_per_file": 67108864,
+    "sql_memory_bytes": 536870912,
+    "max_active_workers": 2,
+    "retain_all_265_window_attempts": true,
+    "never_downsample_by_policy_outcome": true
+  }
+}

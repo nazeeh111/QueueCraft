@@ -9,11 +9,17 @@ Python book/fill agreement and per-transition DuckDB checks. Its study compares
 immediate, TWAP, liquidity-aware and receding-horizon policies under registered
 scenarios, retaining unfinished orders and negative results.
 
-The bundled archive is licensed, imperfect snapshot data from one day. It does
+The registered prospective archive contains licensed snapshot windows across
+eight assets and four dates, with one reserved confirmation date. It does
 not identify exchange event order or queue position, and this is not a profit
-claim. The useful output is an inspectable stability map plus replayable traces.
+claim. The completed registered run has 66,720 executions and retained exclusions.
+Most confirmation comparisons remain unresolved. The new horizon policy has
+lower penalized cost but much more unfinished inventory, so it does not establish
+execution superiority. The useful output is an inspectable stability map plus
+replayable traces.
 
-Source and versioned artifacts: https://github.com/nazeeh111/QueueCraft
+Intended source and release destination: `nazeeh111/QueueCraft`. Publication
+and remote verification remain pending; do not present this draft as launched.
 
 Relevant audiences: C++ systems/replay engineering and market-microstructure
 research discussions that permit project demonstrations. No outreach sent,

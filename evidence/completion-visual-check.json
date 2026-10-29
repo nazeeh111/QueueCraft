@@ -1,0 +1,20 @@
+{
+  "status": "pass",
+  "method": "Current-source CUA browser rendering and semantic-control checks; screenshots viewed in tool output, no screenshot file claimed",
+  "report_sha256": "0a6c26079e00106e4945f080a8ac36c1dfc0ca52d12887e6db2b8bdfae02b9aa",
+  "simulation_report_fresh_bytes_match_saved_example": true,
+  "desktop_viewport": [
+    1280,
+    720
+  ],
+  "study_table_rows": 3840,
+  "default_confirmation_rows": 1920,
+  "horizon_search_confirmation_rows": 1344,
+  "horizon_search_development_rows": 1344,
+  "region_and_search_filters_correct": true,
+  "page_horizontal_overflow": false,
+  "architecture_svg_current_render_inspected": true,
+  "architecture_svg_sha256": "b10443d98274f5364ea4538661b1d9b93d4f2af106ed571e18766fab7790b0ca",
+  "local_server": "127.0.0.1 only",
+  "public_preview": false
+}

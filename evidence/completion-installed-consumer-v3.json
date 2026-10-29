@@ -1,0 +1,1221 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "source_root": "/Users/nazeeh/Documents/ChatGPT/Continue/work/queuecraft-completion",
+  "temporary_root": "/private/tmp/queuecraft-installed-v3-gsaq0c6h",
+  "consumer_cwd": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer",
+  "evidence_root": "/Users/nazeeh/Documents/ChatGPT/Continue/work/queuecraft-completion/evidence/completion-installed-consumer-v3",
+  "source_files": [
+    {
+      "path": "queuecraft/sdk.py",
+      "sha256": "c42b51c54167d565758b7c1308b524119fea9cc931b3563d24d8c7ca74f1ad50",
+      "bytes": 14865
+    },
+    {
+      "path": "queuecraft/prospective.py",
+      "sha256": "3d685052be7d8974bd9b9583d40b97dcd158ba3045bc650cb77be0d20a4fbe8f",
+      "bytes": 34540
+    },
+    {
+      "path": "queuecraft/__init__.py",
+      "sha256": "c40c24659ae723f459c991a6f225b1802d7d30eaf2d17d9121abbec073f30fcd",
+      "bytes": 282
+    },
+    {
+      "path": "queuecraft/capture.py",
+      "sha256": "9a3551ca1ac782a594492386c7cafa0e070744cfae632ed0ffd3f74b808c5663",
+      "bytes": 2540
+    },
+    {
+      "path": "queuecraft/cli.py",
+      "sha256": "a54292584e2c55bcd4e77dec6ddf4f4a20d600e55d1d70c011d5c8b3196ba6bb",
+      "bytes": 7591
+    },
+    {
+      "path": "queuecraft/reference.py",
+      "sha256": "e88099e77a1d3b2c66b1eeba67e1a03859a1caa563c934257ab2ba17611cc79a",
+      "bytes": 11789
+    },
+    {
+      "path": "queuecraft/py.typed",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "queuecraft/native-source.json",
+      "sha256": "51ff20d4e3e6b1a700e83775e792c03a8f0b9c5952f289a80350f13d31ba40d4",
+      "bytes": 339
+    },
+    {
+      "path": "queuecraft/reconcile.sql",
+      "sha256": "e92949b3c22c302464cf45ae0ed0d17e8cd3aca3a429fa123a93616526c9f493",
+      "bytes": 4927
+    },
+    {
+      "path": "queuecraft/reconcile.py",
+      "sha256": "f99b31b6bc1243ac2469af11e124bb7467aee73ad8eb95b980b9d0040e4f39ec",
+      "bytes": 2277
+    },
+    {
+      "path": "queuecraft/policies.py",
+      "sha256": "4569a4dc137dd8937884ce309231b6c2c195581925dce88ea60fa7d268d50a8e",
+      "bytes": 14213
+    },
+    {
+      "path": "queuecraft/__main__.py",
+      "sha256": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+      "bytes": 48
+    },
+    {
+      "path": "queuecraft/report.py",
+      "sha256": "2340730cb891e4d6aa7277597acb20926a80357a47a1ad722fc6f4ddd97a51e9",
+      "bytes": 9992
+    },
+    {
+      "path": "queuecraft/data.py",
+      "sha256": "36d4dd397b80897cf42142ffb791ac22c2bf682fd024efd8b5ab2e20c4edcf63",
+      "bytes": 8732
+    },
+    {
+      "path": "queuecraft/study.py",
+      "sha256": "2691b408dccbd1e82870463a58b4d4c295f9526980dcbd1ec54db481da249240",
+      "bytes": 1071
+    },
+    {
+      "path": "include/queuecraft/engine.hpp",
+      "sha256": "12668f1d5407376ea94d3d85b216769a2a581a5ddfe40adb1120f9b2a5d6c4cb",
+      "bytes": 3798
+    },
+    {
+      "path": "native/module.cpp",
+      "sha256": "095dc3f80cd34666112c6da6105d81ad3c103ce45fec23f1f1f3fe427bc8f703",
+      "bytes": 8722
+    },
+    {
+      "path": "src/engine.cpp",
+      "sha256": "dc9240ada4e7a58259974d215e1076ff1812ed7b55a00dd6526e631b202be78f",
+      "bytes": 15555
+    },
+    {
+      "path": "src/main.cpp",
+      "sha256": "4b9f06c986d8736ea6bec2dd82955655d1b0ebb898881ad8606ccf2cc0b584eb",
+      "bytes": 3781
+    },
+    {
+      "path": "setup.py",
+      "sha256": "36e43ff213bacbd918049109170f8de5a06771cfcb2d01ea46f2c7c180cad30a",
+      "bytes": 817
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "5071d7e34f3751ec39331e6178382da500b669ab358b8803f0ca0f7041df59c9",
+      "bytes": 680
+    },
+    {
+      "path": "MANIFEST.in",
+      "sha256": "bc0556450d40e89234fa52eb9400848ae676e58880741fc26228a09600b418a1",
+      "bytes": 636
+    },
+    {
+      "path": "README.md",
+      "sha256": "198d35f39feb88de33ca0d16ce652fcbce315f3fc0e860ecce2b672369acf23a",
+      "bytes": 8130
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "521fa8840fca1128d4be6254008a4f5c3255c6848e2df0983a79f38a1f4281cd",
+      "bytes": 1066
+    },
+    {
+      "path": "NOTICE.md",
+      "sha256": "62a1ba0f1816da3ecf533ffd3581f3ca42e2abfbae7f8cc31dc4904ea901f781",
+      "bytes": 1887
+    },
+    {
+      "path": "examples/strategy.py",
+      "sha256": "ffb9513797c18454f748e369e10cb24300d621b21cd56525090b17f34c43a50f",
+      "bytes": 1033
+    },
+    {
+      "path": "examples/recorded.csv",
+      "sha256": "c02cc174470b77a7ca93464048469e63e44741d6141b25a9de49dce54421fe25",
+      "bytes": 7812
+    },
+    {
+      "path": "examples/recorded-provenance.json",
+      "sha256": "b3189187a39841eacad76edacfc720021e745f5de9a8db599a5abce6c592a2d9",
+      "bytes": 654
+    }
+  ],
+  "environment_policy": "fresh venvs, sanitized PATH-only subprocess environment, pip isolated and no cache, no PYTHONPATH; no copied binary extension",
+  "commands": [
+    {
+      "name": "01-build-venv",
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "-m",
+        "venv",
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/build-venv"
+      ],
+      "cwd": "/private/tmp/queuecraft-installed-v3-gsaq0c6h",
+      "returncode": 0
+    },
+    {
+      "name": "02-build-dependencies",
+      "argv": [
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/build-venv/bin/python",
+        "-m",
+        "pip",
+        "--isolated",
+        "--no-cache-dir",
+        "install",
+        "setuptools==80.9.0",
+        "wheel==0.45.1"
+      ],
+      "cwd": "/private/tmp/queuecraft-installed-v3-gsaq0c6h",
+      "returncode": 1
+    },
+    {
+      "name": "07-approved-public-dependency-download",
+      "argv": [
+        "env",
+        "-i",
+        "PATH=/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Python.framework/Versions/3.14/bin",
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/build-venv/bin/python",
+        "-m",
+        "pip",
+        "--isolated",
+        "--no-cache-dir",
+        "download",
+        "--only-binary=:all:",
+        "--no-deps",
+        "--dest",
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/dependency-wheels",
+        "setuptools==80.9.0",
+        "wheel==0.45.1",
+        "duckdb==1.4.3"
+      ],
+      "cwd": "/private/tmp/queuecraft-installed-v3-gsaq0c6h",
+      "returncode": 0,
+      "permission": "narrow require_escalated network access approved; original sandbox DNS failure retained"
+    },
+    {
+      "name": "08-build-dependencies-offline",
+      "argv": [
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/build-venv/bin/python",
+        "-m",
+        "pip",
+        "--isolated",
+        "--no-cache-dir",
+        "install",
+        "--no-index",
+        "--find-links",
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/dependency-wheels",
+        "setuptools==80.9.0",
+        "wheel==0.45.1"
+      ],
+      "cwd": "/private/tmp/queuecraft-installed-v3-gsaq0c6h",
+      "returncode": 0
+    },
+    {
+      "name": "09-build-wheel",
+      "argv": [
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/build-venv/bin/python",
+        "-m",
+        "pip",
+        "--isolated",
+        "--no-cache-dir",
+        "wheel",
+        "--no-build-isolation",
+        "--no-deps",
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/build-source",
+        "--wheel-dir",
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/wheels"
+      ],
+      "cwd": "/private/tmp/queuecraft-installed-v3-gsaq0c6h",
+      "returncode": 0
+    },
+    {
+      "name": "10-consumer-venv",
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "-m",
+        "venv",
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-venv"
+      ],
+      "cwd": "/private/tmp/queuecraft-installed-v3-gsaq0c6h",
+      "returncode": 0
+    },
+    {
+      "name": "11-install-wheel",
+      "argv": [
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-venv/bin/python",
+        "-m",
+        "pip",
+        "--isolated",
+        "--no-cache-dir",
+        "install",
+        "--no-index",
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/wheels/queuecraft-0.1.0-cp314-cp314-macosx_11_0_universal2.whl"
+      ],
+      "cwd": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer",
+      "returncode": 0
+    },
+    {
+      "name": "12-install-sql-dependency-offline",
+      "argv": [
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-venv/bin/python",
+        "-m",
+        "pip",
+        "--isolated",
+        "--no-cache-dir",
+        "install",
+        "--no-index",
+        "--find-links",
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/dependency-wheels",
+        "duckdb==1.4.3"
+      ],
+      "cwd": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer",
+      "returncode": 0
+    },
+    {
+      "name": "13-correct-wheel-tag",
+      "argv": [
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/build-venv/bin/python",
+        "-m",
+        "wheel",
+        "tags",
+        "--platform-tag",
+        "macosx_11_0_arm64",
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/wheels/queuecraft-0.1.0-cp314-cp314-macosx_11_0_universal2.whl"
+      ],
+      "cwd": "/private/tmp/queuecraft-installed-v3-gsaq0c6h",
+      "returncode": 0
+    },
+    {
+      "name": "14-arm64-consumer-venv",
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "-m",
+        "venv",
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-arm64-venv"
+      ],
+      "cwd": "/private/tmp/queuecraft-installed-v3-gsaq0c6h",
+      "returncode": 0
+    },
+    {
+      "name": "15-install-arm64-wheel",
+      "argv": [
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-arm64-venv/bin/python",
+        "-m",
+        "pip",
+        "--isolated",
+        "--no-cache-dir",
+        "install",
+        "--no-index",
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/wheels/queuecraft-0.1.0-cp314-cp314-macosx_11_0_arm64.whl"
+      ],
+      "cwd": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer",
+      "returncode": 0
+    },
+    {
+      "name": "16-arm64-sql-dependency",
+      "argv": [
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-arm64-venv/bin/python",
+        "-m",
+        "pip",
+        "--isolated",
+        "--no-cache-dir",
+        "install",
+        "--no-index",
+        "--find-links",
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/dependency-wheels",
+        "duckdb==1.4.3"
+      ],
+      "cwd": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer",
+      "returncode": 0
+    },
+    {
+      "name": "17-install-audit",
+      "argv": [
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-arm64-venv/bin/python",
+        "-I",
+        "audit_install.py"
+      ],
+      "cwd": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer",
+      "returncode": 0,
+      "expected_returncode": 0
+    },
+    {
+      "name": "18-wheel-architecture",
+      "argv": [
+        "/usr/bin/file",
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-arm64-venv/lib/python3.14/site-packages/queuecraft/_native.cpython-314-darwin.so"
+      ],
+      "cwd": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer",
+      "returncode": 0,
+      "expected_returncode": 0
+    },
+    {
+      "name": "19-cli-version",
+      "argv": [
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-arm64-venv/bin/queuecraft",
+        "--version"
+      ],
+      "cwd": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer",
+      "returncode": 0,
+      "expected_returncode": 0
+    },
+    {
+      "name": "20-external-strategy-25",
+      "argv": [
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-arm64-venv/bin/python",
+        "-I",
+        "strategy.py",
+        "input.csv",
+        "25"
+      ],
+      "cwd": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer",
+      "returncode": 0,
+      "expected_returncode": 0
+    },
+    {
+      "name": "21-external-strategy-50",
+      "argv": [
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-arm64-venv/bin/python",
+        "-I",
+        "strategy.py",
+        "input.csv",
+        "50"
+      ],
+      "cwd": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer",
+      "returncode": 0,
+      "expected_returncode": 0
+    },
+    {
+      "name": "22-cli-validate",
+      "argv": [
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-arm64-venv/bin/queuecraft",
+        "validate",
+        "input.csv"
+      ],
+      "cwd": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer",
+      "returncode": 0,
+      "expected_returncode": 0
+    },
+    {
+      "name": "23-missing-cli-boundary",
+      "argv": [
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-arm64-venv/bin/queuecraft",
+        "simulate",
+        "input.csv",
+        "--size",
+        "25",
+        "--out",
+        "must-not-exist"
+      ],
+      "cwd": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer",
+      "returncode": 2,
+      "expected_returncode": 2
+    },
+    {
+      "name": "24-fresh-order-25",
+      "argv": [
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-arm64-venv/bin/queuecraft",
+        "simulate",
+        "input.csv",
+        "--size",
+        "25",
+        "--policy",
+        "twap",
+        "--recording-metadata",
+        "recording-metadata.json",
+        "--out",
+        "order-25"
+      ],
+      "cwd": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer",
+      "returncode": 0,
+      "expected_returncode": 0
+    },
+    {
+      "name": "25-verify-order-25",
+      "argv": [
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-arm64-venv/bin/queuecraft",
+        "verify",
+        "order-25"
+      ],
+      "cwd": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer",
+      "returncode": 0,
+      "expected_returncode": 0
+    },
+    {
+      "name": "26-changed-order-50",
+      "argv": [
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-arm64-venv/bin/queuecraft",
+        "simulate",
+        "input.csv",
+        "--size",
+        "50",
+        "--policy",
+        "twap",
+        "--recording-metadata",
+        "recording-metadata.json",
+        "--out",
+        "order-50"
+      ],
+      "cwd": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer",
+      "returncode": 0,
+      "expected_returncode": 0
+    },
+    {
+      "name": "27-verify-order-50",
+      "argv": [
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-arm64-venv/bin/queuecraft",
+        "verify",
+        "order-50"
+      ],
+      "cwd": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer",
+      "returncode": 0,
+      "expected_returncode": 0
+    },
+    {
+      "name": "28-recorded-book-replay",
+      "argv": [
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-arm64-venv/bin/queuecraft",
+        "replay",
+        "input.csv",
+        "--out",
+        "books.csv"
+      ],
+      "cwd": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer",
+      "returncode": 0,
+      "expected_returncode": 0
+    },
+    {
+      "name": "29-refresh-notice-wheel",
+      "argv": [
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/build-venv/bin/python",
+        "setup.py",
+        "bdist_wheel",
+        "--plat-name",
+        "macosx_11_0_arm64",
+        "--dist-dir",
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/final-wheels"
+      ],
+      "cwd": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/build-source",
+      "returncode": 0
+    },
+    {
+      "name": "30-final-consumer-venv",
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "-m",
+        "venv",
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-final-venv"
+      ],
+      "cwd": "/private/tmp/queuecraft-installed-v3-gsaq0c6h",
+      "returncode": 0
+    },
+    {
+      "name": "31-install-final-wheel",
+      "argv": [
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-final-venv/bin/python",
+        "-m",
+        "pip",
+        "--isolated",
+        "--no-cache-dir",
+        "install",
+        "--no-index",
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/final-wheels/queuecraft-0.1.0-cp314-cp314-macosx_11_0_arm64.whl"
+      ],
+      "cwd": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer",
+      "returncode": 0
+    },
+    {
+      "name": "32-final-sql-dependency",
+      "argv": [
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-final-venv/bin/python",
+        "-m",
+        "pip",
+        "--isolated",
+        "--no-cache-dir",
+        "install",
+        "--no-index",
+        "--find-links",
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/dependency-wheels",
+        "duckdb==1.4.3"
+      ],
+      "cwd": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer",
+      "returncode": 0
+    },
+    {
+      "name": "33-final-install-audit",
+      "argv": [
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-final-venv/bin/python",
+        "-I",
+        "audit_install.py"
+      ],
+      "cwd": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer",
+      "returncode": 0,
+      "expected_returncode": 0
+    },
+    {
+      "name": "34-final-external-strategy-25",
+      "argv": [
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-final-venv/bin/python",
+        "-I",
+        "strategy.py",
+        "input.csv",
+        "25"
+      ],
+      "cwd": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer",
+      "returncode": 0,
+      "expected_returncode": 0
+    },
+    {
+      "name": "35-final-external-strategy-50",
+      "argv": [
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-final-venv/bin/python",
+        "-I",
+        "strategy.py",
+        "input.csv",
+        "50"
+      ],
+      "cwd": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer",
+      "returncode": 0,
+      "expected_returncode": 0
+    },
+    {
+      "name": "36-final-order-25",
+      "argv": [
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-final-venv/bin/queuecraft",
+        "simulate",
+        "input.csv",
+        "--size",
+        "25",
+        "--policy",
+        "twap",
+        "--recording-metadata",
+        "recording-metadata.json",
+        "--out",
+        "current-order-25"
+      ],
+      "cwd": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer",
+      "returncode": 0,
+      "expected_returncode": 0
+    },
+    {
+      "name": "37-final-verify-order-25",
+      "argv": [
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-final-venv/bin/queuecraft",
+        "verify",
+        "current-order-25"
+      ],
+      "cwd": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer",
+      "returncode": 0,
+      "expected_returncode": 0
+    },
+    {
+      "name": "38-final-order-50",
+      "argv": [
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-final-venv/bin/queuecraft",
+        "simulate",
+        "input.csv",
+        "--size",
+        "50",
+        "--policy",
+        "twap",
+        "--recording-metadata",
+        "recording-metadata.json",
+        "--out",
+        "current-order-50"
+      ],
+      "cwd": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer",
+      "returncode": 0,
+      "expected_returncode": 0
+    },
+    {
+      "name": "39-final-verify-order-50",
+      "argv": [
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-final-venv/bin/queuecraft",
+        "verify",
+        "current-order-50"
+      ],
+      "cwd": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer",
+      "returncode": 0,
+      "expected_returncode": 0
+    },
+    {
+      "name": "40-final-missing-boundary",
+      "argv": [
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-final-venv/bin/queuecraft",
+        "simulate",
+        "input.csv",
+        "--size",
+        "25",
+        "--out",
+        "must-not-exist-final"
+      ],
+      "cwd": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer",
+      "returncode": 2,
+      "expected_returncode": 2
+    },
+    {
+      "name": "41-genuine-wall-speed-invariance",
+      "argv": [
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-final-venv/bin/python",
+        "-I",
+        "wall_speed.py"
+      ],
+      "cwd": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer",
+      "returncode": 0,
+      "expected_returncode": 0
+    }
+  ],
+  "dependency_artifacts": [
+    {
+      "file": "duckdb-1.4.3-cp314-cp314-macosx_11_0_arm64.whl",
+      "sha256": "130c6760f6c573f9c9fe9aba56adba0fab48811a4871b7b8fd667318b4a3e8da",
+      "bytes": 13748905,
+      "source": "public PyPI via isolated no-cache pip download"
+    },
+    {
+      "file": "setuptools-80.9.0-py3-none-any.whl",
+      "sha256": "062d34222ad13e0cc312a4c02d73f059e86a4acbfbdea8f8f76b28c99f306922",
+      "bytes": 1201486,
+      "source": "public PyPI via isolated no-cache pip download"
+    },
+    {
+      "file": "wheel-0.45.1-py3-none-any.whl",
+      "sha256": "708e7481cc80179af0e556bbf0cc00b8444c7321e2700b8d8580231d13017248",
+      "bytes": 72494,
+      "source": "public PyPI via isolated no-cache pip download"
+    }
+  ],
+  "wheel": {
+    "file": "final-wheel/queuecraft-0.1.0-cp314-cp314-macosx_11_0_arm64.whl",
+    "sha256": "8a71161017f270f59211f32ef38976926c67bd30640697608d0e657fe2bad4cf",
+    "bytes": 67728,
+    "platform": "macosx_11_0_arm64",
+    "native_binary_sha256": "e70ca3f916be73545aeb125bfa7268fffa7c88b9997a197226b66b06dac76446",
+    "notice_sha256": "07d4e5a9e4df424af483801beab62516530347d02f626421132b514fbbaf25a4",
+    "source_build": "fresh native source build09, metadata-only bdist_wheel refresh29 with explicitcorrect platform; identical rebuilt native bytes"
+  },
+  "superseded_wheel": {
+    "file": "queuecraft-0.1.0-cp314-cp314-macosx_11_0_universal2.whl",
+    "sha256": "68f5b94ff27782c050d1b25605ae7ca316d8ecc6566a8fba22ba619d1a225485",
+    "bytes": 67732,
+    "reason": "universal host Python emits universal2 wheel metadata although ARCHFLAGS=-arch arm64 compiles only arm64; actual file/lipo verified arm64"
+  },
+  "consumer_venv": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-final-venv",
+  "notice_refresh": {
+    "reason": "owner amended whitespace during initial test; source/package/native code unchanged",
+    "old_sha256": "62a1ba0f1816da3ecf533ffd3581f3ca42e2abfbae7f8cc31dc4904ea901f781",
+    "current_sha256": "07d4e5a9e4df424af483801beab62516530347d02f626421132b514fbbaf25a4"
+  },
+  "prior_notice_wheel": {
+    "file": "queuecraft-0.1.0-cp314-cp314-macosx_11_0_arm64.whl",
+    "sha256": "babd4f9407f6706c15c6c88ec2b0b2b42f5c38eadfd823ac40f48b33699896c5",
+    "bytes": 67727,
+    "platform": "macosx_11_0_arm64",
+    "tag_correction": "wheel tags preserves same rebuilt native binary and source package, corrects WHEEL tag and RECORD; original retained"
+  },
+  "consumer_results": [
+    {
+      "requested_lots": 25,
+      "external_strategy": {
+        "requested": 25,
+        "filled": 25,
+        "cash": -13380,
+        "shortfall2": 2010,
+        "trace": [
+          {
+            "price": 500,
+            "quantity": 1,
+            "notional": 500,
+            "fee": 0,
+            "fill_id": 1,
+            "order_id": 1,
+            "event": 0,
+            "exchange_ns": -1,
+            "arrival_ns": 1787475903000000000,
+            "recorded_receive_ns": 1787475903000000000,
+            "side": "buy"
+          },
+          {
+            "price": 500,
+            "quantity": 1,
+            "notional": 500,
+            "fee": 0,
+            "fill_id": 2,
+            "order_id": 2,
+            "event": 0,
+            "exchange_ns": -1,
+            "arrival_ns": 1787475904000000000,
+            "recorded_receive_ns": 1787475903000000000,
+            "side": "buy"
+          },
+          {
+            "price": 500,
+            "quantity": 1,
+            "notional": 500,
+            "fee": 0,
+            "fill_id": 3,
+            "order_id": 3,
+            "event": 0,
+            "exchange_ns": -1,
+            "arrival_ns": 1787475905000000000,
+            "recorded_receive_ns": 1787475903000000000,
+            "side": "buy"
+          },
+          {
+            "price": 540,
+            "quantity": 22,
+            "notional": 11880,
+            "fee": 0,
+            "fill_id": 4,
+            "order_id": 4,
+            "event": 1,
+            "exchange_ns": -1,
+            "arrival_ns": 1787475908000000000,
+            "recorded_receive_ns": 1787475908000000000,
+            "side": "buy"
+          }
+        ]
+      },
+      "cli_filled_lots": 25,
+      "cli_unfilled_lots": 0,
+      "cli_cash_tick_lots": -12980,
+      "cli_shortfall2": 1210,
+      "decision_count": 6,
+      "order_count": 4,
+      "fill_count": 4,
+      "ledger_count": 4,
+      "recorded_book_states": 3,
+      "result_sha256": "eba737f4a4c6d47340b7f6f43fe4c3e86f5e1d36323a6cbb824edbab7f9927dd",
+      "config_sha256": "1c9abed84cd098407ec9ccb7e777bf197a43bee6f3d49e9176492b9bcab67b29",
+      "sql": {
+        "engine": "DuckDB",
+        "version": "1.4.3",
+        "transitions": 4,
+        "fills": 4,
+        "violations": []
+      }
+    },
+    {
+      "requested_lots": 50,
+      "external_strategy": {
+        "requested": 50,
+        "filled": 50,
+        "cash": -26880,
+        "shortfall2": 4260,
+        "trace": [
+          {
+            "price": 500,
+            "quantity": 1,
+            "notional": 500,
+            "fee": 0,
+            "fill_id": 1,
+            "order_id": 1,
+            "event": 0,
+            "exchange_ns": -1,
+            "arrival_ns": 1787475903000000000,
+            "recorded_receive_ns": 1787475903000000000,
+            "side": "buy"
+          },
+          {
+            "price": 500,
+            "quantity": 1,
+            "notional": 500,
+            "fee": 0,
+            "fill_id": 2,
+            "order_id": 2,
+            "event": 0,
+            "exchange_ns": -1,
+            "arrival_ns": 1787475904000000000,
+            "recorded_receive_ns": 1787475903000000000,
+            "side": "buy"
+          },
+          {
+            "price": 500,
+            "quantity": 1,
+            "notional": 500,
+            "fee": 0,
+            "fill_id": 3,
+            "order_id": 3,
+            "event": 0,
+            "exchange_ns": -1,
+            "arrival_ns": 1787475905000000000,
+            "recorded_receive_ns": 1787475903000000000,
+            "side": "buy"
+          },
+          {
+            "price": 540,
+            "quantity": 47,
+            "notional": 25380,
+            "fee": 0,
+            "fill_id": 4,
+            "order_id": 4,
+            "event": 1,
+            "exchange_ns": -1,
+            "arrival_ns": 1787475908000000000,
+            "recorded_receive_ns": 1787475908000000000,
+            "side": "buy"
+          }
+        ]
+      },
+      "cli_filled_lots": 50,
+      "cli_unfilled_lots": 0,
+      "cli_cash_tick_lots": -26000,
+      "cli_shortfall2": 2500,
+      "decision_count": 6,
+      "order_count": 4,
+      "fill_count": 4,
+      "ledger_count": 4,
+      "recorded_book_states": 3,
+      "result_sha256": "8036092f9aa2e71411a713a3ff6d0fb9d2b2551c0911b4f989ac866b5836200e",
+      "config_sha256": "d4f9312b5b34e81ad130188746f66736907a6f1dc821bc739d9990b45cdf78df",
+      "sql": {
+        "engine": "DuckDB",
+        "version": "1.4.3",
+        "transitions": 4,
+        "fills": 4,
+        "violations": []
+      }
+    }
+  ],
+  "final_source_files": [
+    {
+      "path": "queuecraft/sdk.py",
+      "sha256": "c42b51c54167d565758b7c1308b524119fea9cc931b3563d24d8c7ca74f1ad50",
+      "bytes": 14865
+    },
+    {
+      "path": "queuecraft/prospective.py",
+      "sha256": "3d685052be7d8974bd9b9583d40b97dcd158ba3045bc650cb77be0d20a4fbe8f",
+      "bytes": 34540
+    },
+    {
+      "path": "queuecraft/__init__.py",
+      "sha256": "c40c24659ae723f459c991a6f225b1802d7d30eaf2d17d9121abbec073f30fcd",
+      "bytes": 282
+    },
+    {
+      "path": "queuecraft/capture.py",
+      "sha256": "9a3551ca1ac782a594492386c7cafa0e070744cfae632ed0ffd3f74b808c5663",
+      "bytes": 2540
+    },
+    {
+      "path": "queuecraft/cli.py",
+      "sha256": "a54292584e2c55bcd4e77dec6ddf4f4a20d600e55d1d70c011d5c8b3196ba6bb",
+      "bytes": 7591
+    },
+    {
+      "path": "queuecraft/reference.py",
+      "sha256": "e88099e77a1d3b2c66b1eeba67e1a03859a1caa563c934257ab2ba17611cc79a",
+      "bytes": 11789
+    },
+    {
+      "path": "queuecraft/py.typed",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "queuecraft/native-source.json",
+      "sha256": "51ff20d4e3e6b1a700e83775e792c03a8f0b9c5952f289a80350f13d31ba40d4",
+      "bytes": 339
+    },
+    {
+      "path": "queuecraft/reconcile.sql",
+      "sha256": "e92949b3c22c302464cf45ae0ed0d17e8cd3aca3a429fa123a93616526c9f493",
+      "bytes": 4927
+    },
+    {
+      "path": "queuecraft/reconcile.py",
+      "sha256": "f99b31b6bc1243ac2469af11e124bb7467aee73ad8eb95b980b9d0040e4f39ec",
+      "bytes": 2277
+    },
+    {
+      "path": "queuecraft/policies.py",
+      "sha256": "4569a4dc137dd8937884ce309231b6c2c195581925dce88ea60fa7d268d50a8e",
+      "bytes": 14213
+    },
+    {
+      "path": "queuecraft/__main__.py",
+      "sha256": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+      "bytes": 48
+    },
+    {
+      "path": "queuecraft/report.py",
+      "sha256": "2340730cb891e4d6aa7277597acb20926a80357a47a1ad722fc6f4ddd97a51e9",
+      "bytes": 9992
+    },
+    {
+      "path": "queuecraft/data.py",
+      "sha256": "36d4dd397b80897cf42142ffb791ac22c2bf682fd024efd8b5ab2e20c4edcf63",
+      "bytes": 8732
+    },
+    {
+      "path": "queuecraft/study.py",
+      "sha256": "2691b408dccbd1e82870463a58b4d4c295f9526980dcbd1ec54db481da249240",
+      "bytes": 1071
+    },
+    {
+      "path": "include/queuecraft/engine.hpp",
+      "sha256": "12668f1d5407376ea94d3d85b216769a2a581a5ddfe40adb1120f9b2a5d6c4cb",
+      "bytes": 3798
+    },
+    {
+      "path": "native/module.cpp",
+      "sha256": "095dc3f80cd34666112c6da6105d81ad3c103ce45fec23f1f1f3fe427bc8f703",
+      "bytes": 8722
+    },
+    {
+      "path": "src/engine.cpp",
+      "sha256": "dc9240ada4e7a58259974d215e1076ff1812ed7b55a00dd6526e631b202be78f",
+      "bytes": 15555
+    },
+    {
+      "path": "src/main.cpp",
+      "sha256": "4b9f06c986d8736ea6bec2dd82955655d1b0ebb898881ad8606ccf2cc0b584eb",
+      "bytes": 3781
+    },
+    {
+      "path": "setup.py",
+      "sha256": "36e43ff213bacbd918049109170f8de5a06771cfcb2d01ea46f2c7c180cad30a",
+      "bytes": 817
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "5071d7e34f3751ec39331e6178382da500b669ab358b8803f0ca0f7041df59c9",
+      "bytes": 680
+    },
+    {
+      "path": "MANIFEST.in",
+      "sha256": "bc0556450d40e89234fa52eb9400848ae676e58880741fc26228a09600b418a1",
+      "bytes": 636
+    },
+    {
+      "path": "README.md",
+      "sha256": "198d35f39feb88de33ca0d16ce652fcbce315f3fc0e860ecce2b672369acf23a",
+      "bytes": 8130
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "521fa8840fca1128d4be6254008a4f5c3255c6848e2df0983a79f38a1f4281cd",
+      "bytes": 1066
+    },
+    {
+      "path": "NOTICE.md",
+      "sha256": "07d4e5a9e4df424af483801beab62516530347d02f626421132b514fbbaf25a4",
+      "bytes": 1895
+    },
+    {
+      "path": "examples/strategy.py",
+      "sha256": "ffb9513797c18454f748e369e10cb24300d621b21cd56525090b17f34c43a50f",
+      "bytes": 1033
+    },
+    {
+      "path": "examples/recorded.csv",
+      "sha256": "c02cc174470b77a7ca93464048469e63e44741d6141b25a9de49dce54421fe25",
+      "bytes": 7812
+    },
+    {
+      "path": "examples/recorded-provenance.json",
+      "sha256": "b3189187a39841eacad76edacfc720021e745f5de9a8db599a5abce6c592a2d9",
+      "bytes": 654
+    }
+  ],
+  "source_document_changes_during_trial": [
+    {
+      "path": "MANIFEST.in",
+      "captured_sha256": "bc0556450d40e89234fa52eb9400848ae676e58880741fc26228a09600b418a1",
+      "current_sha256": "5769abd3a7069203078dda2bbcbbf4f4b5a91e72a54c0012ff1b2bb3ad770719"
+    }
+  ],
+  "critical_package_or_native_source_changes": [],
+  "independent_install_audit": {
+    "python": "3.14.7 (v3.14.7:823f0323ee6, Aug  5 2026, 07:07:01) [Clang 21.0.0 (clang-2100.1.1.101)]",
+    "prefix": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-final-venv",
+    "cwd": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer",
+    "user_site_enabled": false,
+    "isolated": 1,
+    "sys_path": [
+      "/Library/Frameworks/Python.framework/Versions/3.14/lib/python314.zip",
+      "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14",
+      "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/lib-dynload",
+      "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-final-venv/lib/python3.14/site-packages"
+    ],
+    "loaded_queuecraft_modules": {
+      "queuecraft.sdk": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-final-venv/lib/python3.14/site-packages/queuecraft/sdk.py",
+      "queuecraft": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-final-venv/lib/python3.14/site-packages/queuecraft/__init__.py",
+      "queuecraft._native": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-final-venv/lib/python3.14/site-packages/queuecraft/_native.cpython-314-darwin.so",
+      "queuecraft.policies": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-final-venv/lib/python3.14/site-packages/queuecraft/policies.py",
+      "queuecraft.reconcile": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-final-venv/lib/python3.14/site-packages/queuecraft/reconcile.py",
+      "queuecraft.report": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-final-venv/lib/python3.14/site-packages/queuecraft/report.py",
+      "queuecraft.reference": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-final-venv/lib/python3.14/site-packages/queuecraft/reference.py",
+      "queuecraft.prospective": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-final-venv/lib/python3.14/site-packages/queuecraft/prospective.py",
+      "queuecraft.capture": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-final-venv/lib/python3.14/site-packages/queuecraft/capture.py"
+    },
+    "package_source_sha256": {
+      "sdk.py": "c42b51c54167d565758b7c1308b524119fea9cc931b3563d24d8c7ca74f1ad50",
+      "prospective.py": "3d685052be7d8974bd9b9583d40b97dcd158ba3045bc650cb77be0d20a4fbe8f",
+      "__init__.py": "c40c24659ae723f459c991a6f225b1802d7d30eaf2d17d9121abbec073f30fcd",
+      "capture.py": "9a3551ca1ac782a594492386c7cafa0e070744cfae632ed0ffd3f74b808c5663",
+      "cli.py": "a54292584e2c55bcd4e77dec6ddf4f4a20d600e55d1d70c011d5c8b3196ba6bb",
+      "reference.py": "e88099e77a1d3b2c66b1eeba67e1a03859a1caa563c934257ab2ba17611cc79a",
+      "py.typed": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "native-source.json": "51ff20d4e3e6b1a700e83775e792c03a8f0b9c5952f289a80350f13d31ba40d4",
+      "reconcile.sql": "e92949b3c22c302464cf45ae0ed0d17e8cd3aca3a429fa123a93616526c9f493",
+      "reconcile.py": "f99b31b6bc1243ac2469af11e124bb7467aee73ad8eb95b980b9d0040e4f39ec",
+      "policies.py": "4569a4dc137dd8937884ce309231b6c2c195581925dce88ea60fa7d268d50a8e",
+      "__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+      "report.py": "2340730cb891e4d6aa7277597acb20926a80357a47a1ad722fc6f4ddd97a51e9",
+      "data.py": "36d4dd397b80897cf42142ffb791ac22c2bf682fd024efd8b5ab2e20c4edcf63",
+      "study.py": "2691b408dccbd1e82870463a58b4d4c295f9526980dcbd1ec54db481da249240"
+    },
+    "native_binary_sha256": "e70ca3f916be73545aeb125bfa7268fffa7c88b9997a197226b66b06dac76446",
+    "native_manifest": {
+      "schema_version": 1,
+      "source_sha256": {
+        "include/queuecraft/engine.hpp": "12668f1d5407376ea94d3d85b216769a2a581a5ddfe40adb1120f9b2a5d6c4cb",
+        "src/engine.cpp": "dc9240ada4e7a58259974d215e1076ff1812ed7b55a00dd6526e631b202be78f",
+        "native/module.cpp": "095dc3f80cd34666112c6da6105d81ad3c103ce45fec23f1f1f3fe427bc8f703"
+      }
+    },
+    "run_signature": "(events: 'Iterable[Event]', intent: 'Intent', strategy: 'Strategy', scenario: 'Scenario' = Scenario(latency_ns=0, observation_delay_ns=0, ack_delay_ns=0, liquidity_ppm=1000000, fee_ppm=0, max_staleness_ns=2000000000, tie='recorded_first', missed_decision_every=0, cancel_latency_ns=None, policy_duration_ns=0, decision_budget_ns=1000000000), *, recording_end_ns: 'int', benchmark2: 'int | None' = None, trace_books: 'bool' = False) -> 'Simulation'",
+    "missing_sdk_boundary_error": "run() missing 1 required keyword-only argument: 'recording_end_ns'"
+  },
+  "wall_speed_invariance": {
+    "status": "pass",
+    "input_sha256": "c02cc174470b77a7ca93464048469e63e44741d6141b25a9de49dce54421fe25",
+    "recording_end_ns": 1787475934000000000,
+    "scenario": {
+      "latency_ns": 50000000,
+      "observation_delay_ns": 0,
+      "ack_delay_ns": 100000000,
+      "liquidity_ppm": 1000000,
+      "fee_ppm": 0,
+      "max_staleness_ns": 2000000000,
+      "tie": "recorded_first",
+      "missed_decision_every": 0,
+      "cancel_latency_ns": null,
+      "policy_duration_ns": 5000000,
+      "decision_budget_ns": 1000000000
+    },
+    "artificial_callback_sleep_seconds": 0.02,
+    "delayed_callbacks": 4,
+    "wall_clock_measurement_functions": "perf_counter and perf_counter_ns patched to raise",
+    "full_simulation_equal": true,
+    "complete_simulation_sha256": "a21b58d6c6d007972dc3008150a318b0a7302a8fdae1e262e790ba9f5a199304",
+    "decisions": 6,
+    "orders": 4,
+    "fills": 2,
+    "ledger_steps": 4,
+    "book_states": 3
+  },
+  "wheel_metadata": "Wheel-Version: 1.0\nGenerator: setuptools (80.9.0)\nRoot-Is-Purelib: false\nTag: cp314-cp314-macosx_11_0_arm64\n\n",
+  "limits": [
+    "Local arm64 macOS Python3.14 installation only; no remote CI/public release claim",
+    "Superseded universal2-label and pre-NOTICE-refresh wheels retained as earlier attempts; only final-wheel/ artifact is current",
+    "Initial sandbox PyPI DNS failure retained; narrow approved network access acquired pinned free wheels; installation afterward offline/no-cache",
+    "No source checkout/private cache imports; final consumer runs isolated Python in a separate fresh venv outside source cwd"
+  ],
+  "retained_artifacts": [
+    {
+      "path": "consumer-artifacts/audit_install.py",
+      "sha256": "6d3dd4d1f47cebed04d5f3de1a7b29501da4398e4e30ca65b045b1f0ea62130c",
+      "bytes": 1888
+    },
+    {
+      "path": "consumer-artifacts/books.csv",
+      "sha256": "95bd86280344bc199f515c2d8420917c9ab118e1c16d7ce8512a47e09a321c3a",
+      "bytes": 7813
+    },
+    {
+      "path": "consumer-artifacts/current-order-25/config.json",
+      "sha256": "1c9abed84cd098407ec9ccb7e777bf197a43bee6f3d49e9176492b9bcab67b29",
+      "bytes": 762
+    },
+    {
+      "path": "consumer-artifacts/current-order-25/input.csv",
+      "sha256": "c02cc174470b77a7ca93464048469e63e44741d6141b25a9de49dce54421fe25",
+      "bytes": 7812
+    },
+    {
+      "path": "consumer-artifacts/current-order-25/report.html",
+      "sha256": "3381f1140e3550e1088dea1a6af677906f69fbab5486ea0c1289dc1caa72fdc1",
+      "bytes": 15434
+    },
+    {
+      "path": "consumer-artifacts/current-order-25/result.json",
+      "sha256": "eba737f4a4c6d47340b7f6f43fe4c3e86f5e1d36323a6cbb824edbab7f9927dd",
+      "bytes": 13527
+    },
+    {
+      "path": "consumer-artifacts/current-order-25/sql.json",
+      "sha256": "0c1acd5b24770082b5ecf90686c6d52f2c60b5538c924d34f3a142fb343e2d8b",
+      "bytes": 101
+    },
+    {
+      "path": "consumer-artifacts/current-order-50/config.json",
+      "sha256": "d4f9312b5b34e81ad130188746f66736907a6f1dc821bc739d9990b45cdf78df",
+      "bytes": 762
+    },
+    {
+      "path": "consumer-artifacts/current-order-50/input.csv",
+      "sha256": "c02cc174470b77a7ca93464048469e63e44741d6141b25a9de49dce54421fe25",
+      "bytes": 7812
+    },
+    {
+      "path": "consumer-artifacts/current-order-50/report.html",
+      "sha256": "0d8c211e310fa513c6b256093a0e0f094f9de14635336653200dc58769c05147",
+      "bytes": 15438
+    },
+    {
+      "path": "consumer-artifacts/current-order-50/result.json",
+      "sha256": "8036092f9aa2e71411a713a3ff6d0fb9d2b2551c0911b4f989ac866b5836200e",
+      "bytes": 13531
+    },
+    {
+      "path": "consumer-artifacts/current-order-50/sql.json",
+      "sha256": "0c1acd5b24770082b5ecf90686c6d52f2c60b5538c924d34f3a142fb343e2d8b",
+      "bytes": 101
+    },
+    {
+      "path": "consumer-artifacts/expected-package-hashes.json",
+      "sha256": "0ec44ec5281dc7215bf32cd856be1bd410f05049a4269f855fe017d80d1b4bd0",
+      "bytes": 1269
+    },
+    {
+      "path": "consumer-artifacts/input.csv",
+      "sha256": "c02cc174470b77a7ca93464048469e63e44741d6141b25a9de49dce54421fe25",
+      "bytes": 7812
+    },
+    {
+      "path": "consumer-artifacts/recording-metadata.json",
+      "sha256": "b3189187a39841eacad76edacfc720021e745f5de9a8db599a5abce6c592a2d9",
+      "bytes": 654
+    },
+    {
+      "path": "consumer-artifacts/strategy.py",
+      "sha256": "ffb9513797c18454f748e369e10cb24300d621b21cd56525090b17f34c43a50f",
+      "bytes": 1033
+    },
+    {
+      "path": "consumer-artifacts/wall-speed-baseline.json",
+      "sha256": "a21b58d6c6d007972dc3008150a318b0a7302a8fdae1e262e790ba9f5a199304",
+      "bytes": 12971
+    },
+    {
+      "path": "consumer-artifacts/wall-speed-delayed.json",
+      "sha256": "a21b58d6c6d007972dc3008150a318b0a7302a8fdae1e262e790ba9f5a199304",
+      "bytes": 12971
+    },
+    {
+      "path": "consumer-artifacts/wall_speed.py",
+      "sha256": "2805409ea7086b9a13124d6c383602e1eae3bcc7ed3fa0fe91f675491adcc895",
+      "bytes": 2120
+    }
+  ]
+}

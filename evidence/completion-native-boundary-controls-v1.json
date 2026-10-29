@@ -1,0 +1,73 @@
+{
+  "status": "pass",
+  "recording_end_ns": 2,
+  "order_results_compared": 360,
+  "fixed_boundary_prefix_equal": true,
+  "failure_cases": [
+    {
+      "case": "missing_end",
+      "error": "TypeError"
+    },
+    {
+      "case": "positional_end",
+      "error": "TypeError"
+    },
+    {
+      "case": "negative_end",
+      "error": "ValueError"
+    },
+    {
+      "case": "end_overflow",
+      "error": "OverflowError"
+    },
+    {
+      "case": "event_after_end",
+      "error": "ValueError"
+    },
+    {
+      "case": "truncated_payload",
+      "error": "ValueError"
+    },
+    {
+      "case": "negative_latency",
+      "error": "ValueError"
+    },
+    {
+      "case": "negative_fee",
+      "error": "ValueError"
+    },
+    {
+      "case": "invalid_liquidity",
+      "error": "ValueError"
+    },
+    {
+      "case": "end_type_bool_True",
+      "error": "TypeError"
+    },
+    {
+      "case": "end_type_bool_False",
+      "error": "TypeError"
+    },
+    {
+      "case": "end_type_float_2.0",
+      "error": "TypeError"
+    },
+    {
+      "case": "end_type_str_2",
+      "error": "TypeError"
+    },
+    {
+      "case": "end_type_NoneType_None",
+      "error": "TypeError"
+    },
+    {
+      "case": "end_type_IntegerSubclass_2",
+      "error": "TypeError"
+    },
+    {
+      "case": "arrival_overflow",
+      "error": "OverflowError"
+    }
+  ],
+  "complete_result_sha256": "553dee3a408b268004594482f66b3dcc3e982e701709090d2e1dd1efb7496deb"
+}

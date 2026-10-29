@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "installation_prefix": "/private/tmp/queuecraft-completion-v3-sdk-js0eyhwe",
+  "working_directory": "/private/tmp/queuecraft-completion-v3-sdk-js0eyhwe",
+  "compile_command": [
+    "clang++",
+    "-std=c++20",
+    "-pthread",
+    "consumer.cpp",
+    "-I/private/tmp/queuecraft-completion-v3-sdk-js0eyhwe/include",
+    "-L/private/tmp/queuecraft-completion-v3-sdk-js0eyhwe/lib",
+    "-lqueuecraft",
+    "-o",
+    "consumer"
+  ],
+  "compile_returncode": 0,
+  "compile_stdout": "",
+  "compile_stderr": "",
+  "run_command": [
+    "/private/tmp/queuecraft-completion-v3-sdk-js0eyhwe/consumer"
+  ],
+  "run_returncode": 0,
+  "stdout": "installed C++ SDK: filled=3 cash=-1505 fees=2\n",
+  "stderr": "",
+  "installed_artifact_sha256": {
+    "include/queuecraft/engine.hpp": "12668f1d5407376ea94d3d85b216769a2a581a5ddfe40adb1120f9b2a5d6c4cb",
+    "lib/libqueuecraft.a": "a5a394c0cbbbb500da0ed11a552fd580206aa648687b5df5f1ee6eb6693e9cee",
+    "consumer.cpp": "b47003c2c5670042e863116c8c88991bb5dabe99d52a6af17b1f82b0f26a06d6",
+    "consumer": "5007d9f176a1c93ab28b0020571f9c36a75f2dbf9e062808a1c54d3a82e15967"
+  },
+  "compiled_native_source_sha256": {
+    "include/queuecraft/engine.hpp": "12668f1d5407376ea94d3d85b216769a2a581a5ddfe40adb1120f9b2a5d6c4cb",
+    "src/engine.cpp": "dc9240ada4e7a58259974d215e1076ff1812ed7b55a00dd6526e631b202be78f"
+  },
+  "static_library_origin": "fresh current-source benchmark build in nonsynced workspace; copied into installed lib/",
+  "consumer_source": "tests/cpp/consumer.cpp copied byte-identically",
+  "source_tree_include_or_library_paths_used": false,
+  "only_installed_header_and_static_library": true,
+  "no_private_files_or_runtime_caches_required": true
+}

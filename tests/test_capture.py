@@ -31,3 +31,16 @@ class CaptureTests(unittest.TestCase):
                 bad=Path(root)/str(index)
                 bad.write_bytes(content)
                 with self.assertRaises(ValueError):list(read_capture(bad))
+
+    def test_concurrent_file_growth_cannot_evade_total_read_limit(self):
+        from unittest.mock import patch
+        from queuecraft.capture import MAGIC
+        with tempfile.TemporaryDirectory() as root:
+            path=Path(root)/"capture.qcraw"
+            with RawCapture(path) as capture:capture.append(b'payload',1)
+            original=path.read_bytes()
+            with patch('queuecraft.capture.MAX_CAPTURE',len(original)):
+                reader=read_capture(path)
+                self.assertEqual(next(reader),(1,b'payload'))
+                with path.open('ab') as output:output.write(original[len(MAGIC):])
+                with self.assertRaises(ValueError):list(reader)

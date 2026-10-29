@@ -163,6 +163,7 @@ class Simulation:
     intent: Intent
     scenario: Scenario
     policy: str
+    recording_end_ns: int
     decisions: list[dict] = field(default_factory=list)
     orders: list[dict] = field(default_factory=list)
     fills: list[dict] = field(default_factory=list)
@@ -190,7 +191,7 @@ def _levels(trace: str) -> tuple[int, int, int, bool, tuple, tuple]:
     return int(row["event"]), int(row["exchange_ns"]), int(row["receive_ns"]), row["valid"] == "1", bids, asks
 
 
-def run(events: Iterable[Event], intent: Intent, strategy: Strategy, scenario: Scenario = Scenario(), *, trace_books: bool = False) -> Simulation:
+def run(events: Iterable[Event], intent: Intent, strategy: Strategy, scenario: Scenario = Scenario(), *, recording_end_ns: int, benchmark2: int | None = None, trace_books: bool = False) -> Simulation:
     """Run deterministic discrete-event simulation, independent of replay speed.
 
     cancel requests race with pending IOC arrivals at declared modeled latency.
@@ -200,8 +201,15 @@ def run(events: Iterable[Event], intent: Intent, strategy: Strategy, scenario: S
     events = tuple(events)
     if not events or events[0].index != 0:
         raise ValueError("events must start at index zero")
-    coverage_end = events[-1].receive_ns
-    result = Simulation(intent, scenario, type(strategy).__name__)
+    # A recorder's terminal metadata is an input independent of the final book
+    # message. Quiet recordings and truncated event prefixes must not reveal a
+    # later event's existence through callback/fill/ack eligibility.
+    coverage_end = integer(recording_end_ns, "recording_end_ns")
+    if intent.start_ns > coverage_end:
+        raise ValueError("parent start exceeds declared recording coverage")
+    if any(event.receive_ns > coverage_end for event in events):
+        raise ValueError("event exceeds declared recording coverage")
+    result = Simulation(intent, scenario, type(strategy).__name__, coverage_end)
     book, observed = Book(), Book()
     heap: list[tuple[int, int, int, str, object]] = []
     serial = 0
@@ -225,7 +233,12 @@ def run(events: Iterable[Event], intent: Intent, strategy: Strategy, scenario: S
     actual = (-1, -1, -1, False, (), ())
     view = actual
     decision_index = 0
-    benchmark_set = False
+    # A common evaluation benchmark can be declared separately from the
+    # strategy's visible intent; an evaluation-only reference must not leak
+    # a quote still hidden by that strategy's observation delay.
+    benchmark_set = benchmark2 is not None
+    if benchmark_set:
+        result.benchmark2 = integer(benchmark2, "benchmark2", 1)
     checked_cap = False
     fill_serial = 0
     while heap:

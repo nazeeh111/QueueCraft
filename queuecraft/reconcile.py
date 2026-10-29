@@ -16,7 +16,7 @@ def reconcile_many(results: Sequence[Simulation]) -> list[dict]:
       'orders':('order_id','observation_ns','decision_ns','arrival_ns','quantity','filled','status'),
       'fills':('fill_id','order_id','price','quantity','notional','fee','arrival_ns','recorded_receive_ns','side'),
       'ledger':('step','order_id','time_ns','cash','inventory','fees','filled'),
-      'runs':('fee_ppm','deadline_ns','side','quantity','filled','unfilled','cash','inventory','fees','benchmark2','penalty_ticks','shortfall2')}
+      'runs':('fee_ppm','deadline_ns','recording_end_ns','side','quantity','filled','unfilled','cash','inventory','fees','benchmark2','penalty_ticks','shortfall2')}
     con=duckdb.connect(':memory:',config={'threads':1,'memory_limit':'512MB'})
     try:
       with TemporaryDirectory(prefix='queuecraft-sql-') as folder:
@@ -26,7 +26,7 @@ def reconcile_many(results: Sequence[Simulation]) -> list[dict]:
             writer=csv.writer(output,lineterminator='\n');writer.writerow(('run_id',)+names)
             for run_id,result in enumerate(results):
               if table=='runs':
-                row={**result.as_dict(),**result.intent.__dict__,**result.scenario.__dict__}
+                row={**result.scenario.__dict__,**result.intent.__dict__,**result.as_dict()}
                 writer.writerow([run_id]+[row[name] for name in names])
               else:
                 for row in getattr(result,table):writer.writerow([run_id]+[row[name]for name in names])

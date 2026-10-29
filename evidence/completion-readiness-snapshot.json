@@ -1,0 +1,10 @@
+{
+  "queuecraft/sdk.py": "c42b51c54167d565758b7c1308b524119fea9cc931b3563d24d8c7ca74f1ad50",
+  "queuecraft/policies.py": "4569a4dc137dd8937884ce309231b6c2c195581925dce88ea60fa7d268d50a8e",
+  "queuecraft/prospective.py": "3d685052be7d8974bd9b9583d40b97dcd158ba3045bc650cb77be0d20a4fbe8f",
+  "queuecraft/reconcile.py": "f99b31b6bc1243ac2469af11e124bb7467aee73ad8eb95b980b9d0040e4f39ec",
+  "queuecraft/reconcile.sql": "e92949b3c22c302464cf45ae0ed0d17e8cd3aca3a429fa123a93616526c9f493",
+  "queuecraft/native-source.json": "51ff20d4e3e6b1a700e83775e792c03a8f0b9c5952f289a80350f13d31ba40d4",
+  "docs/PROSPECTIVE_PLAN.json": "271d3e09b790c5ef3a50cea00f2f0193752fa5dcae3fa8602ad729ee8f2e47b6",
+  "data/prospective-v2/sessions-v3/manifest.json": "e0428319859065a557bfa1c9a32ef2f634d5de74fa693a03ecbac5ed546f0646"
+}

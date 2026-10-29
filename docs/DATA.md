@@ -72,3 +72,29 @@ collector can be sparse when books do not change. QueueCraft treats a recorded
 observation gap above five seconds as unknown state under its declared watchdog
 rule, invalidating until the next full snapshot. This can reject quiet periods;
 absence of rows is not relabeled as an observed exchange sequence gap.
+
+
+## Registered 15-minute protocol
+
+The five-minute experiment above is preserved as a prior attempt. The current
+protocol uses a distinct frozen 15-minute archive, all eight assets, and four
+whole opening UTC dates. [Source and attribution](../data/15m-archive/README.md).
+Six preparation tests check chronological day separation, development-only
+thresholds, future-label exclusion, prefix isolation and terminal watchdogs.
+
+Parent start is opening +60 seconds. Recording end is the declared opening
++90-second extraction boundary, independently supplied to every simulator entry
+point. The raw archive covers the wider contract window; extraction does not
+infer its bound from the final retained payload. A five-second capture watchdog,
+also used for execution staleness, invalidates quiet periods until a fresh full
+snapshot. These are archive-coverage assumptions, not observed network liveness.
+
+Operational stress means a parent-prefix spread above 10 ticks or minimum
+bid/ask top-ten depth below the development lower quartile (44,592 lots).
+Classification never uses policy costs, winner or resolution. All 265 window
+attempts remain identifiable; 209 have a valid parent prefix, including 12
+ordinary and 21 stressed windows on the reserved confirmation date. Asset/date
+labels, invalidations, overlap checks and shared order-cap exclusions are retained.
+See the [registered protocol](PROSPECTIVE_PLAN.json). A random publisher sample
+of resolved contracts is not a complete market-day tape or evidence of exchange
+continuity. The single confirmation date limits generalization.

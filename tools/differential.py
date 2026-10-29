@@ -137,6 +137,82 @@ def error_agreement() -> list[dict]:
     return reports
 
 
+def execute_boundary_agreement() -> dict:
+    """Independently schedule IOC arrival inside declared quiet-time coverage.
+
+    These fixtures start with a complete book. The oracle projects the market
+    prefix available at the predeclared arrival, then independently accounts
+    against that state. Neither its arrival nor end comes from a later payload.
+    """
+    prefix = Event(0, -1, 0, "S", (("B", 99, 5), ("A", 101, 5))).csv()
+    future = prefix + "1,-1,2,S,B,299,1\n1,-1,2,S,A,301,1\n"
+    gap = prefix + "1,-1,1,G,B,1,0\n"
+    recovery = gap + "2,-1,2,S,B,100,5\n2,-1,2,S,A,103,5\n"
+    tied_recovery = gap + "2,-1,1,S,B,100,5\n2,-1,1,S,A,103,5\n"
+    tied_gap = prefix + "1,-1,1,S,B,100,5\n1,-1,1,S,A,103,5\n2,-1,1,G,B,1,0\n"
+    digest = hashlib.sha256()
+    compared = 0
+    for name, text in (("quiet_prefix", prefix), ("future_append", future), ("gap", gap),
+                       ("recovery", recovery), ("tied_recovery", tied_recovery), ("tied_gap", tied_gap)):
+        for side in ("buy", "sell"):
+            for arrival in range(5):
+                for fee in (0, 1000):
+                    for liquidity in (0, 500_000, 1_000_000):
+                        reference = Reference()
+                        for event in parse_events(text):
+                            if event.receive_ns <= min(arrival, 2):
+                                reference.apply(event.csv())
+                        if arrival <= 2 and reference.valid:
+                            expected = reference.take(side, 5, fee, liquidity)
+                        else:
+                            expected = {"fills": [], "filled": 0, "remaining": 5, "cash": 0, "inventory": 0,
+                                        "fees": 0, "event": reference.event, "exchange_ns": -1,
+                                        "receive_ns": reference.receive_ns}
+                        expected["recording_end_ns"] = 2
+                        actual = _native.execute(text, side, 5, arrival, fee, liquidity, recording_end_ns=2)
+                        _assert_equal(actual, expected, f"native execute {name}/{side}/{arrival}/{fee}/{liquidity}")
+                        digest.update(json.dumps(actual, sort_keys=True).encode())
+                        compared += 1
+    short = _native.execute(prefix, "buy", 5, latency_ns=1, recording_end_ns=2)
+    appended = _native.execute(future, "buy", 5, latency_ns=1, recording_end_ns=2)
+    _assert_equal(short, appended, "quiet prefix versus future append at fixed coverage")
+    _assert_equal(short["cash"], -505, "quiet covered IOC must actually fill at time1")
+    checks = [
+        ("missing_end", TypeError, lambda: _native.execute(prefix, "buy", 1)),
+        ("positional_end", TypeError, lambda: _native.execute(prefix, "buy", 1, 0, 0, 1_000_000, 2)),
+        ("negative_end", ValueError, lambda: _native.execute(prefix, "buy", 1, recording_end_ns=-1)),
+        ("end_overflow", OverflowError, lambda: _native.execute(prefix, "buy", 1, recording_end_ns=I64_MAX + 1)),
+        ("event_after_end", ValueError, lambda: _native.execute(future, "buy", 1, recording_end_ns=1)),
+        ("truncated_payload", ValueError, lambda: _native.execute(prefix[:-1], "buy", 1, recording_end_ns=2)),
+        ("negative_latency", ValueError, lambda: _native.execute(prefix, "buy", 1, -1, recording_end_ns=2)),
+        ("negative_fee", ValueError, lambda: _native.execute(prefix, "buy", 1, fee_ppm=-1, recording_end_ns=2)),
+        ("invalid_liquidity", ValueError, lambda: _native.execute(prefix, "buy", 1, liquidity_ppm=1_000_001, recording_end_ns=2)),
+    ]
+    for value in (True, False, 2.0, "2", None, type("IntegerSubclass", (int,), {})(2)):
+        checks.append((f"end_type_{type(value).__name__}_{value}", TypeError,
+                       lambda value=value: _native.execute(prefix, "buy", 1, recording_end_ns=value)))
+    maximum = Event(0, -1, I64_MAX, "S", (("B", 99, 5), ("A", 101, 5))).csv()
+    checks.append(("arrival_overflow", OverflowError, lambda: _native.execute(maximum, "buy", 1, 1, recording_end_ns=I64_MAX)))
+    failures = []
+    handle = _native.create()
+    _native.apply(handle, prefix)
+    before = _native.snapshot(handle)
+    for name, error_type, operation in checks:
+        try:
+            operation()
+        except error_type:
+            failures.append({"case": name, "error": error_type.__name__})
+        else:
+            raise AssertionError(f"native execute accepted {name}")
+        _assert_equal(_native.snapshot(handle), before, f"standalone failure changed existing book: {name}")
+    independent = Reference()
+    independent.apply(prefix)
+    _assert_equal(_native.take(handle, "buy", 1), independent.take("buy", 1), "failed execute requests consumed existing engine liquidity")
+    return {"status": "pass", "recording_end_ns": 2, "order_results_compared": compared,
+            "fixed_boundary_prefix_equal": True, "failure_cases": failures,
+            "complete_result_sha256": digest.hexdigest()}
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("paths", nargs="*", type=Path, help="normalized files or directories")
@@ -155,16 +231,18 @@ def main() -> None:
             raise ValueError(f"{path}: input too large")
         cases.append(compare_case(path.name, path.read_text(), index + 1000))
     errors = error_agreement()
+    boundary = execute_boundary_agreement()
     report = {
         "schema_version": 1, "status": "pass", "method": "complete level traces after every event, all fill and cumulative ledger fields after every attempted IOC; independent Python integer oracle",
-        "cases": cases, "failure_cases": errors,
+        "cases": cases, "failure_cases": errors, "execute_boundary_agreement": boundary,
         "totals": {key: sum(case[key] for case in cases) for key in ("complete_books_compared", "order_attempts_compared", "fill_records_compared")},
     }
     output = json.dumps(report, sort_keys=True, indent=2) + "\n"
     if args.out:
         with args.out.open("x") as file:
             file.write(output)
-    print(json.dumps({"status": report["status"], "cases": len(cases), "failure_cases": len(errors), **report["totals"]}, sort_keys=True))
+    print(json.dumps({"status": report["status"], "cases": len(cases), "failure_cases": len(errors),
+                      "execute_results_compared": boundary["order_results_compared"], "execute_failure_cases": len(boundary["failure_cases"]), **report["totals"]}, sort_keys=True))
 
 
 if __name__ == "__main__":

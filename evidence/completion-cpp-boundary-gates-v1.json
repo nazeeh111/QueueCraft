@@ -1,0 +1,75 @@
+{
+  "status": "pass",
+  "native_source_manifest": {
+    "schema_version": 1,
+    "source_sha256": {
+      "include/queuecraft/engine.hpp": "12668f1d5407376ea94d3d85b216769a2a581a5ddfe40adb1120f9b2a5d6c4cb",
+      "src/engine.cpp": "dc9240ada4e7a58259974d215e1076ff1812ed7b55a00dd6526e631b202be78f",
+      "native/module.cpp": "095dc3f80cd34666112c6da6105d81ad3c103ce45fec23f1f1f3fe427bc8f703"
+    }
+  },
+  "native_binary_sha256": "16148d2a84e46096748dcd852bde9810ffa44686d71f171623216bad2232e8ba",
+  "source_sha256": {
+    "include/queuecraft/engine.hpp": "12668f1d5407376ea94d3d85b216769a2a581a5ddfe40adb1120f9b2a5d6c4cb",
+    "src/engine.cpp": "dc9240ada4e7a58259974d215e1076ff1812ed7b55a00dd6526e631b202be78f",
+    "src/main.cpp": "4b9f06c986d8736ea6bec2dd82955655d1b0ebb898881ad8606ccf2cc0b584eb",
+    "native/module.cpp": "095dc3f80cd34666112c6da6105d81ad3c103ce45fec23f1f1f3fe427bc8f703",
+    "tests/cpp/test_engine.cpp": "b4518677095833c6dffc9fda3006e8e5b15f753128effc6264f801ec7b9e86fa",
+    "tests/cpp/check_cli.py": "d4761ad9e946bf12f812bd6cfed30e912e9d0748e9f4a01ec8ddc41f56255f31",
+    "tools/differential.py": "789d34c112a636b89ca417f14ab2d798c056bf190fbc55e53061ad6803a13095",
+    "queuecraft/native-source.json": "51ff20d4e3e6b1a700e83775e792c03a8f0b9c5952f289a80350f13d31ba40d4"
+  },
+  "engine_book_take_replay_prefix_byte_identical_to_HEAD": true,
+  "boundary_contract": {
+    "cpp": "required RecordingBounds{end_ns} typed fourth argument",
+    "native_python": "required keyword-only recording_end_ns; exact signed64 int excluding bool/subclasses",
+    "standalone_cli": "order requires final --recording-end-ns END; replay-only unchanged",
+    "semantics": "quiet prefix remains covered to explicit end; reject any payload beyond end; late arrival cannot fill"
+  },
+  "cpp_unit": {
+    "status": "pass",
+    "assertions": 256,
+    "parser_mutations": 12000,
+    "log": "completion-cpp-unit-v1.log"
+  },
+  "asan_ubsan": {
+    "status": "pass",
+    "assertions": 256,
+    "parser_mutations": 12000,
+    "log": "completion-cpp-asan-ubsan-v1.log",
+    "leak_detector": "disabled because installed Apple runtime does not support it"
+  },
+  "tsan": {
+    "status": "pass",
+    "assertions": 256,
+    "parser_mutations": 12000,
+    "log": "completion-cpp-tsan-v1.log"
+  },
+  "differential": {
+    "status": "pass",
+    "cases": 274,
+    "complete_books_compared": 13993,
+    "fill_records_compared": 6839,
+    "order_attempts_compared": 8290,
+    "failure_cases": 17,
+    "record": "completion-native-differential-v2.json"
+  },
+  "native_execute_boundary": {
+    "status": "pass",
+    "order_results_compared": 360,
+    "failure_cases": 16,
+    "fixed_boundary_future_append_equal": true,
+    "record": "completion-native-boundary-controls-v2.json"
+  },
+  "standalone_cli": {
+    "status": "pass",
+    "record": "completion-cpp-cli-v1.json",
+    "recording_metadata": "examples/recorded-provenance.json"
+  },
+  "retained_failed_attempt": {
+    "log": "completion-native-differential-v1.log",
+    "reason": "tool invocation lacked PYTHONPATH; no queuecraft module imported; explicit isolated-source rerun passed"
+  },
+  "coverage_guided_fuzzer": "not rerun; same toolchain previously lacks libclang_rt.fuzzer_osx.a; executed12000 seeded mutation cases in all3supported builds",
+  "long_benchmark": "not launched; pending parent source freeze"
+}

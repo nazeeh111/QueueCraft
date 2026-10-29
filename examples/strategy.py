@@ -18,5 +18,5 @@ if __name__ == "__main__":
     events = events_from_csv(Path(sys.argv[1]).read_text())
     size = int(sys.argv[2]) if len(sys.argv) > 2 else 1
     start = events[0].receive_ns
-    result = run(events, Intent("buy", size, start, start + 5_000_000_000), PatientSlice(), Scenario())
+    result = run(events, Intent("buy", size, start, start + 5_000_000_000), PatientSlice(), Scenario(), recording_end_ns=start + 31_000_000_000)
     print(json.dumps({"requested": size, "filled": result.filled, "cash": result.cash, "shortfall2": result.shortfall2, "trace": result.fills}, indent=2))

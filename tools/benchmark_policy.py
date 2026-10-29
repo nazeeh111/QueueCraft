@@ -32,7 +32,7 @@ def main():
         policies[name]=percentiles(samples)
     samples=[]
     for _ in range(200):
-        before=time.perf_counter_ns();run(events,intent,TWAP());samples.append(time.perf_counter_ns()-before)
+        before=time.perf_counter_ns();run(events,intent,TWAP(),recording_end_ns=start+31_000_000_000);samples.append(time.perf_counter_ns()-before)
     report={'platform':platform.platform(),'python':platform.python_version(),'clock':'perf_counter_ns','input_sha256':hashlib.sha256(data.encode()).hexdigest(),'policy_decide':policies,'python_end_to_end':percentiles(samples),'process_peak_rss_bytes_macos':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,'limits':['desktop warm-process measurements, not colocated latency','end-to-end200samples does not support p999 inference','Python/native boundary, snapshots and policy overhead included in end-to-end','no controlled CPU frequency or isolated cores','no comparison to HftBacktest']}
     target=Path('evidence/python-benchmark-v1.json')
     with target.open('x') as output:json.dump(report,output,indent=2);output.write('\n')

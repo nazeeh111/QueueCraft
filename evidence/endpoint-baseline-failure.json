@@ -1,0 +1,53 @@
+{
+  "source_commit": "cbbcb3cb5b9da2083b1a79b71dcd43ac30c52f2b",
+  "witness": "appendS@2 changes TWAP decisions@1 although sameprefix@1",
+  "short_prefix_decisions": [
+    {
+      "time_ns": 0,
+      "event": 0,
+      "observed_receive_ns": 0,
+      "quantity": 13,
+      "remaining": 25,
+      "reserved": 0,
+      "valid": true,
+      "fallback": "none",
+      "cancel": []
+    },
+    {
+      "time_ns": 1000000000,
+      "event": 0,
+      "observed_receive_ns": 0,
+      "quantity": 0,
+      "remaining": 25,
+      "reserved": 0,
+      "valid": false,
+      "fallback": "none",
+      "cancel": []
+    }
+  ],
+  "extended_decisions": [
+    {
+      "time_ns": 0,
+      "event": 0,
+      "observed_receive_ns": 0,
+      "quantity": 13,
+      "remaining": 25,
+      "reserved": 0,
+      "valid": true,
+      "fallback": "none",
+      "cancel": []
+    },
+    {
+      "time_ns": 1000000000,
+      "event": 0,
+      "observed_receive_ns": 0,
+      "quantity": 12,
+      "remaining": 12,
+      "reserved": 0,
+      "valid": true,
+      "fallback": "none",
+      "cancel": []
+    }
+  ],
+  "prefix_invariance": false
+}

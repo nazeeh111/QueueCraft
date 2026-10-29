@@ -269,13 +269,19 @@ std::string replay(std::string_view text) {
     return out;
 }
 
-Result execute(std::string_view text, std::string_view side, Integer quantity, Integer latency_ns,
+Result execute(std::string_view text, std::string_view side, Integer quantity, RecordingBounds bounds, Integer latency_ns,
                Integer fee_ppm, Integer liquidity_ppm) {
+    if (bounds.end_ns < 0) fail("recording end must be nonnegative");
     if (latency_ns < 0) fail("latency must be nonnegative");
     if (side != "buy" && side != "sell") fail("order side must be buy or sell");
     if (quantity <= 0 || fee_ppm < 0 || fee_ppm > 1'000'000 || liquidity_ppm < 0 || liquidity_ppm > 1'000'000)
         fail("invalid order or scenario parameters");
     auto events = parse_csv(text);
+    // Validate the complete recording contract before any hypothetical order.
+    // Never infer coverage from events.back(): appending a future payload must
+    // not change an already covered arrival in a quiet prefix.
+    for (const auto& event : events)
+        if (event.receive_ns > bounds.end_ns) fail("event exceeds declared recording coverage");
     Engine engine;
     Integer arrival = -1;
     for (std::size_t i = 0; i < events.size(); ++i) {
@@ -285,7 +291,9 @@ Result execute(std::string_view text, std::string_view side, Integer quantity, I
         bool last_tie = i + 1 == events.size() || events[i + 1].receive_ns > arrival;
         if (arrival != -1 && events[i].receive_ns == arrival && last_tie) return engine.take(side, quantity, fee_ppm, liquidity_ppm);
     }
-    // Arrival outside coverage: no invented final book liquidity.
+    if (arrival != -1 && arrival <= bounds.end_ns)
+        return engine.take(side, quantity, fee_ppm, liquidity_ppm);
+    // Arrival outside explicit coverage: no invented final book liquidity.
     return Result{{}, 0, quantity, 0, 0, 0, engine.event_id(), -1, engine.receive_time()};
 }
 }  // namespace queuecraft

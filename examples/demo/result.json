@@ -23,6 +23,7 @@
     "decision_budget_ns": 1000000000
   },
   "policy": "TWAP",
+  "recording_end_ns": 1787475934000000000,
   "decisions": [
     {
       "time_ns": 1787475903000000000,

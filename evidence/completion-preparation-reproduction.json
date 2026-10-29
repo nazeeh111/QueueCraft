@@ -1,0 +1,9 @@
+{
+  "status": "pass",
+  "mode": "public preparation helper with independently installed package via python -I, outside source imports",
+  "files_compared": 267,
+  "manifest_sha256": "e0428319859065a557bfa1c9a32ef2f634d5de74fa693a03ecbac5ed546f0646",
+  "every_prepared_file_byte_identical": true,
+  "source_archive": "data/15m-archive/updown_15m.parquet",
+  "frozen_calibration_remeasurement": false
+}

@@ -1,6 +1,7 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "input_sha256": "c02cc174470b77a7ca93464048469e63e44741d6141b25a9de49dce54421fe25",
+  "recording_end_ns": 1787475934000000000,
   "intent": {
     "side": "buy",
     "quantity": 25,

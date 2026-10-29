@@ -1,0 +1,29 @@
+{
+  "status": "pass",
+  "samples": 1000,
+  "raw_projected_messages_per_operation": 2,
+  "raw_projected_bytes_per_operation": 2439,
+  "p50_ns": 2272375,
+  "p95_ns": 2576209,
+  "p99_ns": 3015209,
+  "mean_ns": 2261985.826,
+  "operations_per_second": 442.08941917569734,
+  "peak_process_rss_bytes_macos": 83361792,
+  "raw_archive_sha256": "1dde1a3be9f1159aec12d7c5b7fddbc912d2e88d65af093adce0c2802f05452f",
+  "result_sha256": "8363707d33a1e2dd108e8ee4723f95a50999b0035aa9f77a803585d536aa1434",
+  "platform": "macOS-27.2-arm64-arm-64bit-Mach-O",
+  "scope": "label-free genuine snapshot JSON projection -> append-only journal+fsync -> CRC restore -> fixed-point normalization -> native parser -> book/observation/policy/IOC/ledger -> JSON export+fsync",
+  "limits": [
+    "not original exchange wire messages; projected archive snapshots",
+    "no network download or SQL analytical audit inside timed operation",
+    "1000samples supports empiricalp99 with10upper-tail observations; no p999 inference",
+    "shared desktop, filesystem durability via fsync, no physical-device power-loss guarantee"
+  ],
+  "source_hashes": {
+    "queuecraft/capture.py": "9a3551ca1ac782a594492386c7cafa0e070744cfae632ed0ffd3f74b808c5663",
+    "queuecraft/data.py": "36d4dd397b80897cf42142ffb791ac22c2bf682fd024efd8b5ab2e20c4edcf63",
+    "queuecraft/sdk.py": "c42b51c54167d565758b7c1308b524119fea9cc931b3563d24d8c7ca74f1ad50",
+    "queuecraft/policies.py": "4569a4dc137dd8937884ce309231b6c2c195581925dce88ea60fa7d268d50a8e",
+    "tools/benchmark_e2e.py": "d534873dd680ae2ef7ee248f53d48bec4e295327609ef5be8a7146128275c207"
+  }
+}

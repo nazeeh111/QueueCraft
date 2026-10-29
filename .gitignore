@@ -19,3 +19,10 @@ TASK_STATE.md
 evidence/local-tools/
 evidence/local-release/
 data/prospective-*/
+
+data/prepared15m*/
+evidence/local-prior-demo/
+
+# Full prospective traces are versioned release assets, not Git blobs.
+evidence/prospective-study-*/
+evidence/completion-installed-consumer-v3/

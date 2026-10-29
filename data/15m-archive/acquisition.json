@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "publisher": "PolyOrderbooks",
+  "license": "CC-BY-4.0",
+  "version": "1.0.1",
+  "doi": "10.5281/zenodo.22084977",
+  "url": "https://zenodo.org/api/records/22084977/files/updown_15m.parquet/content",
+  "bytes": 16533699,
+  "md5": "61b5d660444bbadd26aa558073b38516",
+  "sha256": "d86191506e416026f460338b1b238c628b3fcee37f468e646b3a2256bd0be959",
+  "purpose": "new prospective study preparation; no policy outcomes evaluated"
+}

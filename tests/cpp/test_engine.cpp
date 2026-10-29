@@ -7,6 +7,7 @@
 #include <random>
 #include <stdexcept>
 #include <thread>
+#include <type_traits>
 
 using namespace queuecraft;
 namespace {
@@ -156,19 +157,47 @@ void ledger() {
     require(depth.take("buy", 1, 0, 500'000).filled == 1);
 }
 void timing() {
+    static_assert(!std::is_convertible_v<Integer, RecordingBounds>);
     auto text = fixture();
-    auto immediate = execute(text, "buy", 8, 0);
+    constexpr RecordingBounds bounds{20};  // Declared fixture recording interval.
+    auto immediate = execute(text, "buy", 8, bounds, 0);
     require(immediate.filled == 8 && immediate.fills[0].quantity == 7 && immediate.fills[1].price == 102);
-    require(execute(text, "buy", 8, 10).fills.size() == 1);
-    require(execute(text, "buy", 8, 11).fills.size() == 1);
-    require(execute(text, "buy", 8, 20).filled == 6);
-    require(execute(text, "buy", 8, 21).filled == 0);
-    reject([&] { execute(text, "buy", 8, -1); });
+    require(execute(text, "buy", 8, bounds, 10).fills.size() == 1);
+    require(execute(text, "buy", 8, bounds, 11).fills.size() == 1);
+    require(execute(text, "buy", 8, bounds, 20).filled == 6);
+    require(execute(text, "buy", 8, bounds, 21).filled == 0);
+    reject([&] { execute(text, "buy", 8, bounds, -1); });
     auto ties = std::string(input_header) + "0,-1,0,S,B,99,5\n0,-1,0,S,A,101,5\n1,-1,0,U,A,101,1\n";
-    require(execute(ties, "buy", 5).filled == 1);
+    require(execute(ties, "buy", 5, RecordingBounds{0}).filled == 1);
     auto prefix = std::string(input_header) + "0,-1,0,S,B,99,5\n0,-1,0,S,A,101,5\n";
     auto extended = prefix + "1,-1,10,U,A,101,1\n";
-    require(execute(prefix, "buy", 5).cash == execute(extended, "buy", 5).cash);
+    require(execute(prefix, "buy", 5, RecordingBounds{10}).cash == execute(extended, "buy", 5, RecordingBounds{10}).cash);
+    auto future = prefix + "1,-1,2,S,B,299,1\n1,-1,2,S,A,301,1\n";
+    auto quiet = execute(prefix, "buy", 5, RecordingBounds{2}, 1);
+    auto appended = execute(future, "buy", 5, RecordingBounds{2}, 1);
+    require(quiet.filled == 5 && quiet.cash == -505 && quiet.fills.size() == 1);
+    require(quiet.cash == appended.cash && quiet.inventory == appended.inventory && quiet.filled == appended.filled && quiet.fees == appended.fees);
+    require(quiet.remaining == appended.remaining && quiet.event == appended.event && quiet.exchange_ns == appended.exchange_ns && quiet.receive_ns == appended.receive_ns);
+    require(quiet.fills[0].price == appended.fills[0].price && quiet.fills[0].quantity == appended.fills[0].quantity);
+    require(execute(prefix, "buy", 5, RecordingBounds{1}, 1).filled == 5);
+    require(execute(prefix, "buy", 5, RecordingBounds{0}, 1).filled == 0);
+    require(execute(prefix, "buy", 5, RecordingBounds{2}, 3).filled == 0);
+    reject([&] { execute(prefix, "buy", 5, RecordingBounds{-1}, 0); });
+    reject([&] { execute(future, "buy", 5, RecordingBounds{1}, 1); });
+    reject([&] { execute(prefix, "buy", 5, RecordingBounds{2}, 1, -1); });
+    reject([&] { execute(prefix, "buy", 5, RecordingBounds{2}, 1, 0, 1'000'001); });
+    auto gap = prefix + "1,-1,1,G,B,1,0\n";
+    auto recovery = gap + "2,-1,2,S,B,100,5\n2,-1,2,S,A,103,5\n";
+    require(execute(gap, "buy", 5, RecordingBounds{2}, 1).filled == 0);
+    require(execute(recovery, "buy", 5, RecordingBounds{2}, 1).filled == 0);
+    require(execute(recovery, "buy", 5, RecordingBounds{2}, 2).fills[0].price == 103);
+    auto tied_recovery = gap + "2,-1,1,S,B,100,5\n2,-1,1,S,A,103,5\n";
+    require(execute(tied_recovery, "buy", 5, RecordingBounds{2}, 1).fills[0].price == 103);
+    auto tied_gap = prefix + "1,-1,1,S,B,100,5\n1,-1,1,S,A,103,5\n2,-1,1,G,B,1,0\n";
+    require(execute(tied_gap, "buy", 5, RecordingBounds{2}, 1).filled == 0);
+    // Failed standalone requests have no shared state or consumption side effects.
+    reject([&] { execute(future, "buy", 5, RecordingBounds{0}, 0); });
+    require(execute(prefix, "buy", 5, RecordingBounds{2}, 1).cash == quiet.cash);
     require(replay(text) == replay(text));
 }
 void ownership() {

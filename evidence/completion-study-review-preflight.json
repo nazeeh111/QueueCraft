@@ -1,0 +1,11 @@
+{
+  "status": "preflight_pass_only",
+  "session": "xrp-updown-15m-1787271300",
+  "trials": 320,
+  "sql_fills": 1594,
+  "sql_transitions": 1619,
+  "limits": [
+    "first completed window only; final complete artifact review still pending",
+    "no strategies or timing calibration executed"
+  ]
+}

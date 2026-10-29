@@ -5,5 +5,8 @@
   "selection": "first chronological included BTC window, first31seconds; not selected by policy result",
   "price_scale": 1000,
   "quantity_scale": 100,
-  "license": "CC BY4.0, PolyOrderbooks2026"
+  "license": "CC BY4.0, PolyOrderbooks2026",
+  "recording_end_ns": 1787475934000000000,
+  "recording_start_ns": 1787475903000000000,
+  "recording_bounds_source": "declared31second extraction interval within archived5minute session, independent of final payload"
 }

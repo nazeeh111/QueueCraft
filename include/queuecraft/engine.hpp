@@ -91,9 +91,17 @@ private:
 };
 
 std::string replay(std::string_view text);
+// Recorder terminal metadata, supplied independently of the final payload.
+// A distinct type prevents an old latency integer from silently becoming a
+// recording boundary when this required argument is added.
+struct RecordingBounds {
+    Integer end_ns;
+};
 // Immediate IOC observes first valid book, arrives after latency, applies all
-// observations tied with arrival first. No fill beyond recorded coverage.
+// observations tied with arrival first. Quiet time remains covered up to the
+// explicit boundary. Every payload must lie within that boundary; no fill can
+// occur after it. Replay-only and Engine::take do not infer recorder coverage.
 Result execute(std::string_view text, std::string_view side, Integer quantity,
-               Integer latency_ns = 0, Integer fee_ppm = 0,
+               RecordingBounds bounds, Integer latency_ns = 0, Integer fee_ppm = 0,
                Integer liquidity_ppm = 1'000'000);
 }  // namespace queuecraft

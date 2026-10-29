@@ -22,3 +22,11 @@ unavailable for this snapshot archive. No performance superiority is claimed.
 
 chronal, MarketObservatory and MarketWeave were inspected as existing work;
 QueueCraft does not copy or rename their implementation. See docs/DISTINCTION.md.
+
+Prospective 15-minute archive: PolyOrderbooks, Polymarket Crypto Up/Down Order
+Books, Zenodo v1.0.1, DOI 10.5281/zenodo.22084977, CC BY 4.0. The original
+updown_15m.parquet and publisher metadata are in data/15m-archive. Changes:
+select Up outcome and quote arrays; normalize exact ticks/lots; reserve whole
+UTC opening days; retain prefix-only operational quote/depth proxy labels and
+explicit invalidations. Source DOI: https://doi.org/10.5281/zenodo.22084977 .
+Raw SHA256: d86191506e416026f460338b1b238c628b3fcee37f468e646b3a2256bd0be959.

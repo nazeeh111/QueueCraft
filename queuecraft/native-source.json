@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "source_sha256": {
+    "include/queuecraft/engine.hpp": "12668f1d5407376ea94d3d85b216769a2a581a5ddfe40adb1120f9b2a5d6c4cb",
+    "src/engine.cpp": "dc9240ada4e7a58259974d215e1076ff1812ed7b55a00dd6526e631b202be78f",
+    "native/module.cpp": "095dc3f80cd34666112c6da6105d81ad3c103ce45fec23f1f1f3fe427bc8f703"
+  }
+}

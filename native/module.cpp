@@ -121,16 +121,30 @@ PyObject* decimal(PyObject*, PyObject* args) {
     try { return PyLong_FromLongLong(queuecraft::parse_decimal(std::string_view(text, static_cast<std::size_t>(size)), static_cast<int>(scale))); }
     catch (...) { return error(); }
 }
-PyObject* execute(PyObject*, PyObject* args) {
+PyObject* execute(PyObject*, PyObject* args, PyObject* kwargs) {
     const char* text;
     Py_ssize_t size;
     const char* side;
-    long long quantity, latency = 0, fee = 0, liquidity = 1'000'000;
-    PyObject *quantity_object, *latency_object = nullptr, *fee_object = nullptr, *liquidity_object = nullptr;
-    if (!PyArg_ParseTuple(args, "s#sO|OOO", &text, &size, &side, &quantity_object, &latency_object, &fee_object, &liquidity_object)) return nullptr;
+    long long quantity, latency = 0, fee = 0, liquidity = 1'000'000, recording_end;
+    PyObject *quantity_object, *latency_object = nullptr, *fee_object = nullptr, *liquidity_object = nullptr, *end_object = nullptr;
+    static const char* names[] = {"text", "side", "quantity", "latency_ns", "fee_ppm", "liquidity_ppm", "recording_end_ns", nullptr};
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, "s#sO|OOO$O:execute", const_cast<char**>(names), &text, &size, &side,
+        &quantity_object, &latency_object, &fee_object, &liquidity_object, &end_object)) return nullptr;
+    if (!end_object) { PyErr_SetString(PyExc_TypeError, "execute() missing required keyword-only argument: 'recording_end_ns'"); return nullptr; }
     if (!integer_from(quantity_object, quantity) || (latency_object && !integer_from(latency_object, latency)) ||
-        (fee_object && !integer_from(fee_object, fee)) || (liquidity_object && !integer_from(liquidity_object, liquidity))) return nullptr;
-    try { return result_dict(queuecraft::execute(std::string_view(text, static_cast<std::size_t>(size)), side, quantity, latency, fee, liquidity)); }
+        (fee_object && !integer_from(fee_object, fee)) || (liquidity_object && !integer_from(liquidity_object, liquidity)) ||
+        !integer_from(end_object, recording_end)) return nullptr;
+    try {
+        PyObject* output = result_dict(queuecraft::execute(std::string_view(text, static_cast<std::size_t>(size)), side, quantity,
+            queuecraft::RecordingBounds{recording_end}, latency, fee, liquidity));
+        if (!output) return nullptr;
+        PyObject* boundary = PyLong_FromLongLong(recording_end);
+        if (!boundary || PyDict_SetItemString(output, "recording_end_ns", boundary) < 0) {
+            Py_XDECREF(boundary); Py_DECREF(output); return nullptr;
+        }
+        Py_DECREF(boundary);
+        return output;
+    }
     catch (...) { return error(); }
 }
 PyMethodDef methods[] = {
@@ -141,7 +155,7 @@ PyMethodDef methods[] = {
     {"replay", replay, METH_VARARGS, "Return complete level traces for bounded normalized input."},
     {"validate", validate, METH_VARARGS, "Strictly validate original CSV bytes and all book transitions, returning event count."},
     {"parse_decimal", decimal, METH_VARARGS, "Parse exact fixed point with scale decimal places."},
-    {"execute", execute, METH_VARARGS, "One immediate IOC with explicit observation-to-arrival latency."},
+    {"execute", _PyCFunction_CAST(execute), METH_VARARGS | METH_KEYWORDS, "One immediate IOC; required keyword-only recording_end_ns is recorder metadata, independent of final payload."},
     {nullptr, nullptr, 0, nullptr}
 };
 PyModuleDef module = {PyModuleDef_HEAD_INIT, "_native", "QueueCraft C++20 engine, ABI v1.", -1, methods, nullptr, nullptr, nullptr, nullptr};

@@ -1,0 +1,116 @@
+{
+  "status": "pass",
+  "commands": [
+    {
+      "argv": [
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-final-venv/bin/python",
+        "-c",
+        "import queuecraft; print(queuecraft.__file__)"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.06221949998871423,
+      "output": "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-final-venv/lib/python3.14/site-packages/queuecraft/__init__.py\n"
+    },
+    {
+      "argv": [
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-final-venv/bin/python",
+        "-m",
+        "queuecraft",
+        "validate",
+        "input.csv"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.09210429200902581,
+      "output": "{\"events\": 3, \"sha256\": \"c02cc174470b77a7ca93464048469e63e44741d6141b25a9de49dce54421fe25\"}\n"
+    },
+    {
+      "argv": [
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-final-venv/bin/python",
+        "-m",
+        "queuecraft",
+        "simulate",
+        "input.csv",
+        "--size",
+        "25",
+        "--policy",
+        "twap",
+        "--recording-metadata",
+        "recording.json",
+        "--out",
+        "order25"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.39928995800437406,
+      "output": "{\"filled\": 25, \"unfilled\": 0, \"shortfall2\": 1210, \"out\": \"order25\"}\n"
+    },
+    {
+      "argv": [
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-final-venv/bin/python",
+        "-m",
+        "queuecraft",
+        "verify",
+        "order25"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.20764354200218804,
+      "output": "{\"replay\": \"exact\", \"sql\": {\"engine\": \"DuckDB\", \"version\": \"1.4.3\", \"transitions\": 4, \"fills\": 4, \"violations\": []}}\n"
+    },
+    {
+      "argv": [
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-final-venv/bin/python",
+        "-m",
+        "queuecraft",
+        "simulate",
+        "input.csv",
+        "--size",
+        "50",
+        "--policy",
+        "twap",
+        "--recording-metadata",
+        "recording.json",
+        "--out",
+        "order50"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.20611112500773743,
+      "output": "{\"filled\": 50, \"unfilled\": 0, \"shortfall2\": 2500, \"out\": \"order50\"}\n"
+    },
+    {
+      "argv": [
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-final-venv/bin/python",
+        "-m",
+        "queuecraft",
+        "verify",
+        "order50"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.2065736659860704,
+      "output": "{\"replay\": \"exact\", \"sql\": {\"engine\": \"DuckDB\", \"version\": \"1.4.3\", \"transitions\": 4, \"fills\": 4, \"violations\": []}}\n"
+    },
+    {
+      "argv": [
+        "/private/tmp/queuecraft-installed-v3-gsaq0c6h/consumer-final-venv/bin/python",
+        "strategy.py",
+        "input.csv",
+        "7"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.06908691697753966,
+      "output": "{\n  \"requested\": 7,\n  \"filled\": 7,\n  \"cash\": -3660,\n  \"shortfall2\": 390,\n  \"trace\": [\n    {\n      \"price\": 500,\n      \"quantity\": 1,\n      \"notional\": 500,\n      \"fee\": 0,\n      \"fill_id\": 1,\n      \"order_id\": 1,\n      \"event\": 0,\n      \"exchange_ns\": -1,\n      \"arrival_ns\": 1787475903000000000,\n      \"recorded_receive_ns\": 1787475903000000000,\n      \"side\": \"buy\"\n    },\n    {\n      \"price\": 500,\n      \"quantity\": 1,\n      \"notional\": 500,\n      \"fee\": 0,\n      \"fill_id\": 2,\n      \"order_id\": 2,\n      \"event\": 0,\n      \"exchange_ns\": -1,\n      \"arrival_ns\": 1787475904000000000,\n      \"recorded_receive_ns\": 1787475903000000000,\n      \"side\": \"buy\"\n    },\n    {\n      \"price\": 500,\n      \"quantity\": 1,\n      \"notional\": 500,\n      \"fee\": 0,\n      \"fill_id\": 3,\n      \"order_id\": 3,\n      \"event\": 0,\n      \"exchange_ns\": -1,\n      \"arrival_ns\": 1787475905000000000,\n      \"recorded_receive_ns\": 1787475903000000000,\n      \"side\": \"buy\"\n    },\n    {\n      \"price\": 540,\n      \"quantity\": 4,\n      \"notional\": 2160,\n      \"fee\": 0,\n      \"fill_id\": 4,\n      \"order_id\": 4,\n      \"event\": 1,\n      \"exchange_ns\": -1,\n      \"arrival_ns\": 1787475908000000000,\n      \"recorded_receive_ns\": 1787475908000000000,\n      \"side\": \"buy\"\n    }\n  ]\n}\n"
+    }
+  ],
+  "duration_seconds": 1.244259625003906,
+  "input_sha256": "c02cc174470b77a7ca93464048469e63e44741d6141b25a9de49dce54421fe25",
+  "cast_sha256": "caf91f5b5b4659f6f57f2f9db691fb75255404ed3b1c713b63d6ff26a0c18818",
+  "changed_input_distinct": true,
+  "scripted_commands_real_output": true,
+  "failed_attempts": [
+    {
+      "path": "evidence/demo-completion-v3/demo.cast",
+      "reason": "recorder resolved the venv symlink to base Python, losing installed environment; corrected recorder to preserve executable path; fresh output succeeds"
+    }
+  ],
+  "installed_gate": "completion-installed-consumer-v3/state.json",
+  "installed_wheel_sha256": "8a71161017f270f59211f32ef38976926c67bd30640697608d0e657fe2bad4cf",
+  "scope": "Actual scripted installed CLI and separate public example; no simulated typing. Full outputs retained in demo release asset."
+}

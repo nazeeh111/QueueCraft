@@ -25,4 +25,4 @@ Repository = "https://github.com/nazeeh111/QueueCraft"
 packages = ["queuecraft"]
 
 [tool.setuptools.package-data]
-queuecraft = ["py.typed", "*.sql"]
+queuecraft = ["py.typed", "*.sql", "native-source.json"]

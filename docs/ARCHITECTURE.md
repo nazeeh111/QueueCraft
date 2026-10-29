@@ -38,3 +38,16 @@ Native capture retains original bytes, receive time, length and CRC in a fresh
 append-only file. Imported Parquet is retained byte-for-byte with SHA256. CRC
 detects corruption; it is not adversarial authentication. Hashes attest local
 reproducibility, not independent timing or absence of prior trials.
+
+Recording end is explicit terminal metadata supplied separately from event
+payloads. The scheduler never uses the final event's timestamp to decide whether
+to expose earlier callbacks or fill/acknowledgement state. This repairs the
+prior endpoint dependency, including append/truncation controls. A common
+evaluation benchmark is held outside the strategy's Observation and Intent.
+
+The current horizon policy enumerates one common cumulative action plan across
+a fixed joint family of latency, liquidity and drift assumptions. Its next
+action minimizes worst-case modeled cost, then it recomputes from the next
+available prefix. It does not learn the execution scenario or choose different
+future actions for each hidden environment. Development-only compute timings
+are frozen as explicit duration inputs before outcome evaluation.
