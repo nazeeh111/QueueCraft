@@ -1,4 +1,4 @@
-include README.md LICENSE NOTICE.md Makefile
+include README.md LICENSE Makefile
 recursive-include include *.hpp
 recursive-include native *.cpp
 recursive-include src *.cpp

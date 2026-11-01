@@ -173,5 +173,5 @@ there is no durable partial native checkpoint or crash-atomic exchange service.
 
 [Architecture](docs/ARCHITECTURE.md) · [Exact contract](docs/CONTRACT.md) ·
 [Validation](docs/VALIDATION.md) · [Performance](docs/PERFORMANCE.md) ·
-[Differences from existing projects](docs/DISTINCTION.md) · [Attribution](NOTICE.md) ·
+[Differences from existing projects](docs/DISTINCTION.md) · [Data licenses](data/README.md) ·
 [Owner walkthrough](docs/WALKTHROUGH.md).

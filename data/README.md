@@ -20,3 +20,5 @@ limitations, clock semantics, exact assumptions and acquisition commands.
 This data license is separate from QueueCraft's software license. Neither the
 data publisher nor the exchange endorses QueueCraft. Publisher licensing is
 provenance and does not guarantee upstream rights or exchange data completeness.
+
+The prospective 15-minute archive has a separate [source and license record](15m-archive/README.md).
