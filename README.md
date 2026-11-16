@@ -146,6 +146,53 @@ registrations and negative results are preserved. Current commands reject its
 old registration instead of silently rerunning a different policy under its
 name. It is not the final prospective study.
 
+## Incremental replay
+
+`queuecraft stream` reads the CSV once, keeps one source event ahead, and emits
+NDJSON transitions as they occur. Supply the recorder's coverage and the order's
+start explicitly; these never come from a later source event.
+
+```sh
+queuecraft stream examples/stream-synthetic.csv --start-ns 0 --deadline-ns 5000000000 \
+  --recording-end-ns 12000000000 --size 1 --out replay.ndjson
+```
+
+The example uses synthetic data. Use timestamps matching your recording. `--out` publishes a complete file
+exclusively; an existing file is preserved. Without it, output goes to stdout.
+The last record is `complete` or `incomplete`; an incomplete run exits 2 and
+has no final result. Earlier transitions are provisional. Input failure, policy
+failure and a pending-event budget stop all produce explicit incomplete status.
+Only source exhaustion supplies the final input digest. This command does not
+create the full SQL-reconciled study/export bundle used by `simulate`.
+
+The Python API supports incremental consumers:
+
+```python
+from queuecraft import CSVEvents, Intent, Scenario, stream
+from queuecraft.policies import Immediate
+
+with stream(CSVEvents("recording.csv"), Intent("buy", 1, 0, 5_000_000_000),
+            Immediate(), Scenario(), recording_end_ns=12_000_000_000) as replay:
+    for transition in replay:
+        process(transition)  # discard or persist each detached record
+    if replay.status == "complete":
+        print(replay.result.filled)
+```
+
+Collection is off by default: result lists are empty and scalar totals remain
+exact. `collect=True` / `--collect` retains all decisions, orders, fills and
+ledger rows; `trace_books=True` / `--trace-books` includes recorded book traces.
+The existing `run()` remains a full collector. Neither interface resumes a
+partially consumed native simulation. Close an iterator you stop early.
+
+Memory depends on book depth, the active observation-delay/timestamp-tie window,
+active orders, policy state and any records retained by the caller. The default
+100,000 pending-event budget refuses overfull windows rather than changing event
+order; adjust `max_pending_events` / `--max-pending-events` explicitly. CSV reads
+have a 4 KiB row limit and the native 20,000-row event limit, while total streaming
+input can exceed the batch parser's 64 MiB bound. The unchanged native validator
+checks every raw event before use. The scheduler consumes one thread only.
+
 ## Develop and verify
 
 ```sh
