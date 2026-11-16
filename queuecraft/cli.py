@@ -22,6 +22,21 @@ def read_input(path):
     return data.decode("ascii")
 
 
+def _same_json(expected, saved):
+    """Compare a saved JSON tree without equating booleans and integer fields."""
+    if type(expected) is not type(saved):
+        return False
+    if isinstance(expected, dict):
+        return expected.keys() == saved.keys() and all(
+            _same_json(value, saved[key]) for key, value in expected.items()
+        )
+    if isinstance(expected, list):
+        return len(expected) == len(saved) and all(
+            _same_json(a, b) for a, b in zip(expected, saved)
+        )
+    return expected == saved
+
+
 def main(argv=None):
     parser=argparse.ArgumentParser(prog="queuecraft",description="Exact execution research from recorded books. No live orders.")
     parser.add_argument("--version",action="version",version=__version__)
@@ -41,6 +56,22 @@ def main(argv=None):
     p.add_argument("--latency-ms",type=int,default=0);p.add_argument("--observation-ms",type=int,default=0);p.add_argument("--ack-ms",type=int,default=0)
     p.add_argument("--fee-ppm",type=int,default=0);p.add_argument("--liquidity-ppm",type=int,default=1_000_000)
     p.add_argument("--penalty-ticks",type=int,default=10);p.add_argument("--tie",choices=("recorded_first","arrival_first"),default="recorded_first")
+    p=commands.add_parser("stream",help="incremental replay to NDJSON; incomplete runs exit 2")
+    p.add_argument("input",type=Path)
+    p.add_argument("--out",type=Path,help="exclusive NDJSON file; default stdout")
+    for name in ("start-ns", "deadline-ns", "recording-end-ns"):
+        p.add_argument("--"+name,type=int,required=True)
+    p.add_argument("--interval-ns",type=int,default=1_000_000_000)
+    p.add_argument("--size",type=int,default=25)
+    p.add_argument("--side",choices=("buy","sell"),default="buy")
+    p.add_argument("--policy",choices=POLICIES,default="immediate")
+    for name in ("latency-ns", "observation-ns", "ack-ns", "fee-ppm"):
+        p.add_argument("--"+name,type=int,default=0)
+    p.add_argument("--liquidity-ppm",type=int,default=1_000_000)
+    p.add_argument("--tie",choices=("recorded_first","arrival_first"),default="recorded_first")
+    p.add_argument("--max-pending-events",type=int,default=100_000)
+    p.add_argument("--collect",action="store_true",help="retain full result lists in addition to transition output")
+    p.add_argument("--trace-books",action="store_true")
     p=commands.add_parser("study",help="execute an already registered chronological study")
     p.add_argument("sessions",type=Path);p.add_argument("--plan",type=Path,required=True);p.add_argument("--out",type=Path,required=True)
     p.add_argument("--calibration",type=Path,help="replay exact frozen policy compute durations; do not remeasure wall-clock time")
@@ -49,6 +80,9 @@ def main(argv=None):
     p.add_argument("directory",type=Path)
     args=parser.parse_args(argv)
     try:
+        if args.command=="stream":
+            from .stream_cli import execute
+            return execute(args)
         if args.command=="study":
             from .study import study
             from .report import study_report
@@ -67,7 +101,7 @@ def main(argv=None):
             if hashlib.sha256(data.encode()).hexdigest()!=config["input_sha256"]:
                 raise ValueError("input hash differs from export")
             result=run(events_from_csv(data),Intent(**config["intent"]),POLICIES[config["policy"]](),Scenario(**config["scenario"]),recording_end_ns=config["recording_end_ns"],trace_books=True)
-            if result.as_dict()!=saved:
+            if not _same_json(result.as_dict(),saved):
                 raise ValueError("fresh replay differs from saved trace")
             sql=reconcile(result)
             if sql["violations"]:raise ValueError(sql)

@@ -4,21 +4,66 @@
 
 Exact tick/lot accounting, deterministic books, a typed Python strategy SDK,
 independent book/ledger checks and registered policy comparisons. Research
-software, version 0.1.0. No brokerage route or live orders.
+software, development version **0.1.1.dev0**. No brokerage route or live orders.
+The versioned links below retain the historical 0.1.0 release and its evidence.
+Use this current source for the incremental CLI and strict saved-result replay.
 
 [Versioned release and checksums](https://github.com/nazeeh111/QueueCraft/releases/tag/v0.1.0) ·
 [Public verification evidence](https://github.com/nazeeh111/QueueCraft/releases/download/v0.1.0/delivery-evidence.json)
 
 ![Execution architecture](docs/architecture.svg)
 
-## Compute and inspect an order
+## Check the native engine first
 
-Requires Python 3.11+ and Clang/GCC with C++20 on macOS/Linux. The study extra
-installs pinned DuckDB 1.4.3 for independent SQL reconciliation.
+A C++20 compiler and `make` are enough for the bundled synthetic core checks;
+no Python packages, account or market connection are needed:
 
 ```sh
-git clone --branch v0.1.0 --depth 1 https://github.com/nazeeh111/QueueCraft.git
+git clone https://github.com/nazeeh111/QueueCraft.git
 cd QueueCraft
+make test
+```
+
+This checks the native book and accounting contracts. It is not a replay of
+the registered market-data study or evidence of live execution performance.
+
+## Current-source first run
+
+Requires Python 3.11+ and Clang/GCC with C++20 on macOS/Linux. The `study`
+extra supplies pinned DuckDB 1.4.3 for SQL reconciliation. From this checkout:
+
+```sh
+python3 -m venv .venv
+. .venv/bin/activate
+python -m pip install '.[study]'
+queuecraft --version
+queuecraft simulate examples/stream-synthetic.csv --side sell --size 37 \
+  --policy immediate --recording-end-ns 7000000000 --deadline 4 \
+  --latency-ms 55 --fee-ppm 100 --out synthetic-order
+queuecraft verify synthetic-order
+```
+
+This tiny synthetic recording has a declared 7-second coverage bound. It is a
+local accounting example, not observed trading or a new study. The saved order
+includes the original input, configuration, complete result, SQL reconciliation
+and HTML report. Choose a new output directory for each simulation; existing
+exports are refused.
+
+Open `synthetic-order/report.html` locally. Run `queuecraft verify .` from inside **that export
+directory**, or `queuecraft verify synthetic-order` from the checkout. Verification recomputes the complete trace
+and SQL accounting and compares saved field types as well as values. JSON key
+order and whitespace may differ; integer fields remain integers and boolean
+flags remain booleans. A replay mismatch exits 2 without rewriting the export.
+Hashes identify input bytes; they do not authenticate an accounting record.
+
+## Published 0.1.0 workflow
+
+These commands use the historical release from its own checkout. Current-source
+installation and streaming instructions above use the new development generation.
+
+```sh
+git clone --branch v0.1.0 --depth 1 https://github.com/nazeeh111/QueueCraft.git queuecraft-release
+cd queuecraft-release
 python3 -m venv .venv
 . .venv/bin/activate
 python -m pip install '.[study]'
@@ -145,6 +190,59 @@ found future-endpoint dependence and incomplete latency planning. Its source,
 registrations and negative results are preserved. Current commands reject its
 old registration instead of silently rerunning a different policy under its
 name. It is not the final prospective study.
+
+## Incremental replay
+
+For the same bundled synthetic input, the command below emits NDJSON (one JSON
+record per line). A file produced by `stream` is a transition stream, not the
+complete `simulate` export directory used by `verify`.
+
+`queuecraft stream` reads the CSV once, keeps one source event ahead, and emits
+NDJSON transitions as they occur. Supply the recorder's coverage and the order's
+start explicitly; these never come from a later source event.
+
+```sh
+queuecraft stream examples/stream-synthetic.csv --start-ns 0 --deadline-ns 5000000000 \
+  --recording-end-ns 12000000000 --size 1 --out replay.ndjson
+```
+
+The example uses synthetic data. Use timestamps matching your recording. `--out`
+publishes the fully written record stream exclusively; an existing file is
+preserved. The file can still end with `incomplete`, so inspect the terminal
+record and exit status. Without `--out`, stdout cannot retract prior records.
+The last record is `complete` or `incomplete`; an incomplete run exits 2 and
+has no final result. Earlier transitions are provisional. Input failure, policy
+failure and a pending-event budget stop all produce explicit incomplete status.
+Only source exhaustion supplies the final input digest. This command does not
+create the full SQL-reconciled study/export bundle used by `simulate`.
+
+The Python API supports incremental consumers:
+
+```python
+from queuecraft import CSVEvents, Intent, Scenario, stream
+from queuecraft.policies import Immediate
+
+with stream(CSVEvents("recording.csv"), Intent("buy", 1, 0, 5_000_000_000),
+            Immediate(), Scenario(), recording_end_ns=12_000_000_000) as replay:
+    for transition in replay:
+        process(transition)  # discard or persist each detached record
+    if replay.status == "complete":
+        print(replay.result.filled)
+```
+
+Collection is off by default: result lists are empty and scalar totals remain
+exact. `collect=True` / `--collect` retains all decisions, orders, fills and
+ledger rows; `trace_books=True` / `--trace-books` includes recorded book traces.
+The existing `run()` remains a full collector. Neither interface resumes a
+partially consumed native simulation. Close an iterator you stop early.
+
+Memory depends on book depth, the active observation-delay/timestamp-tie window,
+active orders, policy state and any records retained by the caller. The default
+100,000 pending-event budget refuses overfull windows rather than changing event
+order; adjust `max_pending_events` / `--max-pending-events` explicitly. CSV reads
+have a 4 KiB row limit and the native 20,000-row event limit, while total streaming
+input can exceed the batch parser's 64 MiB bound. The unchanged native validator
+checks every raw event before use. The scheduler consumes one thread only.
 
 ## Develop and verify
 
