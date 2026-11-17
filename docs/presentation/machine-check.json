@@ -1,0 +1,26 @@
+{
+  "installed_public_api": [
+    {
+      "latency_ms": 0,
+      "installedRunEqualsCLIEntireResult": true
+    },
+    {
+      "latency_ms": 55,
+      "installedRunEqualsCLIEntireResult": true
+    }
+  ],
+  "streamComplete": true,
+  "streamBatchFieldsEqual": [
+    "fills",
+    "orders",
+    "decisions",
+    "ledger",
+    "cash",
+    "fees",
+    "inventory",
+    "shortfall2"
+  ],
+  "stream_input_sha256": "ede27e84ba47f33c3be8a2ba5bed7266c25d64c02ffa5cfe9b43ce60781b41d8",
+  "source_sha256": "ede27e84ba47f33c3be8a2ba5bed7266c25d64c02ffa5cfe9b43ce60781b41d8",
+  "cpp_consumer": "installed C++ SDK: filled=3 cash=-1505 fees=2"
+}

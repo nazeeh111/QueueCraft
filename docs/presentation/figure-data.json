@@ -1,0 +1,124 @@
+{
+  "cases": [
+    {
+      "fills": [
+        {
+          "price": 100,
+          "quantity": 4,
+          "notional": 400,
+          "fee": 1,
+          "fill_id": 1,
+          "order_id": 1,
+          "event": 0,
+          "exchange_ns": -1,
+          "arrival_ns": 0,
+          "recorded_receive_ns": 0,
+          "side": "sell"
+        },
+        {
+          "price": 99,
+          "quantity": 3,
+          "notional": 297,
+          "fee": 1,
+          "fill_id": 2,
+          "order_id": 1,
+          "event": 0,
+          "exchange_ns": -1,
+          "arrival_ns": 0,
+          "recorded_receive_ns": 0,
+          "side": "sell"
+        }
+      ],
+      "orders": [
+        {
+          "order_id": 1,
+          "decision_ns": 0,
+          "observation_ns": 0,
+          "arrival_ns": 0,
+          "ack_ns": 0,
+          "quantity": 7,
+          "status": "filled",
+          "filled": 7,
+          "acknowledged": true
+        }
+      ],
+      "ledger": [
+        {
+          "step": 0,
+          "order_id": 1,
+          "time_ns": 0,
+          "cash": 695,
+          "inventory": -7,
+          "fees": 2,
+          "filled": 7
+        }
+      ],
+      "cash": 695,
+      "fees": 2,
+      "inventory": -7
+    },
+    {
+      "fills": [
+        {
+          "price": 100,
+          "quantity": 2,
+          "notional": 200,
+          "fee": 1,
+          "fill_id": 1,
+          "order_id": 1,
+          "event": 1,
+          "exchange_ns": -1,
+          "arrival_ns": 55000000,
+          "recorded_receive_ns": 50000000,
+          "side": "sell"
+        },
+        {
+          "price": 99,
+          "quantity": 5,
+          "notional": 495,
+          "fee": 1,
+          "fill_id": 2,
+          "order_id": 1,
+          "event": 1,
+          "exchange_ns": -1,
+          "arrival_ns": 55000000,
+          "recorded_receive_ns": 50000000,
+          "side": "sell"
+        }
+      ],
+      "orders": [
+        {
+          "order_id": 1,
+          "decision_ns": 0,
+          "observation_ns": 0,
+          "arrival_ns": 55000000,
+          "ack_ns": 55000000,
+          "quantity": 7,
+          "status": "filled",
+          "filled": 7,
+          "acknowledged": true
+        }
+      ],
+      "ledger": [
+        {
+          "step": 0,
+          "order_id": 1,
+          "time_ns": 55000000,
+          "cash": 693,
+          "inventory": -7,
+          "fees": 2,
+          "filled": 7
+        }
+      ],
+      "cash": 693,
+      "fees": 2,
+      "inventory": -7
+    }
+  ],
+  "timeline_ms": [
+    0,
+    50,
+    55
+  ],
+  "encoding": "14 individual lot blocks, price text, exact account; linear milliseconds on timeline"
+}

@@ -1,0 +1,167 @@
+{
+  "commands": [
+    {
+      "argv": [
+        "/Users/nazeeh/.local/share/portfolio-design-2026-11-17/QueueCraft-runtime/bin/queuecraft",
+        "validate",
+        "input.csv"
+      ],
+      "exit": 0,
+      "stdout": "{\"events\": 3, \"sha256\": \"ede27e84ba47f33c3be8a2ba5bed7266c25d64c02ffa5cfe9b43ce60781b41d8\"}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/Users/nazeeh/.local/share/portfolio-design-2026-11-17/QueueCraft-runtime/bin/queuecraft",
+        "simulate",
+        "input.csv",
+        "--side",
+        "sell",
+        "--size",
+        "7",
+        "--policy",
+        "immediate",
+        "--recording-end-ns",
+        "7000000000",
+        "--deadline",
+        "4",
+        "--latency-ms",
+        "0",
+        "--fee-ppm",
+        "100",
+        "--out",
+        "latency-0"
+      ],
+      "exit": 0,
+      "stdout": "{\"filled\": 7, \"unfilled\": 0, \"shortfall2\": 24, \"out\": \"latency-0\"}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/Users/nazeeh/.local/share/portfolio-design-2026-11-17/QueueCraft-runtime/bin/queuecraft",
+        "verify",
+        "latency-0"
+      ],
+      "exit": 0,
+      "stdout": "{\"replay\": \"exact\", \"sql\": {\"engine\": \"DuckDB\", \"version\": \"1.4.3\", \"transitions\": 1, \"fills\": 2, \"violations\": []}}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/Users/nazeeh/.local/share/portfolio-design-2026-11-17/QueueCraft-runtime/bin/queuecraft",
+        "simulate",
+        "input.csv",
+        "--side",
+        "sell",
+        "--size",
+        "7",
+        "--policy",
+        "immediate",
+        "--recording-end-ns",
+        "7000000000",
+        "--deadline",
+        "4",
+        "--latency-ms",
+        "55",
+        "--fee-ppm",
+        "100",
+        "--out",
+        "latency-55"
+      ],
+      "exit": 0,
+      "stdout": "{\"filled\": 7, \"unfilled\": 0, \"shortfall2\": 28, \"out\": \"latency-55\"}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/Users/nazeeh/.local/share/portfolio-design-2026-11-17/QueueCraft-runtime/bin/queuecraft",
+        "verify",
+        "latency-55"
+      ],
+      "exit": 0,
+      "stdout": "{\"replay\": \"exact\", \"sql\": {\"engine\": \"DuckDB\", \"version\": \"1.4.3\", \"transitions\": 1, \"fills\": 2, \"violations\": []}}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/Users/nazeeh/.local/share/portfolio-design-2026-11-17/QueueCraft-runtime/bin/queuecraft",
+        "stream",
+        "input.csv",
+        "--start-ns",
+        "0",
+        "--deadline-ns",
+        "4000000000",
+        "--recording-end-ns",
+        "7000000000",
+        "--side",
+        "sell",
+        "--size",
+        "7",
+        "--latency-ns",
+        "55000000",
+        "--fee-ppm",
+        "100",
+        "--collect",
+        "--out",
+        "transitions.ndjson"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/Users/nazeeh/.local/share/portfolio-design-2026-11-17/QueueCraft-runtime/bin/queuecraft",
+        "verify",
+        "/var/folders/ss/tml7487n205dg94kb7__tth80000gn/T/queuecraft-transfer-7980xpzu/order"
+      ],
+      "exit": 0,
+      "stdout": "{\"replay\": \"exact\", \"sql\": {\"engine\": \"DuckDB\", \"version\": \"1.4.3\", \"transitions\": 1, \"fills\": 2, \"violations\": []}}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/Users/nazeeh/.local/share/portfolio-design-2026-11-17/QueueCraft-runtime/bin/queuecraft",
+        "simulate",
+        "input.csv",
+        "--size",
+        "7",
+        "--recording-end-ns",
+        "7000000000",
+        "--out",
+        "latency-55"
+      ],
+      "exit": 2,
+      "stdout": "",
+      "stderr": "queuecraft: [Errno 17] File exists: 'latency-55'\n"
+    },
+    {
+      "argv": [
+        "/Users/nazeeh/.local/share/portfolio-design-2026-11-17/QueueCraft-runtime/bin/queuecraft",
+        "verify",
+        "/var/folders/ss/tml7487n205dg94kb7__tth80000gn/T/queuecraft-transfer-7980xpzu/order"
+      ],
+      "exit": 2,
+      "stdout": "",
+      "stderr": "queuecraft: fresh replay differs from saved trace\n"
+    },
+    {
+      "argv": [
+        "/Users/nazeeh/.local/share/portfolio-design-2026-11-17/QueueCraft-runtime/bin/queuecraft",
+        "simulate",
+        "input.csv",
+        "--recording-end-ns",
+        "1000000000",
+        "--out",
+        "invalid-coverage"
+      ],
+      "exit": 2,
+      "stdout": "",
+      "stderr": "queuecraft: declared recording coverage ends before requested deadline\n"
+    }
+  ],
+  "transferredReplay": true,
+  "existingOutputPreserved": true,
+  "typedTamperRefusedWithoutRewrite": true,
+  "invalidCoverageCreatesNothing": true
+}

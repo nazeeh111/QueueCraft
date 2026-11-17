@@ -1,0 +1,7 @@
+{
+  "engine": "DuckDB",
+  "version": "1.4.3",
+  "transitions": 1,
+  "fills": 2,
+  "violations": []
+}

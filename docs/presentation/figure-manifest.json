@@ -1,0 +1,16 @@
+{
+  "source_commit": "54c24eabf5513632775158a2fd391013dd39ae37",
+  "source_tree": "70d9ff0dc78b41e5aaed001b403d4791a63f90bd",
+  "encoding": "Two complete seven-lot allocations with exact price/quantity/account values; honest linear0-55ms timeline. Original source-derived figures, no inferred market accuracy.",
+  "files": {
+    "input.csv": "ede27e84ba47f33c3be8a2ba5bed7266c25d64c02ffa5cfe9b43ce60781b41d8",
+    "latency-0/result.json": "3c429c3c4f0fabb08b7f0c1d3f33c2dac26a7c6672654919e7036b0166dfb60c",
+    "latency-55/result.json": "aec39d0d369c9017da496a28a1106d977c4175bcf967ffa1c86d925c29b945e9",
+    "figure.py": "e3d2496e302c37c88b60677a8bb1c016e89243176da297ccce0dbcb8bde817fb",
+    "figure-data.json": "f0f231cc9f1fd01976b273be0de851164a1cb5d6b6fd2a996d27d49667fcf0d3",
+    "order-timing.svg": "6cc724904b1856e922ad4eb0d500193a387b53b57912a6e164d38c38888c7f21",
+    "order-timing-mobile.svg": "84ed159f3a4207f5b300bbb4494a70b7a4d9b7164629c25a319867c75d0fa6d8",
+    "order-timing.png": "c12672a67f37703c3c8b1275747aedb5013b530535ec61386cba95b88b9c5b8f",
+    "order-timing-mobile.png": "92ad18bcd7b7b7fc8abb2c4f2c597209d12c50c7b3ffdeebc11405a44de9fcf4"
+  }
+}
