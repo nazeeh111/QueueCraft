@@ -9,7 +9,7 @@ hypothetical arrivals and acknowledgements stay separate. Research software
 
 <picture>
   <source media="(max-width: 600px)" srcset="docs/presentation/order-timing-mobile.svg">
-  <img src="docs/presentation/order-timing.svg" alt="Synthetic seven-lot sell: at zero modeled latency, four lots fill at100 ticks and three at99; at55ms, a50ms depth update happens first, yielding two at100 and five at99. After two per-fill fees, cash is695 versus693 tick×lot units. Both recorded exports replay exactly.">
+  <img src="docs/presentation/order-timing.svg" alt="Synthetic seven-lot sell: at zero modeled latency, four lots fill at 100 ticks and three at 99; at 55 ms, a 50 ms depth update happens first, yielding two at 100 and five at 99. After two per-fill fees, cash is 695 versus 693 tick×lot units. Both recorded exports replay exactly.">
 </picture>
 
 Same synthetic input, same seven-lot sell, one changed assumption. A recorded
