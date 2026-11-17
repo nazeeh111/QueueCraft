@@ -65,6 +65,11 @@ order and whitespace may differ; integer fields remain integers and boolean
 flags remain booleans. A replay mismatch exits 2 without rewriting the export.
 Hashes identify input bytes; they do not authenticate an accounting record.
 
+Duplicate JSON object members and nonstandard NaN/Infinity tokens are rejected.
+The export schema version must remain an integer. Verification checks software
+consistency; it does not authenticate the export.
+
+
 ## Published 0.1.0 workflow
 
 These commands use the historical release from its own checkout. Current-source
@@ -172,7 +177,7 @@ python -m tools.prepare_prospective --source data/15m-archive/updown_15m.parquet
   --output /tmp/queuecraft-sessions
 queuecraft study /tmp/queuecraft-sessions --plan docs/PROSPECTIVE_PLAN.json \
   --raw-archive data/15m-archive/updown_15m.parquet \
-  --calibration docs/COMPUTE_CALIBRATION.json --out /tmp/queuecraft-study
+  --out /tmp/queuecraft-study
 ```
 
 The completed run accounts for **84,800 attempts: 66,720 executions and 18,080
@@ -184,8 +189,13 @@ requested lots. This does not establish execution superiority.
 [Results and interpretation](docs/STUDY.md) · [Aggregate results](docs/study-summary.json) ·
 [Complete study archive](https://github.com/nazeeh111/QueueCraft/releases/download/v0.1.0/queuecraft-study-v0.1.0.tar.gz).
 
-Saved calibration reproduces the registered compute durations without new
-measurements. Omitting `--calibration` runs a separate desktop timing sensitivity.
+The command above runs a new desktop timing sensitivity with the current source.
+It does not reproduce the registered historical compute durations or create a new
+unseen confirmation study. `docs/COMPUTE_CALIBRATION.json` belongs to the frozen
+historical implementation. The current development source has changed, so its
+strict source-identity check rejects that calibration. Use the matching original
+release source and archived data to replay historical durations. Do not rewrite
+its source hashes or reuse those measurements as a current-source benchmark.
 
 The protocol retains all window attempts and exclusions, both sides, sizes and
 deadlines, execution assumptions and measured policy-computation sensitivity.
