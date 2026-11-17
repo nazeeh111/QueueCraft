@@ -1,6 +1,8 @@
 import contextlib
 import io
 import json
+import subprocess
+import sys
 from pathlib import Path
 import tempfile
 import unittest
@@ -51,3 +53,56 @@ class RecordingCLITests(unittest.TestCase):
             with contextlib.redirect_stderr(error),self.assertRaises(SystemExit):
                 main(['verify',str(root)])
             self.assertIn('recorded source version',error.getvalue())
+
+
+class TypedReplayCLITests(unittest.TestCase):
+    """Saved accounting values retain their JSON types across exact replay."""
+
+    def export(self, root):
+        source=root/'input.csv'
+        source.write_text(Event(0,-1,0,'S',(('B',100,100_000),('A',102,100_000))).csv())
+        result=subprocess.run([sys.executable,'-B','-m','queuecraft','simulate',str(source),
+            '--side','sell','--size','37','--policy','immediate','--recording-end-ns','7000000000',
+            '--deadline','4','--latency-ms','55','--fee-ppm','100','--out',str(root/'order')],
+            cwd=root,text=True,capture_output=True,timeout=20)
+        self.assertEqual(result.returncode,0,result.stderr)
+        return root/'order'
+
+    def verify(self, root):
+        return subprocess.run([sys.executable,'-B','-m','queuecraft','verify','.'],
+            cwd=root,text=True,capture_output=True,timeout=20)
+
+    def test_verify_refuses_numeric_boolean_substitution_at_every_depth(self):
+        # Regression: exact replay must distinguish JSON true from integer 1.
+        with tempfile.TemporaryDirectory() as folder:
+            root=self.export(Path(folder))
+            original=json.loads((root/'result.json').read_text())
+            self.assertEqual(original['fees'],1)
+            cases=[(('fees',),True),(('fills',0,'fee'),True),
+                   (('orders',0,'acknowledged'),1),(('decisions',0,'valid'),1),
+                   (('fees',),2),(('fees',),1.0)]
+            for path,value in cases:
+                with self.subTest(path=path,value=value):
+                    changed=json.loads(json.dumps(original));target=changed
+                    for key in path[:-1]:target=target[key]
+                    target[path[-1]]=value
+                    (root/'result.json').write_text(json.dumps(changed))
+                    before={p.name:p.read_bytes() for p in root.iterdir()}
+                    result=self.verify(root)
+                    self.assertEqual(result.returncode,2,result.stdout)
+                    self.assertIn('fresh replay differs from saved trace',result.stderr)
+                    self.assertEqual(result.stdout,'')
+                    self.assertEqual({p.name:p.read_bytes() for p in root.iterdir()},before)
+
+    def test_verify_accepts_reordered_keys_and_whitespace_without_rewriting(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root=self.export(Path(folder))
+            for name in ('config.json','result.json'):
+                path=root/name
+                path.write_text(json.dumps(json.loads(path.read_text()),sort_keys=True,indent=4)+'  \n')
+            before={p.name:p.read_bytes() for p in root.iterdir()}
+            result=self.verify(root)
+            self.assertEqual(result.returncode,0,result.stderr)
+            self.assertEqual(json.loads(result.stdout)['replay'],'exact')
+            self.assertEqual(result.stderr,'')
+            self.assertEqual({p.name:p.read_bytes() for p in root.iterdir()},before)

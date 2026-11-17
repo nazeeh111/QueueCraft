@@ -22,6 +22,39 @@ def read_input(path):
     return data.decode("ascii")
 
 
+def _read_json(path):
+    def object_members(pairs):
+        result = {}
+        for key, value in pairs:
+            if key in result:
+                raise ValueError("duplicate JSON object member")
+            result[key] = value
+        return result
+
+    def nonfinite(value):
+        raise ValueError("non-finite JSON number")
+
+    document = json.loads(Path(path).read_text(), object_pairs_hook=object_members, parse_constant=nonfinite)
+    if not isinstance(document, dict):
+        raise ValueError("expected a JSON object")
+    return document
+
+
+def _same_json(expected, saved):
+    """Compare a saved JSON tree without equating booleans and integer fields."""
+    if type(expected) is not type(saved):
+        return False
+    if isinstance(expected, dict):
+        return expected.keys() == saved.keys() and all(
+            _same_json(value, saved[key]) for key, value in expected.items()
+        )
+    if isinstance(expected, list):
+        return len(expected) == len(saved) and all(
+            _same_json(a, b) for a, b in zip(expected, saved)
+        )
+    return expected == saved
+
+
 def main(argv=None):
     parser=argparse.ArgumentParser(prog="queuecraft",description="Exact execution research from recorded books. No live orders.")
     parser.add_argument("--version",action="version",version=__version__)
@@ -78,15 +111,15 @@ def main(argv=None):
         if args.command=="verify":
             from .reconcile import reconcile
             root=args.directory
-            saved=json.loads((root/"result.json").read_text())
-            config=json.loads((root/"config.json").read_text())
-            if config.get("schema_version")!=2:
+            saved=_read_json(root/"result.json")
+            config=_read_json(root/"config.json")
+            if type(config.get("schema_version")) is not int or config["schema_version"]!=2:
                 raise ValueError("legacy export requires its recorded source version; schema2 declares recording_end_ns")
             data=read_input(root/"input.csv")
             if hashlib.sha256(data.encode()).hexdigest()!=config["input_sha256"]:
                 raise ValueError("input hash differs from export")
             result=run(events_from_csv(data),Intent(**config["intent"]),POLICIES[config["policy"]](),Scenario(**config["scenario"]),recording_end_ns=config["recording_end_ns"],trace_books=True)
-            if result.as_dict()!=saved:
+            if not _same_json(result.as_dict(),saved):
                 raise ValueError("fresh replay differs from saved trace")
             sql=reconcile(result)
             if sql["violations"]:raise ValueError(sql)
@@ -106,7 +139,7 @@ def main(argv=None):
         if args.recording_metadata is not None:
             if args.recording_metadata.stat().st_size>65536:
                 raise ValueError("recording metadata exceeds64KiB")
-            recording_end_ns=json.loads(args.recording_metadata.read_text())["recording_end_ns"]
+            recording_end_ns=_read_json(args.recording_metadata)["recording_end_ns"]
         elif args.recording_duration_seconds is not None:
             if args.recording_duration_seconds<0:raise ValueError("recording duration must be nonnegative")
             recording_end_ns=events[0].receive_ns+args.recording_duration_seconds*1_000_000_000

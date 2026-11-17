@@ -14,6 +14,8 @@ import re
 from queuecraft.data import HEADER, validate_snapshot
 
 NS = 1_000_000_000
+MAX_ROWS = 1_000_000
+MAX_SESSIONS = 10_000
 
 
 def sha(path: Path) -> str:
@@ -128,25 +130,31 @@ def prepare(source: Path, destination: Path, plan_path: Path, known_path: Path) 
         raise ValueError("source exceeds declared size bound")
     if sha(source) != plan["source"]["sha256"]:
         raise ValueError("source hash does not match frozen plan")
-    destination.mkdir(exist_ok=False)
     columns = ["market_slug", "coin", "contract_length", "token_id", "market_end_at", "captured_at", "bid_prices", "bid_sizes", "ask_prices", "ask_sizes"]
     projection = [f"epoch_ns({c}) AS {c}" if c in ("market_end_at", "captured_at") else c for c in columns]
-    con = duckdb.connect()
-    con.execute("SET memory_limit='512MB'")
-    con.execute("SET threads=1")
-    result = con.execute("SELECT " + ','.join(projection) + " FROM read_parquet(?) WHERE outcome='Up' ORDER BY market_end_at,coin,market_slug,captured_at", [str(source)])
+    with duckdb.connect() as con:
+        con.execute("SET memory_limit='512MB'")
+        con.execute("SET threads=1")
+        rows, sessions = con.execute("SELECT count(*),count(DISTINCT market_slug) FROM read_parquet(?) "
+                                     "WHERE outcome='Up'", [str(source)]).fetchone()
+        if rows > MAX_ROWS or sessions > MAX_SESSIONS:
+            raise ValueError("archive exceeds declared session/row bounds")
+        # The projection remains capped if the owned input changes after admission.
+        values = con.execute("SELECT " + ','.join(projection) + " FROM read_parquet(?) WHERE outcome='Up' "
+                             f"ORDER BY market_end_at,coin,market_slug,captured_at LIMIT {MAX_ROWS + 1}",
+                             [str(source)]).fetchall()
     groups = {}
-    for values in result.fetchall():
-        row = dict(zip(columns, values))
+    for item in values:
+        row = dict(zip(columns, item))
         groups.setdefault(row["market_slug"], []).append(row)
-    con.close()
-    if len(groups) > 10000 or sum(map(len, groups.values())) > 1_000_000:
+    if len(groups) > MAX_SESSIONS or sum(map(len, groups.values())) > MAX_ROWS:
         raise ValueError("archive exceeds declared session/row bounds")
     known_ids = set(json.loads(known_path.read_text())["known_ids"])
     # Split all whole windows BEFORE inspecting their validity or quote regime.
     frozen = [{"market_slug": slug, "coin": rows[0]["coin"], "opening_ns": rows[0]["market_end_at"]-900*NS,
                "opening_utc_day": utc_day(rows[0]["market_end_at"]-900*NS),
                "split": split_for(utc_day(rows[0]["market_end_at"]-900*NS), plan)} for slug, rows in groups.items()]
+    destination.mkdir(exist_ok=False)
     with (destination / "day-split.json").open("x") as f:
         json.dump({"plan_sha256": sha(plan_path), "source_sha256": sha(source), "known_ids_sha256": sha(known_path), "windows": frozen}, f, indent=2, sort_keys=True)
         f.write('\n')

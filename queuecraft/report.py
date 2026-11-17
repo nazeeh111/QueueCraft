@@ -2,6 +2,8 @@
 import html
 import json
 
+from . import __version__
+
 
 CSS = """
 :root{font-family:system-ui,-apple-system,sans-serif;color:#142d42;background:#f5f4ef;line-height:1.6}*{box-sizing:border-box}body{margin:0}main{max-width:1160px;margin:auto;padding:48px 32px}header{border-top:6px solid #175da0;padding:26px 0;border-bottom:1px solid #b9c8ce}h1{font-size:clamp(2rem,5vw,3.7rem);line-height:1.1;letter-spacing:-.04em;margin:12px 0}h2{font-size:1.4rem;margin-top:36px}p{max-width:78ch}.eyebrow{font-family:monospace;text-transform:uppercase;letter-spacing:.14em;color:#175da0}.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;background:#b9c8ce;border:1px solid #b9c8ce;margin:28px 0}.metric{padding:18px;background:#fff}.value{display:block;font-size:1.9rem;font-variant-numeric:tabular-nums;font-weight:650}.label{font-size:.85rem;color:#465d6d}.notice{border-left:4px solid #a46c19;background:#fff5df;padding:14px 20px}.scroll{overflow:auto}.scroll:focus-visible{outline:3px solid #175da0;outline-offset:2px}@media(max-width:700px){.scroll caption span{position:sticky;left:0;display:inline-block}.scroll th:first-child,.scroll td:first-child{position:sticky;left:0;background:#f5f4ef;box-shadow:1px 0 #b9c8ce}}table{width:100%;border-collapse:collapse;background:#fff;font-size:.86rem}caption{text-align:left;font-weight:600;margin:12px 0}th,td{padding:10px 13px;border-bottom:1px solid #d7e0e4;text-align:left;white-space:nowrap;font-variant-numeric:tabular-nums}th{background:#e8eef2;color:#264b65}a{color:#164e87}a:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #ab5c00;outline-offset:3px}summary{cursor:pointer;padding:13px 0;color:#164e87}pre{background:#112c40;color:#e5eef6;padding:20px;overflow:auto;font-size:.82rem}code{font-family:ui-monospace,monospace}.controls{display:flex;gap:16px;flex-wrap:wrap;margin:20px 0}label{display:grid;gap:4px}input,select{font:inherit;padding:7px;border:1px solid #718696;border-radius:2px;background:white}footer{margin-top:48px;border-top:1px solid #b9c8ce;padding-top:16px;font-size:.85rem;color:#465d6d}@media(max-width:600px){main{padding:24px 16px}th,td{padding:8px}}
@@ -15,7 +17,7 @@ def table(rows, columns, caption):
 
 
 def shell(title, body):
-    return f'<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width, initial-scale=1"><title>{html.escape(title)}</title><style>{CSS}</style><main>{body}<footer>QueueCraft 0.1.0 · Local execution research · No order route · Integer accounting</footer></main></html>'
+    return f'<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width, initial-scale=1"><title>{html.escape(title)}</title><style>{CSS}</style><main>{body}<footer>QueueCraft {html.escape(__version__)} · Local execution research · No order route · Integer accounting</footer></main></html>'
 
 
 def simulation_report(result, sql):
