@@ -1,17 +1,26 @@
 # QueueCraft
 
-**An embeddable C++20 execution-research engine that makes uncertain assumptions visible.**
+**Follow an order from the book it observes to the account it changes.**
 
-Exact tick/lot accounting, deterministic books, a typed Python strategy SDK,
-independent book/ledger checks and registered policy comparisons. Research
-software, development version **0.1.1.dev0**. No brokerage route or live orders.
-The versioned links below retain the historical 0.1.0 release and its evidence.
-Use this current source for the incremental CLI and strict saved-result replay.
+An embeddable C++20 execution-research engine with exact tick/lot accounting,
+a typed Python strategy SDK and replayable CLI reports. Delayed observations,
+hypothetical arrivals and acknowledgements stay separate. Research software
+**0.1.1.dev0**; no brokerage route or live orders.
 
-[Versioned release and checksums](https://github.com/nazeeh111/QueueCraft/releases/tag/v0.1.0) ·
-[Public verification evidence](https://github.com/nazeeh111/QueueCraft/releases/download/v0.1.0/delivery-evidence.json)
+<picture>
+  <source media="(max-width: 600px)" srcset="docs/presentation/order-timing-mobile.svg">
+  <img src="docs/presentation/order-timing.svg" alt="Synthetic seven-lot sell: at zero modeled latency, four lots fill at 100 ticks and three at 99; at 55 ms, a 50 ms depth update happens first, yielding two at 100 and five at 99. After two per-fill fees, cash is 695 versus 693 tick×lot units. Both recorded exports replay exactly.">
+</picture>
 
-![Execution architecture](docs/architecture.svg)
+Same synthetic input, same seven-lot sell, one changed assumption. A recorded
+update at **50 ms** reduces the 100-tick bid from four lots to two. Arrival at
+**55 ms** therefore reaches different depth than arrival at zero. Each case
+fills all seven lots; net cash differs by two tick×lot units. This illustrates
+the execution model, not measured network latency or a policy advantage.
+
+[Reproduce and inspect the worked case](docs/presentation/README.md) ·
+[Download the complete example](docs/presentation/worked-example.zip) ·
+[Public C++ header](include/queuecraft/engine.hpp) · [Python consumer](examples/strategy.py)
 
 ## Check the native engine first
 
@@ -273,3 +282,11 @@ there is no durable partial native checkpoint or crash-atomic exchange service.
 [Validation](docs/VALIDATION.md) · [Performance](docs/PERFORMANCE.md) ·
 [Differences from existing projects](docs/DISTINCTION.md) · [Data licenses](data/README.md) ·
 [Owner walkthrough](docs/WALKTHROUGH.md).
+
+## Architecture and versioned provenance
+
+![Execution architecture](docs/architecture.svg)
+
+[Historical0.1.0 release and checksums](https://github.com/nazeeh111/QueueCraft/releases/tag/v0.1.0) ·
+[Public verification evidence](https://github.com/nazeeh111/QueueCraft/releases/download/v0.1.0/delivery-evidence.json).
+The current-source workflow above uses the development generation.
