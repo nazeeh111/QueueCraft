@@ -123,6 +123,8 @@ def main(argv=None):
                 raise ValueError("fresh replay differs from saved trace")
             sql=reconcile(result)
             if sql["violations"]:raise ValueError(sql)
+            if not _same_json(sql, _read_json(root/"sql.json")):
+                raise ValueError("fresh SQL accounting differs from saved receipt")
             print(json.dumps({"replay":"exact","sql":sql}));return 0
         data=read_input(args.input)
         from . import _native
