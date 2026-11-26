@@ -60,7 +60,7 @@ exports are refused.
 
 Open `synthetic-order/report.html` locally. Run `queuecraft verify .` from inside **that export
 directory**, or `queuecraft verify synthetic-order` from the checkout. Verification recomputes the complete trace
-and SQL accounting and compares saved field types as well as values. JSON key
+and SQL accounting and compares both with their saved JSON files, preserving field types. JSON key
 order and whitespace may differ; integer fields remain integers and boolean
 flags remain booleans. A replay mismatch exits 2 without rewriting the export.
 Hashes identify input bytes; they do not authenticate an accounting record.
@@ -266,12 +266,16 @@ checks every raw event before use. The scheduler consumes one thread only.
 ## Develop and verify
 
 ```sh
-python -m pip install -e '.[study]'
+python -m pip install '.[dev]'
 make test
 make sanitize
 make tsan
-python -m unittest discover -s tests -v
-python -m tools.differential examples/recorded.csv --out /tmp/differential.json
+checkout="$PWD"
+(
+  cd "$(mktemp -d)"
+  PYTHONPATH="$checkout/tests" python -m pytest --import-mode=importlib "$checkout/tests" -q
+  python "$checkout/tools/differential.py" "$checkout/examples/recorded.csv" --out differential.json
+)
 ```
 
 The native book/accounting hot path preserves the independently checked

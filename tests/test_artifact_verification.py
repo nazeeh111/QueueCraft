@@ -53,10 +53,31 @@ def test_verify_rejects_type_changes_and_duplicate_keys(exported, change):
     assert {p.name: p.read_bytes() for p in exported.iterdir()} == before
 
 
+@pytest.mark.parametrize('change', ['missing', 'wrong_count', 'bool_count', 'duplicate'])
+def test_verify_rejects_missing_or_changed_sql_accounting(exported, change):
+    receipt = exported / 'sql.json'
+    data = json.loads(receipt.read_text())
+    assert data['fills'] == 1
+    if change == 'missing':
+        receipt.unlink()
+    elif change == 'duplicate':
+        receipt.write_text('{"fills":9001,' + receipt.read_text()[1:])
+    else:
+        data['fills'] = True if change == 'bool_count' else 9001
+        receipt.write_text(json.dumps(data))
+    before = {p.name: p.read_bytes() for p in exported.iterdir()}
+    with contextlib.redirect_stdout(io.StringIO()) as output, contextlib.redirect_stderr(io.StringIO()), pytest.raises(SystemExit) as failure:
+        main(['verify', str(exported)])
+    assert failure.value.code == 2
+    assert output.getvalue() == ''
+    assert {p.name: p.read_bytes() for p in exported.iterdir()} == before
+
+
 def test_verify_accepts_object_key_reordering_and_whitespace(exported):
-    result = exported / 'result.json'
-    data = json.loads(result.read_text())
-    result.write_text(json.dumps(dict(reversed(list(data.items()))), separators=(',', ':')))
+    for name in ('result.json', 'sql.json'):
+        path = exported / name
+        data = json.loads(path.read_text())
+        path.write_text(json.dumps(dict(reversed(list(data.items()))), separators=(',', ':')))
     with contextlib.redirect_stdout(io.StringIO()) as output:
         assert main(['verify', str(exported)]) == 0
     assert json.loads(output.getvalue())['replay'] == 'exact'
