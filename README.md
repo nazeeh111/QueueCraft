@@ -19,7 +19,7 @@ fills all seven lots; net cash differs by two tick×lot units. This illustrates
 the execution model, not measured network latency or a policy advantage.
 
 [Reproduce and inspect the worked case](docs/presentation/README.md) ·
-[Download the complete example](docs/presentation/worked-example.zip) ·
+[Download the complete example](https://raw.githubusercontent.com/nazeeh111/QueueCraft/5f4054cfcbf569eb55d9b48856a1bf28bbd6cca5/docs/presentation/worked-example.zip) ·
 [Public C++ header](include/queuecraft/engine.hpp) · [Python consumer](examples/strategy.py)
 
 ## Check the native engine first
